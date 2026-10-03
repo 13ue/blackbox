@@ -99,7 +99,8 @@ defmodule Blackbox.CostTest do
 
     assert crash_r < 3_000
     assert report_r < 3_000
-    assert crumb_r < 100
+    # 63 raw, 84 with the key pre-check, 123 with one host pattern (~0.7 µs)
+    assert crumb_r < 150
     assert pass_r < 10
   end
 

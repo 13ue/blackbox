@@ -45,6 +45,16 @@ defmodule Blackbox do
   @doc "Adds a breadcrumb to the calling process's ring."
   def crumb(message, data \\ %{}), do: Blackbox.Crumbs.add(:crumb, message, data)
 
+  @doc """
+  Adds to this process's context, shown with any failure in it or in the
+  processes it starts (Tasks find it through `$callers`). Scrubbed like
+  everything else.
+
+      Blackbox.set_context(%{hologram: {MyApp.Page, :save}})
+  """
+  def set_context(map) when is_map(map),
+    do: Process.put(:blackbox_context, Map.merge(Process.get(:blackbox_context, %{}), map)) && :ok
+
   @doc "Removes the handler, the filter and the telemetry handlers until `resume/0`."
   defdelegate pause(), to: Blackbox.Capture
 

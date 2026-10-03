@@ -33,10 +33,12 @@ if Code.ensure_loaded?(Ecto.Adapters.SQL) do
       if dir = opts[:spool_dir], do: Application.put_env(:blackbox, :spool_dir, dir)
 
       {:ok, pool} = repo.start_link(name: nil, pool_size: 1, log: false)
+      query = (repo.config()[:telemetry_prefix] || []) ++ [:query]
+      Blackbox.Capture.attach_query(query)
       Buffer.import_spool()
       Buffer.set_writer(writer(repo, pool, build))
       Process.send_after(self(), :prune, @prune_ms)
-      {:ok, %{repo: repo, pool: pool}}
+      {:ok, %{repo: repo, pool: pool, query: query}}
     end
 
     @impl true
@@ -61,6 +63,7 @@ if Code.ensure_loaded?(Ecto.Adapters.SQL) do
 
     @impl true
     def terminate(_, s) do
+      Blackbox.Capture.detach_query(s.query)
       Buffer.drain(@flush_ms)
       Buffer.set_writer(nil)
       Process.exit(s.pool, :shutdown)

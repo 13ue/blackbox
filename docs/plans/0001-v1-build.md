@@ -151,3 +151,41 @@ builds not tracked, writing on the host's pool).
 
 **Dogfood point reached**: 1charta can add `{:blackbox, github: "13ue/blackbox"}`,
 the migration, and the child after its Repo.
+
+## M3 done (2026-10-03)
+
+104 tests (7 flood), green three runs in a row; 11 of 12 mutations turn a
+test red, and the twelfth showed dead code (the writer's re-entry flag, now
+removed: its Logger metadata already keeps it out).
+
+- **`Blackbox.Scrub`**, once, in the buffer before formatting; crumb text
+  and data when added, so no process dictionary holds a secret. Keys: the
+  defaults, Phoenix's `filter_parameters`, `config :blackbox, scrub_keys:`;
+  a key matches when its name contains one. Text: `key=value`, `key: value`,
+  `"key" => value`, and `scrub_patterns` (regex strings, group 1 replaced).
+  Exceptions with values become shapes; `Postgrex.Error` loses `detail`,
+  `hint`, `where`; `FunctionClauseError` its args.
+- **The secrets test found two leaks the ADR did not list**, both fixed in
+  the lib rather than left to the host: the `:sys` log holds raw call and
+  cast messages even when `format_status/1` redacts `message` (now reduced to
+  tags), and a callee's `function_clause` nests a stack frame with the call's
+  arguments inside the caller's exit reason (nested frames now keep arity
+  only). 15 secrets, 3 rounds, none in the tables, the spool or a dictionary.
+- **Cost of add-time scrubbing**: a log crumb is 63 reductions raw, 2.2 µs
+  with the regex; a `:binary.match` pre-check on the key names brings it to
+  0.4 µs (84), and one host pattern to ~0.7 µs (123). Kept as text crumbs;
+  budget 150. Known ceiling, marked: mixed-case key names in text skip the
+  key regex (lower, Capitalized and UPPER are checked).
+- **Crumbs from telemetry**: Bandit request start and Phoenix endpoint start
+  reset the ring (06-42); the request line (path scrubbed, no query), the
+  route, Finch calls (method, host, status, ms), Ecto queries (source,
+  ok/error, ms; never SQL or params), attached by the store with the repo's
+  telemetry prefix.
+- **`Blackbox.set_context/1`**, merged over the caller's through `$callers`.
+  **System snapshot** per failure: run queue, process count and limit, the
+  process's mailbox, memory and reductions, node memory from a 1 s sampler.
+- Patterns are the host's; a pattern that also matches route templates
+  (`/b/:id`) filters them too, so the documented example skips `:` segments.
+- Deferred: the `$ancestors` join (a GenServer's ancestor is its supervisor,
+  which keeps no crumbs), debug crumbs per module with the console level
+  kept, OTel trace ids.

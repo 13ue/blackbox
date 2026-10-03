@@ -15,7 +15,13 @@ defmodule Blackbox.Capture do
     [:phoenix, :error_rendered],
     [:plug, :router_dispatch, :exception],
     [:bandit, :request, :exception],
-    [:telemetry, :handler, :failure]
+    [:telemetry, :handler, :failure],
+    # crumbs; Bandit runs every keep-alive request of a connection in one
+    # process (06-42), so a request start resets the ring
+    [:bandit, :request, :start],
+    [:phoenix, :endpoint, :start],
+    [:phoenix, :router_dispatch, :start],
+    [:finch, :request, :stop]
   ]
   @check_ms 5_000
   @give_up {5, 600_000}
@@ -216,11 +222,27 @@ defmodule Blackbox.Capture do
 
   ## Telemetry
 
-  def handle_telemetry(event, _measure, meta, _) do
+  @doc false
+  # Ecto's event name has the host repo's prefix; the store attaches it.
+  def attach_query(event),
+    do:
+      :telemetry.attach(
+        "blackbox-query-" <> inspect(event),
+        event,
+        &__MODULE__.handle_telemetry/4,
+        nil
+      )
+
+  def detach_query(event), do: :telemetry.detach("blackbox-query-" <> inspect(event))
+
+  def handle_telemetry(event, measure, meta, _) do
     reason = meta[:reason] || meta[:exception]
 
     cond do
       reentry?() ->
+        :ok
+
+      crumb(event, measure, meta) ->
         :ok
 
       reason == nil ->
@@ -244,6 +266,45 @@ defmodule Blackbox.Capture do
       Blackbox.bump(:handler_errors)
       :ok
   end
+
+  # Each crumb source with a short allow-list of fields: never params, bodies or headers.
+  defp crumb([:bandit, :request, :start], _, _), do: Crumbs.reset()
+
+  defp crumb([:phoenix, :endpoint, :start], _, %{conn: conn}) do
+    Crumbs.reset()
+    Crumbs.add(:request, {:string, "#{conn.method} #{conn.request_path}"})
+  end
+
+  defp crumb([:phoenix, :router_dispatch, :start], _, meta),
+    do:
+      Crumbs.add(:route, {:string, "#{meta[:route]} #{inspect(meta[:plug])}.#{meta[:plug_opts]}"})
+
+  defp crumb([:finch, :request, :stop], %{duration: d}, %{request: req} = meta) do
+    status =
+      case meta[:result] do
+        {:ok, %{status: status}} -> status
+        {:error, e} -> inspect(e.__struct__)
+        _ -> "?"
+      end
+
+    Crumbs.add(:http, {:string, "#{req.method} #{req.host} #{status} #{ms(d)} ms"})
+  end
+
+  defp crumb(event, measure, %{repo: _} = meta) do
+    if List.last(event) == :query do
+      result = if match?({:ok, _}, meta[:result]), do: "ok", else: "error"
+
+      Crumbs.add(
+        :query,
+        {:string, "query #{meta[:source] || "-"} #{result} #{ms(measure[:total_time] || 0)} ms"}
+      )
+    end
+  end
+
+  defp crumb(_, _, _), do: false
+
+  defp ms(native),
+    do: Float.round(System.convert_time_unit(native, :native, :microsecond) / 1000, 1)
 
   defp expected?([:phoenix, :error_rendered], %{status: status}, _) when status < 500, do: true
 

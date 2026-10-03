@@ -35,6 +35,30 @@ defmodule Blackbox.Buffer do
 
   def flush, do: GenServer.call(__MODULE__, :flush)
 
+  @memory [:total, :processes, :binary, :ets]
+
+  @doc "Node memory as of the last 1 s sample, in bytes."
+  def memory do
+    case :persistent_term.get({__MODULE__, :memory}, nil) do
+      nil -> %{}
+      ref -> @memory |> Enum.with_index(1) |> Map.new(fn {k, i} -> {k, :atomics.get(ref, i)} end)
+    end
+  end
+
+  defp sample_memory do
+    ref =
+      case :persistent_term.get({__MODULE__, :memory}, nil) do
+        nil ->
+          tap(:atomics.new(length(@memory), []), &:persistent_term.put({__MODULE__, :memory}, &1))
+
+        ref ->
+          ref
+      end
+
+    for {k, v} <- :erlang.memory(@memory),
+        do: :atomics.put(ref, Enum.find_index(@memory, &(&1 == k)) + 1, v)
+  end
+
   @doc "The function that writes a batch; nil holds everything in the buffer."
   def set_writer(fun), do: GenServer.call(__MODULE__, {:writer, fun})
 
@@ -54,6 +78,8 @@ defmodule Blackbox.Buffer do
     # terminate/2 runs on shutdown, and spools what is left.
     Process.flag(:trap_exit, true)
     :timer.send_interval(@interval, :tick)
+    :timer.send_interval(1_000, :memory)
+    sample_memory()
 
     {:ok,
      %{pending: %{}, retry: %{}, writer: nil, task: nil, backoff: 0, retry_at: nil, fails: 0}}
@@ -63,6 +89,11 @@ defmodule Blackbox.Buffer do
   def handle_info({:item, {fp, sample}}, s) do
     Blackbox.bump(:inflight, -1)
     {:noreply, %{s | pending: add(s.pending, fp, sample)}}
+  end
+
+  def handle_info(:memory, s) do
+    sample_memory()
+    {:noreply, s}
   end
 
   def handle_info(:tick, s) do

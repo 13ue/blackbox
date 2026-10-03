@@ -45,4 +45,6 @@ defmodule Blackbox.Fixtures.Sites do
   def b(dep), do: {:ok, dep.run(2)}
 
   def raise_here, do: {:ok, raise("here")}
+
+  def only_ok({:ok, v}), do: v
 end

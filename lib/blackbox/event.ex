@@ -195,6 +195,7 @@ defmodule Blackbox.Event do
     stack = arity(stack)
     callers = meta[:callers] || (in_process && Process.get(:"$callers")) || []
     client = locals[:client_info]
+    caller = List.first(callers) || (client && client[:pid])
 
     meta =
       meta
@@ -221,12 +222,40 @@ defmodule Blackbox.Event do
       meta: meta,
       locals: Map.new(locals, fn {k, v} -> {k, bounded(v)} end),
       crumbs: if(in_process, do: Blackbox.Crumbs.own(), else: []),
-      caller_crumbs: Blackbox.Crumbs.of(List.first(callers) || (client && client[:pid])),
+      caller_crumbs: Blackbox.Crumbs.of(caller),
+      context: context(in_process, caller),
+      system: system(in_process),
       at: System.system_time(:microsecond)
     }
 
     key = if kind == :log, do: nil, else: :erlang.phash2({kind, reason})
     {fingerprint(kind, reason, stack, meta), key, sample}
+  end
+
+  # The context set with Blackbox.set_context/1, this process's over its caller's.
+  defp context(in_process, caller) do
+    own = if in_process, do: Process.get(:blackbox_context, %{}), else: %{}
+
+    case is_pid(caller) && :erlang.process_info(caller, {:dictionary, :blackbox_context}) do
+      {{:dictionary, :blackbox_context}, %{} = theirs} -> Map.merge(theirs, own)
+      _ -> own
+    end
+  end
+
+  # Fixed, sub-µs fields at the moment of failure; node memory from the
+  # buffer's 1 s sampler (`:erlang.memory/0` costs 47 µs, 06-15).
+  defp system(in_process) do
+    process =
+      if in_process,
+        do: Map.new(Process.info(self(), [:message_queue_len, :memory, :reductions])),
+        else: %{}
+
+    Map.merge(process, %{
+      run_queue: :erlang.statistics(:total_run_queue_lengths),
+      process_count: :erlang.system_info(:process_count),
+      process_limit: :erlang.system_info(:process_limit),
+      memory: Blackbox.Buffer.memory()
+    })
   end
 
   defp put_process(meta, true) do
@@ -371,13 +400,16 @@ defmodule Blackbox.Event do
 
   ## In the buffer: formatting for kept samples only (~20 µs a frame, 08).
 
-  def finish(%{kind: kind, reason: reason} = s) do
+  def finish(%{kind: kind} = s) do
     {in_app, _} = modules()
+    alias Blackbox.Scrub
+    # Scrubbed once, here, before anything is formatted.
+    reason = Scrub.term(s.reason)
 
     %{
       kind: kind,
       type: type_text(kind, reason),
-      message: message(kind, reason, s.meta),
+      message: kind |> message(reason, s.meta) |> Scrub.message(),
       stacktrace:
         for {m, _, _, _} = frame <- s.stack do
           %{text: Exception.format_stacktrace_entry(frame), in_app: Map.has_key?(in_app, m)}
@@ -385,17 +417,27 @@ defmodule Blackbox.Event do
       source: source_text(s.source),
       level: s.level,
       pid: s.pid && inspect(s.pid),
-      process_label: s.meta[:process_label] && inspect(s.meta[:process_label]),
+      process_label: s.meta[:process_label] && inspect(Scrub.term(s.meta[:process_label])),
       registered_name: s.meta[:registered_name] && inspect(s.meta[:registered_name]),
       initial_call: s.meta[:initial_call] && inspect(s.meta[:initial_call]),
       mfa: s.meta[:mfa] && inspect(s.meta[:mfa]),
       callers: Enum.map(s.meta[:callers], &inspect/1),
-      locals: for({k, v} <- s.locals, v != nil, into: %{}, do: {k, short(v)}),
+      locals: for({k, v} <- s.locals, v != nil, into: %{}, do: {k, short(scrub_local(k, v))}),
+      context:
+        for(
+          {k, v} <- Scrub.term(Map.get(s, :context, %{})),
+          into: %{},
+          do: {to_string(k), short(v)}
+        ),
+      system: Map.get(s, :system, %{}),
       crumbs: crumbs(s.crumbs),
       caller_crumbs: crumbs(s.caller_crumbs),
       at: s.at
     }
   end
+
+  defp scrub_local(:log, v), do: Blackbox.Scrub.sys_log(v)
+  defp scrub_local(_, v), do: Blackbox.Scrub.term(v)
 
   defp source_text(source) when is_atom(source), do: to_string(source)
   defp source_text({:filter, label}), do: "filter " <> inspect(label)

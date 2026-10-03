@@ -1,7 +1,11 @@
 import Config
 
 if config_env() == :test do
-  config :blackbox, in_app: [:blackbox]
+  config :blackbox,
+    in_app: [:blackbox],
+    scrub_keys: ["board_key"],
+    scrub_patterns: ["/b/([^:/?#\\s][^/?#\\s]*)"]
+
   config :logger, level: :debug
 
   config :blackbox, Blackbox.TestRepo,

@@ -89,4 +89,94 @@ defmodule Blackbox.CrumbsTest do
     assert_receive {:bins, sizes}, 1000
     refute 4_000_000 in sizes
   end
+
+  defp in_task(fun) do
+    {:ok, pid} = Task.start(fun)
+    ref = Process.monitor(pid)
+    assert_receive {:DOWN, ^ref, _, _, _}, 1000
+  end
+
+  test "06-42: a new request on a keep-alive connection resets the ring" do
+    in_task(fn ->
+      Blackbox.crumb("request 1")
+      :telemetry.execute([:bandit, :request, :start], %{}, %{})
+      Blackbox.crumb("request 2")
+      raise "in request 2"
+    end)
+
+    assert messages(sample("in request 2").crumbs) == ["request 2"]
+  end
+
+  test "telemetry crumbs: the request line (path scrubbed), the route, HTTP calls" do
+    in_task(fn ->
+      conn = %{method: "GET", request_path: "/b/private-board"}
+      :telemetry.execute([:phoenix, :endpoint, :start], %{}, %{conn: conn})
+
+      :telemetry.execute([:phoenix, :router_dispatch, :start], %{}, %{
+        route: "/b/:id",
+        plug: MyAppWeb.BoardController,
+        plug_opts: :show
+      })
+
+      req = %{method: "POST", host: "api.example.com", path: "/v1"}
+
+      :telemetry.execute(
+        [:finch, :request, :stop],
+        %{duration: System.convert_time_unit(12, :millisecond, :native)},
+        %{request: req, result: {:ok, %{status: 502}}}
+      )
+
+      raise "after crumbs"
+    end)
+
+    assert messages(sample("after crumbs").crumbs) ==
+             [
+               "GET /b/[Filtered]",
+               "/b/:id MyAppWeb.BoardController.show",
+               "POST api.example.com 502 12.0 ms"
+             ]
+  end
+
+  test "Ecto query crumbs: source, result and time, never the SQL or params" do
+    start_supervised!({Blackbox, repo: Blackbox.TestRepo, build: "b1"})
+    Sink.attach()
+
+    in_task(fn ->
+      Blackbox.TestRepo.query!("SELECT $1::text", ["private-param"])
+      raise "after a query"
+    end)
+
+    [crumb] = sample("after a query").crumbs
+    assert crumb.message =~ ~r/^query - ok \d+\.\d ms$/
+  end
+
+  test "the store's own queries leave no crumbs and no events" do
+    start_supervised!({Blackbox, repo: Blackbox.TestRepo, build: "b1"})
+    Blackbox.DB.reset()
+    Logger.error("one")
+    Process.sleep(300)
+    Blackbox.Buffer.flush()
+    Process.sleep(300)
+    assert Blackbox.DB.rows("SELECT title FROM blackbox_issues") == [["one"]]
+  end
+
+  test "context set in the request reaches a Task's crash through $callers" do
+    Blackbox.set_context(%{route: "/boards"})
+    on_exit(fn -> Process.delete(:blackbox_context) end)
+
+    in_task(fn ->
+      Blackbox.set_context(%{job: 7})
+      raise "with context"
+    end)
+
+    assert sample("with context").context == %{"job" => "7", "route" => ~s("/boards")}
+  end
+
+  test "the system snapshot at the moment of failure" do
+    in_task(fn -> raise "snapshot" end)
+    sys = sample("snapshot").system
+    assert sys.process_count > 0 and sys.process_limit > sys.process_count
+    assert is_integer(sys.run_queue) and is_integer(sys.message_queue_len)
+    assert sys.memory.total > 0
+  end
 end

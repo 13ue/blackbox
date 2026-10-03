@@ -14,12 +14,17 @@ defmodule Blackbox.Crumbs do
   def add(level, msg, data \\ %{}) do
     {n, list} = Process.get(@key, {0, []})
     {n, list} = if n >= 2 * @cap, do: {@cap, Enum.take(list, @cap)}, else: {n, list}
-    entry = {System.system_time(:microsecond), level, small(msg), small(data)}
+
+    entry =
+      {System.system_time(:microsecond), level, small(msg), small(data) |> Blackbox.Scrub.term()}
+
     Process.put(@key, {n + 1, [entry | list]})
     :ok
   end
 
   def own, do: raw(Process.get(@key))
+
+  def reset, do: Process.delete(@key) && :ok
 
   def of(pid) when is_pid(pid) do
     case :erlang.process_info(pid, {:dictionary, @key}) do
@@ -34,13 +39,24 @@ defmodule Blackbox.Crumbs do
   defp raw({_, list}), do: list |> Enum.take(@cap) |> Enum.reverse()
   defp raw(_), do: []
 
-  # A slice of a big binary keeps all of it alive (10-10), so binaries are
-  # copied and capped here; containers one level deep.
-  # ponytail: shallow, a binary nested two levels down stays referenced; walk deeper if it shows up.
-  defp small({:string, s}) when is_binary(s), do: {:string, cut(s)}
-  defp small({:string, s}), do: {:string, s |> IO.chardata_to_string() |> cut()}
-  defp small({:report, r}) when is_map(r), do: {:report, Map.new(r, fn {k, v} -> {k, cut(v)} end)}
-  defp small({f, a}) when is_list(a), do: {f, Enum.map(a, &cut/1)}
+  # Text is scrubbed here, so the dictionary (seen by Process.info/2,
+  # observer and crash reports) never holds a secret. A slice of a big binary
+  # keeps all of it alive (10-10), so binaries are copied and capped.
+  # ponytail: containers one level deep; a binary nested two levels down stays referenced.
+  defp small({:string, s}) when is_binary(s), do: {:string, s |> cut() |> Blackbox.Scrub.text()}
+
+  defp small({:string, s}),
+    do: {:string, s |> IO.chardata_to_string() |> cut() |> Blackbox.Scrub.text()}
+
+  defp small({:report, r}) when is_map(r),
+    do: {:report, r |> Map.new(fn {k, v} -> {k, cut(v)} end) |> Blackbox.Scrub.term()}
+
+  defp small({f, a}) when is_list(a) do
+    {:string, f |> :io_lib.format(a) |> IO.chardata_to_string() |> cut() |> Blackbox.Scrub.text()}
+  rescue
+    _ -> {:string, "(unprintable)"}
+  end
+
   defp small(m) when is_map(m), do: Map.new(m, fn {k, v} -> {k, cut(v)} end)
   defp small(other), do: cut(other)
 
