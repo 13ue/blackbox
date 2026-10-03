@@ -35,7 +35,12 @@ defmodule Blackbox do
   Needs `ecto_sql` and `postgrex`, and the tables (`mix blackbox.gen.migration`).
   Until it starts, captured failures wait in the buffer.
   """
-  def child_spec(opts), do: Blackbox.Store.child_spec(opts)
+  if Code.ensure_loaded?(Ecto.Adapters.SQL) do
+    def child_spec(opts), do: Blackbox.Store.child_spec(opts)
+  else
+    def child_spec(_opts),
+      do: raise(ArgumentError, "the Blackbox store needs :ecto_sql and :postgrex in your deps")
+  end
 
   @doc "Adds a breadcrumb to the calling process's ring."
   def crumb(message, data \\ %{}), do: Blackbox.Crumbs.add(:crumb, message, data)
