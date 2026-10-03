@@ -26,7 +26,8 @@ jobs:
       - run: mix deps.get
       - run: mix format --check-formatted
       - run: mix compile --warnings-as-errors
-      - run: mix compile --no-optional-deps --warnings-as-errors --force
+      - name: lib compiles without ecto_sql, postgrex and plug
+        run: MIX_ENV=prod mix compile --no-optional-deps --warnings-as-errors --force
       - name: the package never names its first host
         run: "! grep -rnE 'Charta|Hologram' lib"
       - run: mix test
