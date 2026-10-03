@@ -1,0 +1,14 @@
+#!/bin/sh
+# `mix ci` on both toolchains CI tests, each in its own build directory.
+# The versions are asdf's; install them with `asdf install erlang 28.5.0.6`
+# and `asdf install elixir 1.20.4-otp-28` (and the 27/1.18 pair).
+set -e
+
+run() {
+  echo "== Elixir $2 / OTP $1"
+  ASDF_ERLANG_VERSION=$1 ASDF_ELIXIR_VERSION=$2 MIX_BUILD_ROOT="_build/$2" mix ci
+}
+
+run 27.3.4 1.18.1-otp-27
+run 28.5.0.6 1.20.4-otp-28
+echo "== ci passed on both toolchains"

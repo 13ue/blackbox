@@ -120,3 +120,10 @@ The decision record and the research behind it are in `docs/`:
 `docs/adr/0001-every-failure-and-what-came-before.md`, the research in
 `docs/research/0001-errors/` (eight reports, five TDD labs with 256 tests, a
 review), and the build log in `docs/plans/0001-v1-build.md`.
+
+## Contributing
+
+`mix ci` runs what CI runs: the format check, the compile with warnings as
+errors, the compile without the optional deps, the check that `lib` names no
+host, and the tests (they need a local Postgres). `bin/ci` runs it on both
+toolchains CI tests, Elixir 1.18 / OTP 27 and 1.20 / OTP 28, through asdf.
