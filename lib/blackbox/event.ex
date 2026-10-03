@@ -129,7 +129,6 @@ defmodule Blackbox.Event do
   defp put_context({fp, key, sample}, context),
     do: {fp, key, %{sample | context: Map.merge(sample.context, context)}}
 
-  defp put_context(other, _), do: other
 
   defp statem(r, meta) do
     reason =
