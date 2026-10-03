@@ -1,20 +1,19 @@
 defmodule Blackbox.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
-
   use Application
 
   @impl true
   def start(_type, _args) do
+    # Pids that reported their own crash, so a supervisor's child_terminated
+    # for the same death is not counted twice. Owned by the application master.
+    :ets.new(Blackbox.Reported, [:named_table, :public, :set, write_concurrency: true])
+
     children = [
-      # Starts a worker by calling: Blackbox.Worker.start_link(arg)
-      # {Blackbox.Worker, arg}
+      {Task.Supervisor, name: Blackbox.TaskSup},
+      Blackbox.Buffer,
+      Blackbox.Capture
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Blackbox.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children, strategy: :one_for_one, name: Blackbox.Supervisor)
   end
 end

@@ -91,3 +91,32 @@ Each lands tests first (red, then green), green three runs in a row.
 3. **No hex release for now**: 1charta takes it as a git dependency
    (`{:blackbox, github: "13ue/blackbox"}`); M5 prepares 0.1.0 and publishing
    waits for an explicit go.
+
+## M0 and M1 done (2026-10-03)
+
+67 tests (5 flood), green three runs in a row on Elixir 1.18.1 / OTP 27;
+9 of 9 mutations turn a test red (M2, M7, M11, filter off, no dedupe,
+dedupe ignoring the source, no reported-pid check, no size bound, no
+binary copy). What the build found and decided:
+
+- **On Elixir 1.18 the translator turns OTP reports into text** before any
+  handler: `last_message`, `state` and `client_info` are gone by then (lab 08
+  ran on 1.20). So the primary filter takes every labeled report at `:error`
+  (and `{:application_controller, :exit}` at any level) raw, and marks its
+  `meta.time` in the process dictionary; the handler skips that same event.
+- **Dedupe key is `{kind, reason}`, not `{fingerprint, reason}`**: Phoenix,
+  Bandit and the log carry the same exception term but not always the same
+  stack, so the key does not depend on frames. Sources are the telemetry
+  event name, `:logger`, or `{:filter, label}`.
+- **A supervisor's `child_terminated` is skipped when the child reported**:
+  every in-process crash puts its pid in a public ETS set (pruned after 5 s),
+  which the supervisor's report takes. Kills and link deaths, which no child
+  reports, stay as `exit :killed` with the child id as label.
+- **Crash cost** in the failing process: 823 reductions, ~10 µs with 12
+  frames and 20 crumbs (the spike's 33-40 µs formatted there). A crash with
+  a 1 MB state costs +175 µs and sends `{:too_big, words}`.
+- **Fingerprints now hash arities**, not a frame's arguments (a BIF frame
+  carries them, so `Map.fetch!(m, :a)` and `(m, :b)` split).
+- Deferred, marked in code: merging fields across sightings (the first
+  sighting wins), restart counts on the child's issue, crumb binaries nested
+  two levels down.

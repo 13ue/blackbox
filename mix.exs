@@ -1,31 +1,38 @@
 defmodule Blackbox.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/13ue/blackbox"
+
   def project do
     [
       app: :blackbox,
       version: "0.1.0",
       elixir: "~> 1.18",
+      elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      description: "A flight recorder for the BEAM: every failure it can see, and what came before it.",
+      description:
+        "A flight recorder for the BEAM: every failure it can see, and what came before it.",
       package: [
         licenses: ["MIT"],
-        links: %{"GitHub" => "https://github.com/13ue/blackbox"},
+        links: %{"GitHub" => @source_url},
         files: ~w(lib mix.exs README.md LICENSE)
-      ]
+      ],
+      source_url: @source_url,
+      docs: [main: "Blackbox", extras: ["README.md"]]
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :crypto],
       mod: {Blackbox.Application, []}
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
   defp deps do
     [
       {:telemetry, "~> 1.0"},
@@ -33,7 +40,8 @@ defmodule Blackbox.MixProject do
       {:ecto_sql, "~> 3.10", optional: true},
       {:postgrex, "~> 0.17", optional: true},
       # the page and the API
-      {:plug, "~> 1.14", optional: true}
+      {:plug, "~> 1.14", optional: true},
+      {:ex_doc, "~> 0.34", only: :dev, runtime: false}
     ]
   end
 end
