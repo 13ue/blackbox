@@ -2,7 +2,6 @@ defmodule Blackbox.PlugTest do
   use ExUnit.Case, async: false
   import Plug.Test
   import Plug.Conn
-  require Logger
   alias Blackbox.{Buffer, DB, TestRepo}
 
   @token "a-token-of-at-least-16-bytes"

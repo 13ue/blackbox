@@ -49,7 +49,8 @@ defmodule Blackbox.ScrubTest do
       end
 
     msg = Exception.message(Scrub.term(key))
-    assert msg =~ "key :missing not found in: %{"
+    # Elixir 1.20 breaks the line before the map; 1.18 does not.
+    assert msg =~ "key :missing not found in:"
     assert msg =~ ~s(name: "[Filtered]") and msg =~ ~s(n: "[Filtered]")
 
     assert Scrub.text(Exception.message(Scrub.term(key))) == Exception.message(Scrub.term(key))
