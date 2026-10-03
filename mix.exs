@@ -9,7 +9,11 @@ defmodule Blackbox.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: "A flight recorder for the BEAM: every failure it can see, and what came before it.",
-      package: [licenses: [], links: %{}, files: ~w(lib mix.exs README.md)]
+      package: [
+        licenses: ["MIT"],
+        links: %{"GitHub" => "https://github.com/13ue/blackbox"},
+        files: ~w(lib mix.exs README.md LICENSE)
+      ]
     ]
   end
 
