@@ -8,7 +8,7 @@ defmodule Blackbox.SecretsTest do
   defmodule Server do
     use GenServer
     def init(state), do: {:ok, state}
-    def handle_call({:boom, _}, _, s), do: raise("boom")
+    def handle_call({:boom, _}, _, _), do: raise("boom")
     def handle_call({:apply, _}, _, s), do: {:noreply, s}
     def handle_cast({:set, kv}, s), do: {:noreply, Map.merge(s, kv)}
 

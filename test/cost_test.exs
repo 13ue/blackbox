@@ -1,7 +1,6 @@
 defmodule Blackbox.CostTest do
   # Budgets in reductions, asserted; wall time is printed, never asserted (R-14).
   use ExUnit.Case, async: false
-  require Logger
   alias Blackbox.{Buffer, Capture, Crumbs, Sink}
   alias Blackbox.Fixtures.Gs
 

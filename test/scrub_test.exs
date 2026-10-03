@@ -56,8 +56,9 @@ defmodule Blackbox.ScrubTest do
         e -> e
       end
 
-    assert Exception.message(Scrub.term(match)) ==
-             "no match of right hand side value: {:error, :...}"
+    # The wording differs between Elixir 1.18 and 1.20; the shape does not.
+    assert Exception.message(Scrub.term(match)) =~ "{:error, :...}"
+    refute Exception.message(Scrub.term(match)) =~ "private"
 
     clause =
       try do
