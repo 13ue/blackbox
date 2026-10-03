@@ -382,7 +382,7 @@ defmodule Blackbox.Event do
         for {m, _, _, _} = frame <- s.stack do
           %{text: Exception.format_stacktrace_entry(frame), in_app: Map.has_key?(in_app, m)}
         end,
-      source: s.source,
+      source: source_text(s.source),
       level: s.level,
       pid: s.pid && inspect(s.pid),
       process_label: s.meta[:process_label] && inspect(s.meta[:process_label]),
@@ -396,6 +396,11 @@ defmodule Blackbox.Event do
       at: s.at
     }
   end
+
+  defp source_text(source) when is_atom(source), do: to_string(source)
+  defp source_text({:filter, label}), do: "filter " <> inspect(label)
+  defp source_text(event) when is_list(event), do: Enum.join(event, ".")
+  defp source_text(other), do: inspect(other)
 
   def type_text(:error, %{__struct__: s}), do: inspect(s)
   def type_text(:exit, r), do: "exit " <> shape_text(shape(r))

@@ -38,9 +38,21 @@ defmodule Blackbox.Buffer do
   @doc "The function that writes a batch; nil holds everything in the buffer."
   def set_writer(fun), do: GenServer.call(__MODULE__, {:writer, fun})
 
+  @doc "Writes everything now, waiting up to `ms`; what fails stays for the spool."
+  def drain(ms) do
+    GenServer.call(__MODULE__, {:drain, ms}, ms + 1_000)
+  catch
+    :exit, _ -> :error
+  end
+
+  @doc "Takes in what a previous run left in the spool directory."
+  def import_spool, do: GenServer.call(__MODULE__, :import_spool)
+
   @impl true
   def init(_) do
     Logger.metadata(blackbox: true)
+    # terminate/2 runs on shutdown, and spools what is left.
+    Process.flag(:trap_exit, true)
     :timer.send_interval(@interval, :tick)
 
     {:ok,
@@ -85,6 +97,92 @@ defmodule Blackbox.Buffer do
 
   def handle_call({:writer, fun}, _, s),
     do: {:reply, :ok, %{s | writer: fun, backoff: 0, retry_at: nil}}
+
+  def handle_call({:drain, ms}, _, s) do
+    s = await(s, ms)
+
+    case {all(s), s.writer} do
+      {[], _} ->
+        {:reply, :ok, s}
+
+      {_, nil} ->
+        {:reply, :error, s}
+
+      {batch, writer} ->
+        task =
+          Task.Supervisor.async_nolink(Blackbox.TaskSup, fn ->
+            Logger.metadata(blackbox: true)
+            writer.(batch)
+          end)
+
+        s = %{s | pending: %{}, retry: %{}}
+
+        case Task.yield(task, ms) || Task.shutdown(task, :brutal_kill) do
+          {:ok, :ok} -> {:reply, :ok, s}
+          _ -> {:reply, :error, %{s | retry: merge(%{}, batch)}}
+        end
+    end
+  end
+
+  def handle_call(:import_spool, _, s) do
+    retry =
+      for path <- spool_files(), reduce: s.retry do
+        acc ->
+          items =
+            try do
+              path |> File.read!() |> :erlang.binary_to_term()
+            rescue
+              _ -> []
+            end
+
+          File.rm(path)
+          merge(acc, items)
+      end
+
+    {:reply, :ok, %{s | retry: retry}}
+  end
+
+  @impl true
+  def terminate(_, s) do
+    with dir when is_binary(dir) <- Application.get_env(:blackbox, :spool_dir),
+         [_ | _] = items <- all(kill_task(s)) do
+      File.mkdir_p!(dir)
+
+      name =
+        "blackbox-#{System.os_time(:microsecond)}-#{System.unique_integer([:positive])}.spool"
+
+      File.write!(Path.join(dir, name), :erlang.term_to_binary(items))
+    end
+  end
+
+  defp spool_files do
+    case Application.get_env(:blackbox, :spool_dir) do
+      nil -> []
+      dir -> Path.wildcard(Path.join(dir, "blackbox-*.spool"))
+    end
+  end
+
+  # Everything waiting, as writer items: retried batches and new samples.
+  defp all(s), do: Map.values(merge(s.retry, for({fp, i} <- s.pending, do: prepare(fp, i))))
+
+  defp await(%{task: {task, batch, timer}} = s, ms) do
+    Process.cancel_timer(timer)
+
+    case Task.yield(task, ms) || Task.shutdown(task, :brutal_kill) do
+      {:ok, :ok} -> %{s | task: nil}
+      _ -> %{s | task: nil, retry: merge(s.retry, batch)}
+    end
+  end
+
+  defp await(s, _), do: s
+
+  # ponytail: a batch the writer committed just before the kill is spooled too and counted twice; a write id would stop that.
+  defp kill_task(%{task: {task, batch, _}} = s) do
+    Task.shutdown(task, :brutal_kill)
+    %{s | task: nil, retry: merge(s.retry, batch)}
+  end
+
+  defp kill_task(s), do: s
 
   defp add(pending, fp, sample) do
     case pending do

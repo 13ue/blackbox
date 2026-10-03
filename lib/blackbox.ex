@@ -27,6 +27,16 @@ defmodule Blackbox do
     :reinstalled
   ]
 
+  @doc """
+  The store, for the host's supervision tree, right after its Repo:
+
+      {Blackbox, repo: MyApp.Repo, build: "abc123", spool_dir: "/data/blackbox"}
+
+  Needs `ecto_sql` and `postgrex`, and the tables (`mix blackbox.gen.migration`).
+  Until it starts, captured failures wait in the buffer.
+  """
+  def child_spec(opts), do: Blackbox.Store.child_spec(opts)
+
   @doc "Adds a breadcrumb to the calling process's ring."
   def crumb(message, data \\ %{}), do: Blackbox.Crumbs.add(:crumb, message, data)
 

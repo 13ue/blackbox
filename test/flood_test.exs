@@ -63,4 +63,41 @@ defmodule Blackbox.FloodTest do
     assert counted == sent
     assert samples <= 3 * issues
   end
+
+  describe "into Postgres" do
+    alias Blackbox.{DB, Store, TestRepo}
+
+    setup do
+      Blackbox.Buffer.set_writer(fn _ -> :ok end)
+      settle(3)
+      DB.reset()
+      :ok
+    end
+
+    defp stored(prefix),
+      do:
+        DB.one(
+          "SELECT coalesce(sum(count), 0)::bigint FROM blackbox_issues WHERE title LIKE $1",
+          [prefix <> "%"]
+        )
+
+    test "08-27: 10k Logger.error/s for 5 s, every one counted in the table", %{d0: d0} do
+      Blackbox.Buffer.set_writer(fn b -> Store.write(TestRepo, b, "b1") end)
+      sent = paced(10_000, 5, fn p, i -> Logger.error("pg flood #{p} item #{i}") end)
+      settle()
+      assert Blackbox.stats().dropped == d0
+      assert stored("pg flood") == sent
+    end
+
+    test "08-30: the database down for 3 s at 10k errors/s: all counted once it is back" do
+      start_supervised!(Blackbox.DownRepo)
+      f0 = Blackbox.stats().writer_failures
+      Blackbox.Buffer.set_writer(fn b -> Store.write(Blackbox.DownRepo, b, "b1") end)
+      sent = paced(10_000, 3, fn p, _ -> Logger.error("while db down #{p}") end)
+      assert Blackbox.stats().writer_failures - f0 >= 2
+      Blackbox.Buffer.set_writer(fn b -> Store.write(TestRepo, b, "b1") end)
+      settle()
+      assert stored("while db down") == sent
+    end
+  end
 end

@@ -120,3 +120,34 @@ binary copy). What the build found and decided:
 - Deferred, marked in code: merging fields across sightings (the first
   sighting wins), restart counts on the child's issue, crumb binaries nested
   two levels down.
+
+## M2 done (2026-10-03)
+
+87 tests (7 flood), green three runs in a row; CI green on 1.18/27 and
+1.20/28; 7 of 7 store mutations turn a test red (count replaced instead of
+added, no flush on stop, no spool import, no spool write, no retention,
+builds not tracked, writing on the host's pool).
+
+- `{Blackbox, repo: MyApp.Repo, build: ..., spool_dir: ...}` starts a
+  one-connection pool of the host's Repo (`start_link(name: nil, pool_size:
+  1)` and `put_dynamic_repo/1` in the writer). A test holds every host
+  connection and the write still lands.
+- **No JSON library**: Postgrex encodes `jsonb` with Jason by default; the
+  store sends the payload as text from Elixir's `JSON` and casts `::jsonb` in
+  SQL, so the host's Postgrex config does not matter.
+- Writes are raw SQL over `unnest` arrays in one transaction: upsert issues
+  (count added, `builds` appended), insert occurrences, keep the last 100 per
+  touched issue; the 30-day prune runs every 10 minutes on the same pool.
+- Stop: the store drains the buffer within 4 s (shutdown 5 s). The buffer
+  traps exits and spools what is left to `spool_dir`; the next attach
+  imports and deletes the file. Known ceiling, marked: a batch committed in
+  the instant before the kill is spooled too and counted twice.
+- `Blackbox.Migration.up/down(version: 1)` and `mix blackbox.gen.migration`.
+- Floods into Postgres: 50 000 at 10k/s stored exactly; the database down
+  for 3 s at 10k/s, 30 000 of 30 000 stored once it is back.
+- Seen, not fixed: when the database is down, DBConnection's own
+  "tcp connect refused" errors (from the host's pool and ours) are captured
+  as issues. They are true, but ours duplicate the host's.
+
+**Dogfood point reached**: 1charta can add `{:blackbox, github: "13ue/blackbox"}`,
+the migration, and the child after its Repo.

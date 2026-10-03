@@ -58,7 +58,7 @@ defmodule Blackbox.TelemetryTest do
     end)
 
     assert [%{type: "RuntimeError", count: 1, samples: [s]}] = Sink.collect()
-    assert s.source == [:phoenix, :router_dispatch, :exception]
+    assert s.source == "phoenix.router_dispatch.exception"
     assert hd(s.stacktrace).text =~ "Sites.raise_here/0"
   end
 
