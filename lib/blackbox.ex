@@ -55,6 +55,61 @@ defmodule Blackbox do
   def set_context(map) when is_map(map),
     do: Process.put(:blackbox_context, Map.merge(Process.get(:blackbox_context, %{}), map)) && :ok
 
+  @doc """
+  Captures a rescued exception, which no hook sees. Returns its ref.
+
+      rescue
+        e -> Blackbox.capture_exception(e, __STACKTRACE__, context: %{board: id})
+
+  If the same exception later crashes the process, that is the same failure,
+  not a second one.
+  """
+  def capture_exception(exception, stacktrace, opts \\ []) do
+    context = Map.new(opts[:context] || %{})
+
+    Blackbox.Capture.manual(
+      fn -> Blackbox.Event.from_manual(:error, exception, stacktrace, context) end,
+      :manual
+    )
+  end
+
+  @doc "Captures a message as a failure of its own, grouped by call site. Returns its ref."
+  def capture_message(message, opts \\ []) when is_binary(message) do
+    context = Map.new(opts[:context] || %{})
+    level = opts[:level] || :error
+
+    Blackbox.Capture.manual(
+      fn -> Blackbox.Event.from_manual(:log, message, level, context) end,
+      :manual
+    )
+  end
+
+  @doc """
+  Captures an error a browser reported to the host, as
+  `%{name: _, message: _, stack: _, url: _}`. Anyone who can reach the
+  host's endpoint can write here: it is stored as `source: browser`,
+  marked untrusted in Markdown, and left out of the default API listing.
+  Rate-limit it in the host.
+  """
+  def capture_browser(report, opts \\ []) when is_map(report) do
+    # Only these fields, from string or atom keys; everything else is ignored.
+    report =
+      for k <- [:name, :message, :stack, :url],
+          v = report[k] || report[to_string(k)],
+          v != nil,
+          into: %{},
+          do: {k, v}
+
+    context = Map.new(opts[:context] || %{})
+    Blackbox.Capture.manual(fn -> Blackbox.Event.from_browser(report, context) end, :browser)
+  end
+
+  @doc """
+  The ref of the last failure captured in this process, for an error page
+  or a JSON error ("Reference a1b2c3-x9k2"); nil if there was none.
+  """
+  def current_ref, do: Process.get(:blackbox_ref)
+
   @doc "Removes the handler, the filter and the telemetry handlers until `resume/0`."
   defdelegate pause(), to: Blackbox.Capture
 

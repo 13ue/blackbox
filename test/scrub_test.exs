@@ -10,6 +10,8 @@ defmodule Blackbox.ScrubTest do
     assert Scrub.text(~s(%{api_key: "abc", n: 1})) == ~s(%{api_key: #{@f}, n: 1})
     assert Scrub.text(~s(%{"Authorization" => "Bearer x"})) == ~s(%{"Authorization" => #{@f}})
     assert Scrub.text("TOKEN=abc") == "TOKEN=#{@f}"
+    assert Scrub.text("token = abc") == "token = #{@f}"
+    assert Scrub.text("key :missing not found") == "key :missing not found"
     assert Scrub.text("board_key=k1") == "board_key=#{@f}"
   end
 
@@ -46,8 +48,20 @@ defmodule Blackbox.ScrubTest do
         e -> e
       end
 
-    refute Exception.message(Scrub.term(key)) =~ "my-private-space"
-    assert Exception.message(Scrub.term(key)) =~ "name:"
+    msg = Exception.message(Scrub.term(key))
+    assert msg =~ "key :missing not found in: %{"
+    assert msg =~ ~s(name: "[Filtered]") and msg =~ ~s(n: "[Filtered]")
+
+    assert Scrub.text(Exception.message(Scrub.term(key))) == Exception.message(Scrub.term(key))
+
+    by_string =
+      try do
+        Map.fetch!(%{}, "ck_live_SECRET")
+      rescue
+        e -> e
+      end
+
+    refute Exception.message(Scrub.term(by_string)) =~ "ck_live"
 
     match =
       try do

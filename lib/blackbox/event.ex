@@ -51,6 +51,86 @@ defmodule Blackbox.Event do
     end
   end
 
+  # Blackbox.capture_exception/3 and capture_message/2, in the calling process.
+  def from_manual(:error, e, stack, context) do
+    meta = %{pid: self()}
+    e = normalize(e, stack)
+
+    with {_, _, _} = t <- build(:error, e, stack, :manual, meta, %{}, :error),
+         do: put_context(t, context)
+  end
+
+  def from_manual(:log, message, level, context) do
+    # The call site is the frame below Blackbox's own (the public call may be a tail call).
+    {:current_stacktrace, stack} = Process.info(self(), :current_stacktrace)
+    own? = fn {m, _, _, _} -> m in [Blackbox, Blackbox.Capture, Blackbox.Event] end
+    site = stack |> Enum.drop_while(&(not own?.(&1))) |> Enum.drop_while(own?) |> List.first()
+
+    meta =
+      case site do
+        {m, f, a, loc} ->
+          %{
+            pid: self(),
+            mfa: {m, f, if(is_list(a), do: length(a), else: a)},
+            line: loc[:line],
+            file: loc[:file]
+          }
+
+        nil ->
+          %{pid: self()}
+      end
+
+    build(:log, {:string, message}, [], :manual, meta, %{}, level) |> put_context(context)
+  end
+
+  # A browser error posted to the host: untrusted text, capped, grouped by
+  # its name and its top 3 stack lines with every digit-bearing token masked
+  # (line:col, bundle hashes).
+  def from_browser(report, context) do
+    cap = fn v, n -> v |> to_string() |> binary_part(0, min(byte_size(to_string(v)), n)) end
+
+    lines =
+      report
+      |> Map.get(:stack, "")
+      |> cap.(4_096)
+      |> String.split("\n", trim: true)
+      |> Enum.take(30)
+
+    r = %{
+      name: cap.(Map.get(report, :name, "Error"), 100),
+      message: cap.(Map.get(report, :message, ""), 1_024),
+      url: cap.(Map.get(report, :url, ""), 1_024),
+      lines: lines
+    }
+
+    fp = hash([:browser, r.name, Enum.map(Enum.take(lines, 3), &mask/1)])
+
+    sample = %{
+      kind: :browser,
+      level: :error,
+      reason: r,
+      stack: [],
+      source: :browser,
+      pid: nil,
+      meta: %{callers: []},
+      locals: %{},
+      crumbs: [],
+      caller_crumbs: [],
+      context: context,
+      system: %{},
+      at: System.system_time(:microsecond)
+    }
+
+    {fp, nil, sample}
+  end
+
+  defp put_context({fp, key, sample}, context) when context == %{}, do: {fp, key, sample}
+
+  defp put_context({fp, key, sample}, context),
+    do: {fp, key, %{sample | context: Map.merge(sample.context, context)}}
+
+  defp put_context(other, _), do: other
+
   defp statem(r, meta) do
     reason =
       case r[:reason] do
@@ -411,9 +491,15 @@ defmodule Blackbox.Event do
       type: type_text(kind, reason),
       message: kind |> message(reason, s.meta) |> Scrub.message(),
       stacktrace:
-        for {m, _, _, _} = frame <- s.stack do
-          %{text: Exception.format_stacktrace_entry(frame), in_app: Map.has_key?(in_app, m)}
+        if kind == :browser do
+          for line <- reason.lines, do: %{text: Scrub.text(line), in_app: false}
+        else
+          for {m, _, _, _} = frame <- s.stack do
+            %{text: Exception.format_stacktrace_entry(frame), in_app: Map.has_key?(in_app, m)}
+          end
         end,
+      ref: Map.get(s, :ref),
+      url: if(kind == :browser, do: Scrub.text(reason.url)),
       source: source_text(s.source),
       level: s.level,
       pid: s.pid && inspect(s.pid),
@@ -444,6 +530,7 @@ defmodule Blackbox.Event do
   defp source_text(event) when is_list(event), do: Enum.join(event, ".")
   defp source_text(other), do: inspect(other)
 
+  def type_text(:browser, %{name: name}), do: "browser " <> name
   def type_text(:error, %{__struct__: s}), do: inspect(s)
   def type_text(:exit, r), do: "exit " <> shape_text(shape(r))
   def type_text(kind, _), do: to_string(kind)
@@ -452,6 +539,7 @@ defmodule Blackbox.Event do
   defp shape_text(other), do: inspect(other)
 
   defp message(:log, msg, meta), do: text(msg, meta)
+  defp message(:browser, r, _), do: "#{r.name}: #{r.message}"
   defp message(:error, %{__exception__: true} = e, _), do: safe(fn -> Exception.message(e) end)
   defp message(_, r, _), do: short(r)
 

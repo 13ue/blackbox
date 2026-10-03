@@ -59,7 +59,8 @@ defmodule Blackbox.Scrub do
       text:
         Regex.compile!(
           ~S/([\w-]*(?:/ <>
-            alt <> ~S/)[\w-]*"?)(\s*(?:=>|=|:)\s*)("[^"]*"|'[^']*'|[^\s&,;}\])"']+)/,
+            alt <>
+            ~S/)[\w-]*"?)(\s*(?:=>|=)\s*|:\s*)(?!"?\[Filtered\])("[^"]*"|'[^']*'|[^\s&,;}\])"']+)/,
           "i"
         ),
       patterns:
@@ -203,6 +204,13 @@ defmodule Blackbox.Scrub do
     TryClauseError,
     BadStructError
   ]
+
+  # KeyError's `key` field is the key that was missing, not a secret by its
+  # name: an atom or number stays, a string (it could be a token) does not.
+  defp exception(%KeyError{} = e, depth) do
+    key = if is_atom(e.key) or is_number(e.key), do: e.key, else: @filtered
+    %{walk_fields(%{e | term: shape(e.term)}, depth) | key: key}
+  end
 
   defp exception(%{__struct__: s} = e, depth) when s in @shaped do
     e = if Map.has_key?(e, :term), do: %{e | term: shape(e.term)}, else: e

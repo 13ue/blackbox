@@ -189,3 +189,50 @@ removed: its Logger metadata already keeps it out).
 - Deferred: the `$ancestors` join (a GenServer's ancestor is its supervisor,
   which keeps no crumbs), debug crumbs per module with the console level
   kept, OTel trace ids.
+
+## M4 done (2026-10-03)
+
+122 tests (7 flood), green three runs in a row; 9 of 10 page and API
+mutations turn a test red (the tenth, letting `key` through
+`capture_browser`, is caught by `from_browser` building the report from four
+fields: two layers, kept).
+
+- **`Blackbox.Plug`**: the inbox (regressed, new, open first; the node's
+  counters and what Blackbox cannot see at the foot), the issue page (state,
+  actions, the recommended occurrence: most crumbs and locals of the latest
+  20; one timeline in seconds relative to the failure; in-app stack open,
+  dependency frames folded; locals, context, process, system), `/refs/:ref`.
+- **The API**, `/api/v1`: issues with `state`, `source`, `since_build`,
+  `limit`; one issue as JSON or Markdown; refs; resolve, mute (until a date
+  or N more), reopen, note.
+- **Security**: `authorize` required (`localhost?/1` checks the peer and the
+  `Host` header; `token/1` takes Bearer or Basic, constant-time); POST needs
+  `x-blackbox`; other methods 405; a CSP with a per-response nonce, nosniff,
+  no-referrer, no-store; every event string escaped; Markdown fences longer
+  than any backtick run, after "data, not instructions"; browser events out
+  of the default listing and marked untrusted.
+- **State derived on read**: regressed = resolved, seen since, and `builds`
+  no longer within the builds seen at resolve (an old build during a deploy
+  stays resolved); muted until a date or a count.
+- **Refs**: `<fingerprint prefix>-<5 random>`, set in the failing process
+  (the error page reads `current_ref/0`), stored per occurrence; a ref whose
+  sample was only counted still finds its issue by the prefix.
+- `capture_exception/3` (a later reraise is the same failure),
+  `capture_message/2` (grouped by the caller's site, found below Blackbox's
+  frames because the public call is a tail call), `capture_browser/2` (four
+  fields, capped, grouped by name and masked top stack lines).
+- **A fresh host app** (path dep, `mix blackbox.gen.migration`, the child
+  after its Repo) ran end to end and found two scrub flaws, fixed: KeyError's
+  `key` field was filtered for its name (`key`), and text scrubbing was not
+  idempotent around quoted `"[Filtered]"`; also `key :missing` was read as
+  `key: value` (a colon now has to follow the key directly).
+
+## M5 done (2026-10-03)
+
+README as the install guide (setup, config, the explicit API, agents, what
+it changes globally, what it cannot see, measured costs), CHANGELOG 0.1.0
+(unreleased), HexDocs with both as extras; `mix docs` without warnings;
+`mix hex.build` ships lib, mix.exs, README, LICENSE, CHANGELOG. The ring's
+real size, measured: ~7 KB for 50 short lines, ~36 KB at most (the ADR's
+15 KB counted the heap only). **Not published**: 1charta takes the git
+dependency first; hex waits for an explicit go.

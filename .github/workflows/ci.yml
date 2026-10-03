@@ -33,7 +33,7 @@ jobs:
       - run: mix test
       - run: mix test
       - run: mix test
-      - name: the package ships only lib, mix.exs, README and LICENSE
+      - name: the package ships only lib, mix.exs, README, LICENSE and CHANGELOG
         run: |
           mix hex.build --unpack -o pkg
-          test -z "$(cd pkg && ls | grep -vxE 'lib|mix.exs|README.md|LICENSE|hex_metadata.config')"
+          test -z "$(cd pkg && ls | grep -vxE 'lib|mix.exs|README.md|LICENSE|CHANGELOG.md|hex_metadata.config')"

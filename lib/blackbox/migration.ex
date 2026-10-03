@@ -48,6 +48,7 @@ if Code.ensure_loaded?(Ecto.Migration) do
       CREATE TABLE blackbox_occurrences (
         id bigserial PRIMARY KEY,
         issue_id bigint NOT NULL REFERENCES blackbox_issues ON DELETE CASCADE,
+        ref text,
         fingerprint text NOT NULL,
         kind text NOT NULL,
         type text NOT NULL,
@@ -65,6 +66,7 @@ if Code.ensure_loaded?(Ecto.Migration) do
       )
 
       execute("CREATE INDEX blackbox_occurrences_at ON blackbox_occurrences (at)")
+      execute("CREATE INDEX blackbox_occurrences_ref ON blackbox_occurrences (ref)")
       execute("CREATE INDEX blackbox_issues_last_seen ON blackbox_issues (last_seen DESC)")
     end
 

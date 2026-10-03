@@ -31,6 +31,8 @@ if Code.ensure_loaded?(Ecto.Adapters.SQL) do
       repo = Keyword.fetch!(opts, :repo)
       build = to_string(Keyword.get(opts, :build) || "unknown")
       if dir = opts[:spool_dir], do: Application.put_env(:blackbox, :spool_dir, dir)
+      # The page and the API read through the host's Repo.
+      Application.put_env(:blackbox, :repo, repo)
 
       {:ok, pool} = repo.start_link(name: nil, pool_size: 1, log: false)
       query = (repo.config()[:telemetry_prefix] || []) ++ [:query]
@@ -120,10 +122,10 @@ if Code.ensure_loaded?(Ecto.Adapters.SQL) do
 
           repo.query!(
             """
-            INSERT INTO blackbox_occurrences (issue_id, fingerprint, kind, type, message, source, build, node, at, payload)
-            SELECT id, f, k, t, m, src, $7, $8, a, p::jsonb
-            FROM unnest($1::bigint[], $2::text[], $3::text[], $4::text[], $5::text[], $6::text[], $9::timestamptz[], $10::text[])
-              AS u(id, f, k, t, m, src, a, p)
+            INSERT INTO blackbox_occurrences (issue_id, fingerprint, kind, type, message, source, build, node, at, payload, ref)
+            SELECT id, f, k, t, m, src, $7, $8, a, p::jsonb, r
+            FROM unnest($1::bigint[], $2::text[], $3::text[], $4::text[], $5::text[], $6::text[], $9::timestamptz[], $10::text[], $11::text[])
+              AS u(id, f, k, t, m, src, a, p, r)
             """,
             [
               o.(&elem(&1, 0)),
@@ -135,7 +137,8 @@ if Code.ensure_loaded?(Ecto.Adapters.SQL) do
               build,
               to_string(node()),
               o.(&at.(elem(&1, 2).at)),
-              o.(&JSON.encode!(elem(&1, 2)))
+              o.(&JSON.encode!(elem(&1, 2))),
+              o.(&Map.get(elem(&1, 2), :ref))
             ]
           )
 

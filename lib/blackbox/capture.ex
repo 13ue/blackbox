@@ -344,8 +344,22 @@ defmodule Blackbox.Capture do
       if in_process and sample.kind != :log and is_pid(sample.pid),
         do: :ets.insert(Blackbox.Reported, {sample.pid, System.monotonic_time(:millisecond)})
 
-      push(fp, sample)
+      ref = push(fp, sample)
+      # What an error page in this process quotes (Blackbox.current_ref/0).
+      if in_process, do: Process.put(:blackbox_ref, ref)
     end
+  end
+
+  @doc false
+  # The explicit API: a sighting from the calling process, deduped like any other.
+  def manual(build, source) do
+    if reentry?(), do: nil, else: capture(build, true, source)
+    Process.get(:blackbox_ref)
+  catch
+    _, _ ->
+      Process.delete(:blackbox_in)
+      Blackbox.bump(:handler_errors)
+      nil
   end
 
   # A mark per failure in this process: `{key, sources, at}`. A second
@@ -371,8 +385,15 @@ defmodule Blackbox.Capture do
     seen
   end
 
+  # A ref is quotable: the fingerprint's prefix finds the issue even when
+  # this sample was only counted, not kept.
   defp push(fp, sample) do
+    ref =
+      binary_part(fp, 0, 6) <>
+        "-" <> Base.encode32(:crypto.strong_rand_bytes(3), case: :lower, padding: false)
+
     Blackbox.bump(:captured)
-    Buffer.push({fp, sample})
+    Buffer.push({fp, Map.put(sample, :ref, ref)})
+    ref
   end
 end

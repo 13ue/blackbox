@@ -16,10 +16,10 @@ defmodule Blackbox.MixProject do
       package: [
         licenses: ["MIT"],
         links: %{"GitHub" => @source_url},
-        files: ~w(lib mix.exs README.md LICENSE)
+        files: ~w(lib mix.exs README.md LICENSE CHANGELOG.md)
       ],
       source_url: @source_url,
-      docs: [main: "Blackbox", extras: ["README.md"]]
+      docs: [main: "readme", extras: ["README.md", "CHANGELOG.md"]]
     ]
   end
 
