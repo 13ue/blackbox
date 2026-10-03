@@ -1,0 +1,79 @@
+05 log started Sun Sep 27 11:01:58 CEST 2026
+run a1 invalid: lab bug, controller defined action/2 which overrides Phoenix.Controller.action/2 -> every route FunctionClauseError
+run a2 invalid: :inets not in extra_applications (httpc undefined)
+== A: Phoenix 1.8.15 + Bandit 1.12.5 (test/a_phoenix_bandit_test.exs), Elixir 1.20.4 / OTP 28, Apple M3 Pro
+run a3 (first valid run, seed 0): 15/17 passed; red: 05-3 (reason is Plug.Conn.WrapperError), 05-8 (no bandit exception for NoRouteError)
+05-4 bandit exception meta keys: [:stacktrace, :exception, :kind, :plug, :conn, :telemetry_span_context, :connection_telemetry_span_context]
+05-6 order: [[:phoenix, :router_dispatch, :exception], [:phoenix, :error_rendered], [:bandit, :request, :exception], :log]
+05-9 throw crash_reason: {{:nocatch, :oops}, ...}; exit crash_reason: {:bye, [...]}
+05-10 task log meta keys: [:error_logger, :pid, :time, :gl, :domain, :report_cb, :callers, :crash_reason]
+05-14 Logger.error meta keys: [:line, :pid, :time, :file, :gl, :domain, :application, :mfa, :user_id]
+after fixing 05-3/05-8 assertions: Result: 17 passed (seed 0)
+== B: Plug.Cowboy 2.9.0 / cowboy 2.19.0 (test/b_phoenix_cowboy_test.exs)
+first run: 05-18..05-21 green; 05-22 added later, red first run (meta.pid is conn process)
+05-18 cowboy log meta keys: [:error_logger, :pid, :time, :gl, :domain, :report_cb, :conn, :crash_reason]
+05-18 cowboy log text: #PID<0.584.0> running Lab05.CowboyEndpoint (connection #PID<0.583.0>, stream id 1) terminated
+05-19 cowboy exception meta keys: [:pid, :reason, :stacktrace, :kind, :ref, :req, :resp_status, :resp_headers, :streamid]
+05-19 pids: log=#PID<0.590.0> cowboy=#PID<0.590.0> router=#PID<0.591.0>
+05-22 reason={{%RuntimeError{message: "boom from controller"}, [...]}, {plug, :call, [conn, opts]}}
+final: Result: 5 passed
+05-23 (Bandit, added to file A): first run RED on domain ([:elixir, :bandit] not [:bandit]); garbage request:
+  names=[[:bandit, :request, :start], [:bandit, :request, :stop]] logs=[error: "** (Bandit.HTTPError) Request line HTTP error: ..."]
+== C: bare Plug.Router + Plug.ErrorHandler on Bandit :4353 (test/c_plug_test.exs): first run 2/2 green
+05-24 plug router exc meta keys: [:reason, :stacktrace, :kind, :conn, :route, :router, :telemetry_span_context]
+== D: channels over a real WebSocket (test/support/ws.ex raw gen_tcp client) (test/d_channel_test.exs)
+first run: 6/7; red 05-28 (two logs, not one); after fix, channel_joined claim red on its first evaluation
+05-26 frames after crash: [["1", "1", "room:a", "phx_error", %{"reason" => "channel_crash"}]]
+05-26 channel crash meta keys: [:error_logger, :line, :pid, :time, :file, :gl, :domain, :mfa, :report_cb, :crash_reason]
+05-26 last_message: %Phoenix.Socket.Message{topic: "room:a", event: "boom", payload: %{"card" => 1}, ref: "2", join_ref: "1"}
+05-28 frames: [["1", "1", "room:crash", "phx_reply", %{"response" => %{"reason" => "join crashed"}, "status" => "error"}]]
+05-28 process_label={Phoenix.Channel, Lab05.Channel, "room:crash"}; string log from transport: "an exception was raised: ..." mfa {Phoenix.Channel.Server, :join, 4}
+05-30 status line: HTTP/1.1 500 Internal Server Error; names=[[:bandit, :request, :start], [:phoenix, :error_rendered], [:bandit, :request, :exception]]
+final x3: Result: 7 passed (seeds 589178, 581689, 574634)
+== E: LiveView 1.2.12 over a real WebSocket (test/e_live_view_test.exs): first run 4/4 green (seed 0)
+05-33 mount exception meta keys: [:reason, :session, :socket, :stacktrace, :params, :uri, :kind, :telemetry_span_context]
+05-34 frames: [["4", "4", "lv:phx-...", "phx_error", %{"reason" => "channel_crash"}]]
+05-34 handle_event exception meta keys: [:reason, :socket, :stacktrace, :params, :kind, :event, :telemetry_span_context]
+05-34 last_message: %Phoenix.Socket.Message{topic: "lv:phx-...", event: "event", payload: %{"event" => "boom", "type" => "click", "value" => %{...}}, ...}
+05-34 process_label: {Phoenix.LiveView, Lab05.Live, "lv:phx-GNkijHk3DiPEwwAC"}
+run f1: 05-41 red (0 logs in 1s), 05-42 invalid (interference: killed conn surfaced as FATAL 57P01 in a holder task), 05-43 red (caller gets query_canceled), 05-44 invalid (lab bug backoff_type :stop)
+run f2: reworked 05-41 red again (transparent retry), 05-42 red (per-call queue_target ignored, waited 1349ms, ok), 05-44 invalid (collect waits for quiet)
+== F: Ecto 3.14.2 / Postgrex 0.22.4 / DBConnection 2.10.2 (test/f_ecto_test.exs)
+run f3 (after fixes): 9 passed; then x3 random seeds 129748, 706481, 769035: 9 passed each
+05-37 query event meta keys: [:type, :options, :stacktrace, :result, :params, :source, :query, :repo, :cast_params]
+05-39 queries: ["begin", "INSERT INTO \"things\" (\"name\") VALUES ($1) RETURNING \"id\"", "rollback"]
+05-41 results=[{Postgrex.Error, :admin_shutdown}, :ok] (run f3) vs [:ok, :ok] (run f2, log "tcp send: closed")
+05-41b logs=["Postgrex.Protocol (#PID<0.344.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) ..."]
+05-42 after 224ms: {:error, %DBConnection.ConnectionError{message: "[small_repo] connection not available and request was dropped from queue after 225ms. ..."}}; query events=1
+05-43 res={:error, %Postgrex.Error{postgres: %{code: :query_canceled, message: "canceling statement due to user request"}}}
+05-43 log: "Postgrex.Protocol (#PID<0.343.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (DBConnection.ConnectionError) client #PID<0.390.0> ({Lab05.EctoTest, :\"test 05-43: ...\"}) timed out ..."
+05-44 connect failures in ~1s: 10; first: "Postgrex.Protocol (#PID<0.399.0> (\"db_conn_1\")) failed to connect: ** (DBConnection.ConnectionError) tcp connect (localhost:1): connection refused - :econnrefused"
+run g1 invalid: trailing collect waited for quiet while Oban polls; switched to collect_for
+== G: Oban 2.24.1, real queue, Postgres notifier (test/g_oban_test.exs)
+run g2 (first valid): 7/9; red 05-51 (kill -> kind :exit reason :killed), 05-52 (exit -> kind :error %Oban.CrashError{reason: :bye})
+05-45 oban exception meta keys: [:args, :attempt, :conf, :error, :id, :job, :kind, :max_attempts, :prefix, :queue, :reason, :result, :stacktrace, :state, :tags, :worker]
+05-48 cancel events: [{[:oban, :job, :stop], :cancelled}]
+05-51 kill: kind=:exit reason=:killed logs=0
+final x3: seeds 961108, 830698, 685591: 9 passed each
+== H: Req 0.7.4 / Finch 0.23.0 / Mint 1.10.1 (test/h_req_test.exs), upstream Bandit plug :4354
+run h1: 3/5; red 05-54 (finch result is stream acc, not Finch.Response), 05-56 (3-tuple {:error, exc, acc})
+05-55 warnings: ["retry: got response with status 500, will retry in 10ms, 3 attempts left", "... 2 attempts left", "... 1 attempt left"]
+05-56 finch stop meta keys: [:name, :request, :result, :telemetry_span_context] result={:error, %Finch.TransportError{reason: :econnrefused, source: %Mint.TransportError{reason: :econnrefused}}, {%Req.Request{...
+05-54 shape: [{Req.Request, nil}, {500, [headers], body, []}]
+final x3: seeds 318764, 962283, 933236: 5 passed each
+== I: dedupe spike (lib/lab05/dedupe.ex, test/i_dedupe_test.exs): first run 4/4 green; 05-63 added, green first run
+05-61 router stack == log stack? true; wrapper.stack == log stack? true
+final x3: seeds 755439, 61972, 374182: 5 passed each
+== J: Hologram 0.11.1 source read (no run); see report section J
+== K: costs (test/k_cost_test.exs), Apple M3 Pro, OTP 28, 3 runs:
+05-64 mark=0.095/0.119/0.100 us  phash2(ex,st)=1.883/1.923/1.882 us (14 frames)  conn_external=3533B  summary=184B  inspect(conn)=115.9/119.7/128.1 us
+first run RED on conn size (predicted > 5 KB)
+Running ExUnit with seed: 687900, max_cases: 22
+Finished in 28.4 seconds (0.00s async, 28.4s sync)
+Result: 65 passed
+Running ExUnit with seed: 573321, max_cases: 22
+Finished in 27.8 seconds (0.00s async, 27.8s sync)
+Result: 65 passed
+Running ExUnit with seed: 903000, max_cases: 22
+Finished in 28.0 seconds (0.00s async, 28.0s sync)
+Result: 65 passed

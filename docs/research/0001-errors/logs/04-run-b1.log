@@ -1,0 +1,582 @@
+Compiling 1 file (.ex)
+Generated beam_lab app
+Running ExUnit with seed: 249072, max_cases: 1
+
+....
+
+  1) test default Elixir config (handle_sasl_reports: false) 04-19: handle_info raise -> same report, last_message is the raw message (BeamLab.OtpTest)
+     test/b_otp_test.exs:51
+     match (=) failed
+     code:  assert {:report, %{report: %{last_message: {:do, :throw}}}} = e.msg
+     left:  {:report, %{report: %{last_message: {:do, :throw}}}}
+     right: {:report,
+             %{
+               label: {:gen_server, :terminate},
+               name: #PID<0.200.0>,
+               reason: {:bad_return_value, :boom},
+               log: [],
+               state: %{},
+               last_message: {:do, :throw},
+               process_label: :undefined,
+               client_info: :undefined,
+               elixir_translation: [
+                 [
+                   "GenServer ",
+                   "#PID<0.200.0>",
+                   " terminating",
+                   ["\n** (stop) " | "bad return value: :boom"],
+                   [],
+                   "\nLast message",
+                   [],
+                   ": ",
+                   "{:do, :throw}"
+                 ],
+                 "\nState: ",
+                 "%{}"
+               ]
+             }}
+     stacktrace:
+       test/b_otp_test.exs:54: (test)
+
+
+
+  2) test default Elixir config (handle_sasl_reports: false) 04-18: handle_cast raise -> same report, client_info :undefined (BeamLab.OtpTest)
+     test/b_otp_test.exs:43
+     match (=) failed
+     code:  assert {:report, %{label: {:gen_server, :terminate}, report: r}} = e.msg
+     left:  {:report, %{label: {:gen_server, :terminate}, report: r}}
+     right: {:report,
+             %{
+               label: {:gen_server, :terminate},
+               name: #PID<0.207.0>,
+               reason: {%RuntimeError{message: "boom"},
+                [
+                  {BeamLab.Case, :crash, 1,
+                   [
+                     file: ~c"test/support/case.ex",
+                     line: 19,
+                     error_info: %{module: Exception}
+                   ]},
+                  {:gen_server, :try_handle_cast, 3,
+                   [file: ~c"gen_server.erl", line: 2460]},
+                  {:gen_server, :handle_msg, 3,
+                   [file: ~c"gen_server.erl", line: 2418]},
+                  {:proc_lib, :init_p_do_apply, 3,
+                   [file: ~c"proc_lib.erl", line: 333]}
+                ]},
+               log: [],
+               state: %{},
+               last_message: {:"$gen_cast", {:do, :raise}},
+               process_label: :undefined,
+               client_info: :undefined,
+               elixir_translation: [
+                 [
+                   "GenServer ",
+                   "#PID<0.207.0>",
+                   " terminating",
+                   [
+                     [10 | "** (RuntimeError) boom"],
+                     ["\n    " |
+                      "(beam_lab 0.1.0) test/support/case.ex:19: BeamLab.Case.crash/1"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2460: :gen_server.try_handle_cast/3"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2418: :gen_server.handle_msg/3"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"]
+                   ],
+                   [],
+                   "\nLast message",
+                   [],
+                   ": ",
+                   "{:\"$gen_cast\", {:do, :raise}}"
+                 ],
+                 "\nState: ",
+                 "%{}"
+               ]
+             }}
+     stacktrace:
+       test/b_otp_test.exs:46: (test)
+
+
+
+  3) test default Elixir config (handle_sasl_reports: false) 04-30: exit signal to a trapping GenServer from a non-parent -> becomes an {:EXIT} message; Srv has no clause -> it crashes with FunctionClauseError (BeamLab.OtpTest)
+     test/b_otp_test.exs:154
+     match (=) failed
+     code:  assert {:report, %{report: %{last_message: {:EXIT, _, :boom}}}} = e.msg
+     left:  {:report, %{report: %{last_message: {:EXIT, _, :boom}}}}
+     right: {:report,
+             %{
+               label: {:gen_server, :terminate},
+               name: #PID<0.214.0>,
+               reason: {:function_clause,
+                [
+                  {BeamLab.Srv, :handle_info,
+                   [{:EXIT, #PID<0.211.0>, :boom}, %{}],
+                   [file: ~c"test/support/workers.ex", line: 16]},
+                  {:gen_server, :try_handle_info, 3,
+                   [file: ~c"gen_server.erl", line: 2434]},
+                  {:gen_server, :handle_msg, 3,
+                   [file: ~c"gen_server.erl", line: 2420]},
+                  {:proc_lib, :init_p_do_apply, 3,
+                   [file: ~c"proc_lib.erl", line: 333]}
+                ]},
+               log: [],
+               state: %{},
+               last_message: {:EXIT, #PID<0.211.0>, :boom},
+               process_label: :undefined,
+               client_info: :undefined,
+               elixir_translation: [
+                 [
+                   "GenServer ",
+                   "#PID<0.214.0>",
+                   " terminating",
+                   [
+                     [10 |
+                      "** (FunctionClauseError) no function clause matching in BeamLab.Srv.handle_info/2"],
+                     ["\n    " |
+                      "(beam_lab 0.1.0) test/support/workers.ex:16: BeamLab.Srv.handle_info({:EXIT, #PID<0.211.0>, :boom}, %{})"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2434: :gen_server.try_handle_info/3"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2420: :gen_server.handle_msg/3"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"]
+                   ],
+                   [],
+                   "\nLast message",
+                   [],
+                   ": ",
+                   "{:EXIT, #PID<0.211.0>, :boom}"
+                 ],
+                 "\nState: ",
+                 "%{}"
+               ]
+             }}
+     stacktrace:
+       test/b_otp_test.exs:158: (test)
+
+
+
+  4) test with handle_sasl_reports: true 04-27s: supervised child crash with sasl -> gen_server report + crash report + supervisor child_terminated + progress (BeamLab.OtpTest)
+     test/b_otp_test.exs:176
+     ** (EXIT from #PID<0.218.0>) shutdown: failed to start child: BeamLab.Srv
+         ** (EXIT) an exception was raised:
+             ** (UndefinedFunctionError) function BeamLab.Srv.start_link/1 is undefined or private
+                 (beam_lab 0.1.0) BeamLab.Srv.start_link(%{})
+                 (stdlib 7.3.0.2) supervisor.erl:996: :supervisor.do_start_child_i/3
+                 (stdlib 7.3.0.2) supervisor.erl:982: :supervisor.do_start_child/3
+                 (stdlib 7.3.0.2) supervisor.erl:966: anonymous fn/3 in :supervisor.start_children/2
+                 (stdlib 7.3.0.2) supervisor.erl:1891: :supervisor.children_map/4
+                 (stdlib 7.3.0.2) supervisor.erl:932: :supervisor.init_children/2
+                 (stdlib 7.3.0.2) gen_server.erl:2276: :gen_server.init_it/2
+                 (stdlib 7.3.0.2) gen_server.erl:2236: :gen_server.init_it/6
+                 (stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+
+.
+
+  5) test with handle_sasl_reports: true 04-29s: brutal kill with sasl -> child_terminated report with reason :killed (BeamLab.OtpTest)
+     test/b_otp_test.exs:198
+     ** (EXIT from #PID<0.232.0>) shutdown: failed to start child: BeamLab.Srv
+         ** (EXIT) an exception was raised:
+             ** (UndefinedFunctionError) function BeamLab.Srv.start_link/1 is undefined or private
+                 (beam_lab 0.1.0) BeamLab.Srv.start_link(%{})
+                 (stdlib 7.3.0.2) supervisor.erl:996: :supervisor.do_start_child_i/3
+                 (stdlib 7.3.0.2) supervisor.erl:982: :supervisor.do_start_child/3
+                 (stdlib 7.3.0.2) supervisor.erl:966: anonymous fn/3 in :supervisor.start_children/2
+                 (stdlib 7.3.0.2) supervisor.erl:1891: :supervisor.children_map/4
+                 (stdlib 7.3.0.2) supervisor.erl:932: :supervisor.init_children/2
+                 (stdlib 7.3.0.2) gen_server.erl:2276: :gen_server.init_it/2
+                 (stdlib 7.3.0.2) gen_server.erl:2236: :gen_server.init_it/6
+                 (stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+
+.
+
+  6) test default Elixir config (handle_sasl_reports: false) 04-29: brutal kill of a supervised GenServer -> nothing logged (BeamLab.OtpTest)
+     test/b_otp_test.exs:146
+     ** (EXIT from #PID<0.243.0>) shutdown: failed to start child: BeamLab.Srv
+         ** (EXIT) an exception was raised:
+             ** (UndefinedFunctionError) function BeamLab.Srv.start_link/1 is undefined or private
+                 (beam_lab 0.1.0) BeamLab.Srv.start_link(%{})
+                 (stdlib 7.3.0.2) supervisor.erl:996: :supervisor.do_start_child_i/3
+                 (stdlib 7.3.0.2) supervisor.erl:982: :supervisor.do_start_child/3
+                 (stdlib 7.3.0.2) supervisor.erl:966: anonymous fn/3 in :supervisor.start_children/2
+                 (stdlib 7.3.0.2) supervisor.erl:1891: :supervisor.children_map/4
+                 (stdlib 7.3.0.2) supervisor.erl:932: :supervisor.init_children/2
+                 (stdlib 7.3.0.2) gen_server.erl:2276: :gen_server.init_it/2
+                 (stdlib 7.3.0.2) gen_server.erl:2236: :gen_server.init_it/6
+                 (stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+
+
+
+  7) test default Elixir config (handle_sasl_reports: false) 04-28: supervisor max intensity -> the supervisor dies with :shutdown and that is NOT logged (BeamLab.OtpTest)
+     test/b_otp_test.exs:130
+     ** (EXIT from #PID<0.248.0>) shutdown: failed to start child: BeamLab.Srv
+         ** (EXIT) an exception was raised:
+             ** (UndefinedFunctionError) function BeamLab.Srv.start_link/1 is undefined or private
+                 (beam_lab 0.1.0) BeamLab.Srv.start_link(%{})
+                 (stdlib 7.3.0.2) supervisor.erl:996: :supervisor.do_start_child_i/3
+                 (stdlib 7.3.0.2) supervisor.erl:982: :supervisor.do_start_child/3
+                 (stdlib 7.3.0.2) supervisor.erl:966: anonymous fn/3 in :supervisor.start_children/2
+                 (stdlib 7.3.0.2) supervisor.erl:1891: :supervisor.children_map/4
+                 (stdlib 7.3.0.2) supervisor.erl:932: :supervisor.init_children/2
+                 (stdlib 7.3.0.2) gen_server.erl:2276: :gen_server.init_it/2
+                 (stdlib 7.3.0.2) gen_server.erl:2236: :gen_server.init_it/6
+                 (stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+
+
+
+  8) test default Elixir config (handle_sasl_reports: false) 04-26: :gen_statem raise -> {:gen_statem, :terminate} report (BeamLab.OtpTest)
+     test/b_otp_test.exs:111
+     match (=) failed
+     code:  assert {:report, %{label: {:gen_statem, :terminate}, report: r}} = e.msg
+     left:  {:report, %{label: {:gen_statem, :terminate}, report: r}}
+     right: {:report,
+             %{
+               label: {:gen_statem, :terminate},
+               name: #PID<0.255.0>,
+               reason: {:error, %RuntimeError{message: "boom"},
+                [
+                  {BeamLab.Case, :crash, 1,
+                   [
+                     file: ~c"test/support/case.ex",
+                     line: 19,
+                     error_info: %{module: Exception}
+                   ]},
+                  {:gen_statem, :loop_state_callback, 11,
+                   [file: ~c"gen_statem.erl", line: 3743]},
+                  {:proc_lib, :init_p_do_apply, 3,
+                   [file: ~c"proc_lib.erl", line: 333]}
+                ]},
+               log: [],
+               state: {:idle, %{d: 1}},
+               queue: [
+                 {{:call,
+                   {#PID<0.253.0>,
+                    #Reference<0.2590512798.2403860481.40456>}},
+                  {:do, :raise}}
+               ],
+               modules: [BeamLab.Statem],
+               process_label: :undefined,
+               client_info: {#PID<0.253.0>,
+                {#PID<0.253.0>,
+                 [
+                   {:gen, :do_call, 4,
+                    [file: ~c"gen.erl", line: 243]},
+                   {:gen_statem, :call, 3,
+                    [file: ~c"gen_statem.erl", line: 3254]},
+                   {BeamLab.OtpTest,
+                    :"-test default Elixir config (handle_sasl_reports: false) 04-26: :gen_statem raise -> {:gen_statem, :terminate} report/1-fun-0-",
+                    1, [file: ~c"test/b_otp_test.exs", line: 113]},
+                   {BeamLab.Case, :run, 3,
+                    [file: ~c"test/support/case.ex", line: 26]},
+                   {BeamLab.OtpTest,
+                    :"test default Elixir config (handle_sasl_reports: false) 04-26: :gen_statem raise -> {:gen_statem, :terminate} report",
+                    1, [file: ~c"test/b_otp_test.exs", line: 113]},
+                   {ExUnit.Runner, :exec_test, 2,
+                    [file: ~c"lib/ex_unit/runner.ex", line: 533]},
+                   {:timer, :tc, 2,
+                    [file: ~c"timer.erl", line: 599]},
+                   {ExUnit.Runner, :"-spawn_test_monitor/4-fun-1-",
+                    6, [file: ~c"lib/ex_unit/runner.ex", line: 455]}
+                 ]}},
+               callback_mode: :handle_event_function,
+               postponed: [],
+               timeouts: {0, []},
+               state_enter: false,
+               elixir_translation: [
+                 [
+                   ":gen_statem ",
+                   "#PID<0.255.0>",
+                   " terminating",
+                   [
+                     [10 | "** (RuntimeError) boom"],
+                     ["\n    " |
+                      "(beam_lab 0.1.0) test/support/case.ex:19: BeamLab.Case.crash/1"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_statem.erl:3743: :gen_statem.loop_state_callback/11"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"]
+                   ],
+                   [],
+                   "\nQueue: [{{:call, {#PID<0.253.0>, #Reference<0.2590512798.2403860481.40456>}}, {:do, :raise}}]",
+                   "\nPostponed: []"
+                 ],
+                 "\nState: ",
+                 "{:idle, %{d: 1}}",
+                 "\nCallback mode: ",
+                 ":handle_event_function, state_enter: false",
+                 "\nClient ",
+                 "#PID<0.253.0>",
+                 " is alive\n",
+                 ["\n    " |
+                  "(stdlib 7.3.0.2) gen.erl:243: :gen.do_call/4"],
+                 ["\n    " |
+                  "(stdlib 7.3.0.2) gen_statem.erl:3254: :gen_statem.call/3"],
+                 ["\n    " |
+                  "test/b_otp_test.exs:113: anonymous fn/1 in BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-26: :gen_statem raise -> {:gen_statem, :terminate} report\"/1"],
+                 ["\n    " |
+                  "(beam_lab 0.1.0) test/support/case.ex:26: BeamLab.Case.run/3"],
+                 ["\n    " |
+                  "test/b_otp_test.exs:113: BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-26: :gen_statem raise -> {:gen_statem, :terminate} report\"/1"],
+                 ["\n    " |
+                  "(ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2"],
+                 ["\n    " |
+                  "(stdlib 7.3.0.2) timer.erl:599: :timer.tc/2"],
+                 ["\n    " |
+                  "(ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4"]
+               ]
+             }}
+     stacktrace:
+       test/b_otp_test.exs:114: (test)
+
+
+
+  9) test default Elixir config (handle_sasl_reports: false) 04-17: handle_call raise -> one {:gen_server, :terminate} :error report in the server process; caller exits (BeamLab.OtpTest)
+     test/b_otp_test.exs:26
+     match (=) failed
+     code:  assert {:report, %{label: {:gen_server, :terminate}, report: r}} = e.msg
+     left:  {:report, %{label: {:gen_server, :terminate}, report: r}}
+     right: {:report,
+             %{
+               label: {:gen_server, :terminate},
+               name: #PID<0.262.0>,
+               reason: {%RuntimeError{message: "boom"},
+                [
+                  {BeamLab.Case, :crash, 1,
+                   [
+                     file: ~c"test/support/case.ex",
+                     line: 19,
+                     error_info: %{module: Exception}
+                   ]},
+                  {:gen_server, :try_handle_call, 4,
+                   [file: ~c"gen_server.erl", line: 2470]},
+                  {:gen_server, :handle_msg, 3,
+                   [file: ~c"gen_server.erl", line: 2499]},
+                  {:proc_lib, :init_p_do_apply, 3,
+                   [file: ~c"proc_lib.erl", line: 333]}
+                ]},
+               log: [],
+               state: %{n: 1},
+               last_message: {:do, :raise},
+               process_label: :undefined,
+               client_info: {#PID<0.259.0>,
+                {#PID<0.259.0>,
+                 [
+                   {:gen, :do_call, 4,
+                    [file: ~c"gen.erl", line: 262]},
+                   {GenServer, :call, 3,
+                    [file: ~c"lib/gen_server.ex", line: 1180]},
+                   {BeamLab.OtpTest, :call_catch, 2,
+                    [file: ~c"test/b_otp_test.exs", line: 12]},
+                   {BeamLab.OtpTest,
+                    :"-test default Elixir config (handle_sasl_reports: false) 04-17: handle_call raise -> one {:gen_server, :terminate} :error report in the server process; caller exits/1-fun-0-",
+                    1, [file: ~c"test/b_otp_test.exs", line: 29]},
+                   {BeamLab.Case, :run, 3,
+                    [file: ~c"test/support/case.ex", line: 26]},
+                   {BeamLab.OtpTest,
+                    :"test default Elixir config (handle_sasl_reports: false) 04-17: handle_call raise -> one {:gen_server, :terminate} :error report in the server process; caller exits",
+                    1, [file: ~c"test/b_otp_test.exs", line: 28]},
+                   {ExUnit.Runner, :exec_test, 2,
+                    [file: ~c"lib/ex_unit/runner.ex", line: 533]},
+                   {:timer, :tc, 2,
+                    [file: ~c"timer.erl", line: 599]},
+                   {ExUnit.Runner, :"-spawn_test_monitor/4-fun-1-",
+                    6, [file: ~c"lib/ex_unit/runner.ex", line: 455]}
+                 ]}},
+               elixir_translation: [
+                 [
+                   "GenServer ",
+                   "#PID<0.262.0>",
+                   " terminating",
+                   [
+                     [10 | "** (RuntimeError) boom"],
+                     ["\n    " |
+                      "(beam_lab 0.1.0) test/support/case.ex:19: BeamLab.Case.crash/1"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2470: :gen_server.try_handle_call/4"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2499: :gen_server.handle_msg/3"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"]
+                   ],
+                   [],
+                   "\nLast message",
+                   [" (from ", "#PID<0.259.0>", ")"],
+                   ": ",
+                   "{:do, :raise}"
+                 ],
+                 "\nState: ",
+                 "%{n: 1}",
+                 "\nClient ",
+                 "#PID<0.259.0>",
+                 " is alive\n",
+                 ["\n    " |
+                  "(stdlib 7.3.0.2) gen.erl:262: :gen.do_call/4"],
+                 ["\n    " |
+                  "(elixir 1.20.4) lib/gen_server.ex:1180: GenServer.call/3"],
+                 ["\n    " |
+                  "test/b_otp_test.exs:12: BeamLab.OtpTest.call_catch/2"],
+                 ["\n    " |
+                  "test/b_otp_test.exs:29: anonymous fn/1 in BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-17: handle_call raise -> one {:gen_server, :terminate} :error report in the server process; caller exits\"/1"],
+                 ["\n    " |
+                  "(beam_lab 0.1.0) test/support/case.ex:26: BeamLab.Case.run/3"],
+                 ["\n    " |
+                  "test/b_otp_test.exs:28: BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-17: handle_call raise -> one {:gen_server, :terminate} :error report in the server process; caller exits\"/1"],
+                 ["\n    " |
+                  "(ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2"],
+                 ["\n    " |
+                  "(stdlib 7.3.0.2) timer.erl:599: :timer.tc/2"],
+                 ["\n    " |
+                  "(ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4"]
+               ]
+             }}
+     stacktrace:
+       test/b_otp_test.exs:34: (test)
+
+.
+
+ 10) test with handle_sasl_reports: true 04-28s: max intensity with sasl -> {:supervisor, :shutdown} report (BeamLab.OtpTest)
+     test/b_otp_test.exs:189
+     ** (EXIT from #PID<0.273.0>) shutdown: failed to start child: BeamLab.Srv
+         ** (EXIT) an exception was raised:
+             ** (UndefinedFunctionError) function BeamLab.Srv.start_link/1 is undefined or private
+                 (beam_lab 0.1.0) BeamLab.Srv.start_link(%{})
+                 (stdlib 7.3.0.2) supervisor.erl:996: :supervisor.do_start_child_i/3
+                 (stdlib 7.3.0.2) supervisor.erl:982: :supervisor.do_start_child/3
+                 (stdlib 7.3.0.2) supervisor.erl:966: anonymous fn/3 in :supervisor.start_children/2
+                 (stdlib 7.3.0.2) supervisor.erl:1891: :supervisor.children_map/4
+                 (stdlib 7.3.0.2) supervisor.erl:932: :supervisor.init_children/2
+                 (stdlib 7.3.0.2) gen_server.erl:2276: :gen_server.init_it/2
+                 (stdlib 7.3.0.2) gen_server.erl:2236: :gen_server.init_it/6
+                 (stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+
+
+
+ 11) test default Elixir config (handle_sasl_reports: false) 04-27: supervised child crash -> only the child's gen_server report; the supervisor's report is filtered (BeamLab.OtpTest)
+     test/b_otp_test.exs:119
+     ** (EXIT from #PID<0.278.0>) shutdown: failed to start child: BeamLab.Srv
+         ** (EXIT) an exception was raised:
+             ** (UndefinedFunctionError) function BeamLab.Srv.start_link/1 is undefined or private
+                 (beam_lab 0.1.0) BeamLab.Srv.start_link(%{})
+                 (stdlib 7.3.0.2) supervisor.erl:996: :supervisor.do_start_child_i/3
+                 (stdlib 7.3.0.2) supervisor.erl:982: :supervisor.do_start_child/3
+                 (stdlib 7.3.0.2) supervisor.erl:966: anonymous fn/3 in :supervisor.start_children/2
+                 (stdlib 7.3.0.2) supervisor.erl:1891: :supervisor.children_map/4
+                 (stdlib 7.3.0.2) supervisor.erl:932: :supervisor.init_children/2
+                 (stdlib 7.3.0.2) gen_server.erl:2276: :gen_server.init_it/2
+                 (stdlib 7.3.0.2) gen_server.erl:2236: :gen_server.init_it/6
+                 (stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3
+
+
+
+ 12) test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report (BeamLab.OtpTest)
+     test/b_otp_test.exs:103
+     match (=) failed
+     code:  assert {:report, %{label: {:gen_server, :terminate}, report: %{last_message: {:get, _}}}} = e.msg
+     left:  {:report, %{label: {:gen_server, :terminate}, report: %{last_message: {:get, _}}}}
+     right: {:report,
+             %{
+               label: {:gen_server, :terminate},
+               name: #PID<0.285.0>,
+               reason: {%RuntimeError{message: "agent boom"},
+                [
+                  {BeamLab.OtpTest,
+                   :"-test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report/1-fun-1-",
+                   1,
+                   [
+                     file: ~c"test/b_otp_test.exs",
+                     line: 106,
+                     error_info: %{module: Exception}
+                   ]},
+                  {Agent.Server, :handle_call, 3,
+                   [file: ~c"lib/agent/server.ex", line: 16]},
+                  {:gen_server, :try_handle_call, 4,
+                   [file: ~c"gen_server.erl", line: 2470]},
+                  {:gen_server, :handle_msg, 3,
+                   [file: ~c"gen_server.erl", line: 2499]},
+                  {:proc_lib, :init_p_do_apply, 3,
+                   [file: ~c"proc_lib.erl", line: 333]}
+                ]},
+               log: [],
+               state: 0,
+               last_message: {:get,
+                #Function<31.25060707/1 in BeamLab.OtpTest."test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report"/1>},
+               process_label: :undefined,
+               client_info: {#PID<0.283.0>,
+                {#PID<0.283.0>,
+                 [
+                   {:gen, :do_call, 4,
+                    [file: ~c"gen.erl", line: 262]},
+                   {GenServer, :call, 3,
+                    [file: ~c"lib/gen_server.ex", line: 1180]},
+                   {BeamLab.OtpTest,
+                    :"-test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report/1-fun-2-",
+                    1, [file: ~c"test/b_otp_test.exs", line: 106]},
+                   {BeamLab.Case, :run, 3,
+                    [file: ~c"test/support/case.ex", line: 26]},
+                   {BeamLab.OtpTest,
+                    :"test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report",
+                    1, [file: ~c"test/b_otp_test.exs", line: 105]},
+                   {ExUnit.Runner, :exec_test, 2,
+                    [file: ~c"lib/ex_unit/runner.ex", line: 533]},
+                   {:timer, :tc, 2,
+                    [file: ~c"timer.erl", line: 599]},
+                   {ExUnit.Runner, :"-spawn_test_monitor/4-fun-1-",
+                    6, [file: ~c"lib/ex_unit/runner.ex", line: 455]}
+                 ]}},
+               elixir_translation: [
+                 [
+                   "GenServer ",
+                   "#PID<0.285.0>",
+                   " terminating",
+                   [
+                     [10 | "** (RuntimeError) agent boom"],
+                     ["\n    " |
+                      "test/b_otp_test.exs:106: anonymous fn/1 in BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report\"/1"],
+                     ["\n    " |
+                      "(elixir 1.20.4) lib/agent/server.ex:16: Agent.Server.handle_call/3"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2470: :gen_server.try_handle_call/4"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) gen_server.erl:2499: :gen_server.handle_msg/3"],
+                     ["\n    " |
+                      "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"]
+                   ],
+                   [],
+                   "\nLast message",
+                   [" (from ", "#PID<0.283.0>", ")"],
+                   ": ",
+                   "{:get, #Function<31.25060707/1 in BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report\"/1>}"
+                 ],
+                 "\nState: ",
+                 "0",
+                 "\nClient ",
+                 "#PID<0.283.0>",
+                 " is alive\n",
+                 ["\n    " |
+                  "(stdlib 7.3.0.2) gen.erl:262: :gen.do_call/4"],
+                 ["\n    " |
+                  "(elixir 1.20.4) lib/gen_server.ex:1180: GenServer.call/3"],
+                 ["\n    " |
+                  "test/b_otp_test.exs:106: anonymous fn/1 in BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report\"/1"],
+                 ["\n    " |
+                  "(beam_lab 0.1.0) test/support/case.ex:26: BeamLab.Case.run/3"],
+                 ["\n    " |
+                  "test/b_otp_test.exs:105: BeamLab.OtpTest.\"test default Elixir config (handle_sasl_reports: false) 04-25: Agent.get with a raising fun -> the Agent server crashes with a gen_server report\"/1"],
+                 ["\n    " |
+                  "(ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2"],
+                 ["\n    " |
+                  "(stdlib 7.3.0.2) timer.erl:599: :timer.tc/2"],
+                 ["\n    " |
+                  "(ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4"]
+               ]
+             }}
+     stacktrace:
+       test/b_otp_test.exs:108: (test)
+
+
+Finished in 4.0 seconds (0.00s async, 4.0s sync)
+
+Result: 7/19 passed
+Failed: 12 tests

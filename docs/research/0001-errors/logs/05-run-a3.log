@@ -1,0 +1,174 @@
+Generated lab05 app
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+..
+
+  1) test 05-3: [:phoenix, :router_dispatch, :exception] fires once with conn, route, plug, plug_opts, kind, reason (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:39
+     match (=) failed
+     code:  assert %{
+              kind: :error,
+              reason: %RuntimeError{},
+              stacktrace: [_ | _],
+              route: "/raise",
+              plug: Lab05.Controller,
+              plug_opts: :raise_,
+              conn: %Plug.Conn{}
+            } = t.meta
+     left:  %{
+              kind: :error,
+              reason: %RuntimeError{},
+              stacktrace: [_ | _],
+              route: "/raise",
+              plug: Lab05.Controller,
+              plug_opts: :raise_,
+              conn: %Plug.Conn{}
+            }
+     right: %{
+              reason: %Plug.Conn.WrapperError{
+                conn: %Plug.Conn{
+                  adapter: {Bandit.Adapter, :...},
+                  assigns: %{},
+                  body_params: %{},
+                  cookies: %Plug.Conn.Unfetched{aspect: :cookies},
+                  halted: false,
+                  host: "127.0.0.1",
+                  method: "GET",
+                  owner: nil,
+                  params: %{},
+                  path_info: ["raise"],
+                  path_params: %{},
+                  port: 4351,
+                  private: %{
+                    :phoenix_view => %{"json" => Lab05.JSON},
+                    Lab05.Router => [],
+                    :phoenix_controller => Lab05.Controller,
+                    :phoenix_action => :raise_,
+                    :phoenix_router => Lab05.Router,
+                    :phoenix_endpoint => Lab05.Endpoint,
+                    :plug_session_fetch => #Function<1.76585640/1 in Plug.Session.fetch_session/1>,
+                    :before_send => [#Function<0.24950767/1 in Plug.Telemetry.call/2>],
+                    :phoenix_layout => %{},
+                    :phoenix_format => "json"
+                  },
+                  query_params: %{},
+                  query_string: "",
+                  remote_ip: {127, 0, 0, 1},
+                  req_cookies: %Plug.Conn.Unfetched{
+                    aspect: :cookies
+                  },
+                  req_headers: [
+                    {"host", "127.0.0.1:4351"},
+                    {"accept", "application/json"},
+                    {"connection", "keep-alive"}
+                  ],
+                  request_path: "/raise",
+                  resp_body: nil,
+                  resp_cookies: %{},
+                  resp_headers: [
+                    {"cache-control",
+                     "max-age=0, private, must-revalidate"}
+                  ],
+                  scheme: :http,
+                  script_name: [],
+                  secret_key_base: :...,
+                  state: :unset,
+                  status: nil
+                },
+                kind: :error,
+                reason: %RuntimeError{
+                  message: "boom from controller"
+                },
+                stack: [
+                  {Lab05.Controller, :raise_, 2,
+                   [
+                     file: ~c"lib/lab05/web.ex",
+                     line: 14,
+                     error_info: %{module: Exception}
+                   ]},
+                  {Lab05.Controller, :action, 2,
+                   [file: ~c"lib/lab05/web.ex", line: 10]},
+                  {Lab05.Controller, :phoenix_controller_pipeline,
+                   2, [file: ~c"lib/lab05/web.ex", line: 10]},
+                  {Phoenix.Router, :__call__, 5,
+                   [file: ~c"lib/phoenix/router.ex", line: 428]},
+                  {Lab05.Endpoint, :plug_builder_call, 2,
+                   [file: ~c"lib/lab05/web.ex", line: 89]},
+                  {Lab05.Endpoint, :call, 2,
+                   [file: ~c"lib/lab05/web.ex", line: 89]},
+                  {Bandit.Pipeline, :call_plug!, 2,
+                   [file: ~c"lib/bandit/pipeline.ex", line: 129]},
+                  {Bandit.Pipeline, :run, 5,
+                   [file: ~c"lib/bandit/pipeline.ex", line: 42]},
+                  {Bandit.HTTP1.Handler, :handle_data, 3,
+                   [file: ~c"lib/bandit/http1/handler.ex", line: 23]},
+                  {Bandit.DelegatingHandler, :handle_data, 3,
+                   [
+                     file: ~c"lib/bandit/delegating_handler.ex",
+                     line: 18
+                   ]},
+                  {Bandit.DelegatingHandler, :handle_continue, 2,
+                   [
+                     file: ~c"lib/bandit/delegating_handler.ex",
+                     line: 8
+                   ]},
+                  {:gen_server, :try_handle_continue, 3,
+                   [file: ~c"gen_server.erl", line: 2424]},
+                  {:gen_server, :loop, 4,
+                   [file: ~c"gen_server.erl", line: 2291]},
+                  {:proc_lib, :init_p_do_apply, 3,
+                   [file: ~c"proc_lib.erl", line: 333]}
+                ]
+              },
+              log: :debug,
+              stacktrace: [
+                {Lab05.Controller, :raise_, 2,
+                 [
+                   file: ~c"lib/lab05/web.ex",
+                   line: 14,
+                   error_info: %{module: Exception}
+                 ]},
+                {Lab05.Controller, :action, 2,
+                 [file: ~c"lib/lab05/web.ex", line: 10]},
+                {Lab05.Controller, :phoenix_controller_pipeline, 2,
+                 [file: ~c"lib/lab05/web.ex", line: 10]},
+                {Phoenix.Router, :__call__, 5,
+                 [file: ~c"lib/phoenix/router.ex", line: 428]},
+                {Lab05.Endpoint, ...},
+                ...
+              ],
+              ...
+            }
+     stacktrace:
+       test/a_phoenix_bandit_test.exs:42: (test)
+
+05-4 bandit exception meta keys: [:stacktrace, :exception, :kind, :plug, :conn, :telemetry_span_context, :connection_telemetry_span_context]
+..05-6 order: [[:phoenix, :router_dispatch, :exception], [:phoenix, :error_rendered], [:bandit, :request, :exception], :log]
+..
+
+  2) test 05-8: NoRouteError: no log, no router_dispatch exception, bandit exception fires, error_rendered 404 (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:82
+     Assertion with in failed
+     code:  assert [:bandit, :request, :exception] in names
+     left:  [:bandit, :request, :exception]
+     right: [
+              [:bandit, :request, :start],
+              [:phoenix, :endpoint, :start],
+              [:phoenix, :endpoint, :stop],
+              [:phoenix, :error_rendered],
+              [:bandit, :request, :stop]
+            ]
+     stacktrace:
+       test/a_phoenix_bandit_test.exs:87: (test)
+
+05-9 throw crash_reason: {{:nocatch, :oops}, ...}
+05-9 exit crash_reason: {:bye, [{...}, ...]}
+.05-10 task log meta keys: [:error_logger, :pid, :time, :gl, :domain, :report_cb, :callers, :crash_reason]
+....05-14 Logger.error meta keys: [:line, :pid, :time, :file, :gl, :domain, :application, :mfa, :user_id]
+....
+Finished in 5.7 seconds (0.00s async, 5.7s sync)
+
+Result: 15/17 passed
+Failed: 2 tests

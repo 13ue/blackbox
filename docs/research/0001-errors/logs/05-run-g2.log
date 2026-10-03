@@ -1,0 +1,176 @@
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+05-45 oban exception meta keys: [:args, :attempt, :conf, :error, :id, :job, :kind, :max_attempts, :prefix, :queue, :reason, :result, :stacktrace, :state, :tags, :worker]
+...05-48 cancel events: [{[:oban, :job, :stop], :cancelled}]
+...05-51 kill: kind=:exit reason=:killed logs=0
+
+
+  1) test 05-51: the job process killed: exception event with %Oban.CrashError{}; no :error log (Lab05.ObanTest)
+     test/g_oban_test.exs:73
+     match (=) failed
+     code:  assert %Oban.CrashError{} = t.meta.reason
+     left:  %Oban.CrashError{}
+     right: :killed
+     stacktrace:
+       test/g_oban_test.exs:77: (test)
+
+
+
+  2) test 05-52: exit(:bye) in a job: exception event kind :exit, no log (Lab05.ObanTest)
+     test/g_oban_test.exs:81
+     match (=) failed
+     code:  assert [%{meta: %{kind: :exit, reason: :bye}}] = job_event(msgs, :exception)
+     left:  [%{meta: %{kind: :exit, reason: :bye}}]
+     right: [
+              %{
+                meta: %{
+                  error: %Oban.CrashError{
+                    message: "** (exit) :bye",
+                    reason: :bye
+                  },
+                  args: %{},
+                  id: 14,
+                  reason: %Oban.CrashError{
+                    message: "** (exit) :bye",
+                    reason: :bye
+                  },
+                  state: :failure,
+                  max_attempts: 20,
+                  queue: "default",
+                  worker: "Lab05.Workers.Exit",
+                  stacktrace: [
+                    {Lab05.Workers.Exit, :perform, 1,
+                     [file: ~c"lib/lab05/workers.ex", line: 49]},
+                    {Oban.Queues.Executor, :perform, 1,
+                     [
+                       file: ~c"lib/oban/queues/executor.ex",
+                       line: 145
+                     ]},
+                    {Oban.Queues.Executor, :call, 1,
+                     [
+                       file: ~c"lib/oban/queues/executor.ex",
+                       line: 77
+                     ]},
+                    {Task.Supervised, :invoke_mfa, 2,
+                     [file: ~c"lib/task/supervised.ex", line: 105]},
+                    {Task.Supervised, :reply, 4,
+                     [file: ~c"lib/task/supervised.ex", line: 40]}
+                  ],
+                  prefix: "public",
+                  result: nil,
+                  conf: %Oban.Config{
+                    dispatch_cooldown: 5,
+                    engine: Oban.Engines.Basic,
+                    get_dynamic_repo: nil,
+                    insert_trigger: true,
+                    log: false,
+                    name: Oban,
+                    node: "lennart",
+                    notifier: {Oban.Notifiers.Postgres, []},
+                    peer: {Oban.Peers.Database, []},
+                    plugins: [],
+                    prefix: "public",
+                    queues: [default: [limit: 5]],
+                    repo: Lab05.Repo,
+                    shutdown_grace_period: 15000,
+                    stager: {Oban.Stager, [interval: 100]},
+                    testing: :disabled
+                  },
+                  kind: :error,
+                  tags: [],
+                  job: %Oban.Job{
+                    __meta__: #Ecto.Schema.Metadata<:loaded, "public", "oban_jobs">,
+                    id: 14,
+                    state: "executing",
+                    queue: "default",
+                    worker: "Lab05.Workers.Exit",
+                    args: %{},
+                    meta: %{},
+                    tags: [],
+                    errors: [],
+                    attempt: 1,
+                    attempted_by: ["lennart",
+                     "cbdc67d1-a3b1-4afb-9a61-8a0e5adad2bf"],
+                    max_attempts: 20,
+                    priority: 0,
+                    attempted_at: ~U[2026-09-27 09:21:59.469892Z],
+                    cancelled_at: nil,
+                    completed_at: nil,
+                    discarded_at: nil,
+                    inserted_at: ~U[2026-09-27 09:21:59.460501Z],
+                    scheduled_at: ~U[2026-09-27 09:21:59.460501Z],
+                    conf: %Oban.Config{
+                      dispatch_cooldown: 5,
+                      engine: Oban.Engines.Basic,
+                      get_dynamic_repo: nil,
+                      insert_trigger: true,
+                      log: false,
+                      name: Oban,
+                      node: "lennart",
+                      notifier: {Oban.Notifiers.Postgres, []},
+                      peer: {Oban.Peers.Database, []},
+                      plugins: [],
+                      prefix: "public",
+                      queues: [default: [limit: 5]],
+                      repo: Lab05.Repo,
+                      shutdown_grace_period: 15000,
+                      stager: {Oban.Stager, [interval: 100]},
+                      testing: :disabled
+                    },
+                    conflict?: false,
+                    replace: nil,
+                    unique: nil,
+                    unsaved_error: %{
+                      reason: %Oban.CrashError{
+                        message: "** (exit) :bye",
+                        reason: :bye
+                      },
+                      stacktrace: [
+                        {Lab05.Workers.Exit, :perform, 1,
+                         [file: ~c"lib/lab05/workers.ex", line: 49]},
+                        {Oban.Queues.Executor, :perform, 1,
+                         [
+                           file: ~c"lib/oban/queues/executor.ex",
+                           line: 145
+                         ]},
+                        {Oban.Queues.Executor, :call, 1,
+                         [
+                           file: ~c"lib/oban/queues/executor.ex",
+                           line: 77
+                         ]},
+                        {Task.Supervised, :invoke_mfa, 2,
+                         [
+                           file: ~c"lib/task/supervised.ex",
+                           line: 105
+                         ]},
+                        {Task.Supervised, :reply, 4,
+                         [
+                           file: ~c"lib/task/supervised.ex",
+                           line: 40
+                         ]}
+                      ],
+                      kind: :error
+                    }
+                  },
+                  attempt: 1
+                },
+                name: [:oban, :job, :exception],
+                from: #PID<0.393.0>,
+                meas: %{
+                  memory: 372816,
+                  reductions: 5908,
+                  duration: 51167,
+                  queue_time: 9391000
+                }
+              }
+            ]
+     stacktrace:
+       test/g_oban_test.exs:83: (test)
+
+.
+Finished in 2.4 seconds (0.00s async, 2.4s sync)
+
+Result: 7/9 passed
+Failed: 2 tests

@@ -1,0 +1,16 @@
+t = fn label, n, f -> {us, _} = :timer.tc(fn -> for _ <- 1..n, do: f.() end); IO.puts("#{label}: #{Float.round(us / n, 2)} µs") end
+stack = for i <- 1..12, do: {:"Elixir.MyApp.Mod#{i}", :fun, 2, [file: ~c"lib/my_app/mod.ex", line: i]}
+real = (try do raise "x" rescue _ -> __STACKTRACE__ end)
+IO.puts("real stack frames: #{length(real)}")
+t.("get_application unloaded module", 2000, fn -> :application.get_application(MyApp.Mod1) end)
+t.("get_application loaded (Enum)", 2000, fn -> :application.get_application(Enum) end)
+t.("format_stacktrace_entry unloaded x12", 2000, fn -> Enum.map(stack, &Exception.format_stacktrace_entry/1) end)
+t.("format_stacktrace_entry real stack", 2000, fn -> Enum.map(real, &Exception.format_stacktrace_entry/1) end)
+t.("fingerprint unloaded 12 frames", 2000, fn -> Spike.Event.fingerprint(:error, %RuntimeError{}, stack) end)
+t.("fingerprint real stack", 2000, fn -> Spike.Event.fingerprint(:error, %RuntimeError{}, real) end)
+t.("fingerprint :log", 20000, fn -> Spike.Event.fingerprint(:log, "user 12 failed at 3f1c2a9e", []) end)
+t.("~r inline String.replace", 20000, fn -> String.replace("user 12", ~r/\d+/, "n") end)
+re = Regex.compile!("\\d+")
+t.("precompiled regex String.replace", 20000, fn -> String.replace("user 12", re, "n") end)
+t.("sha256 of small term", 20000, fn -> :crypto.hash(:sha256, :erlang.term_to_binary({:a, "b"})) end)
+IO.puts("loaded apps: #{length(:application.loaded_applications())}")

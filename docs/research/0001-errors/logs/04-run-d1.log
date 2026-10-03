@@ -1,0 +1,72 @@
+Compiling 1 file (.ex)
+Generated beam_lab app
+Running ExUnit with seed: 36859, max_cases: 1
+
+
+
+  1) test 04-43: exception_trace on a module sees a raise swallowed by its caller (BeamLab.TraceTest)
+     test/d_trace_test.exs:43
+     Expected truthy, got false
+     code: assert Enum.any?(
+             msgs,
+             &match?(
+               {:trace, _, :exception_from, {Silent, :inner, 0},
+                {:error, %RuntimeError{message: "swallowed"}}},
+               &1
+             )
+           )
+     arguments:
+
+         # 1
+         []
+
+         # 2
+         #Function<2.66106291/1 in BeamLab.TraceTest."test 04-43: exception_trace on a module sees a raise swallowed by its caller"/1>
+
+     stacktrace:
+       test/d_trace_test.exs:45: (test)
+
+....
+
+  2) test 04-45: a badarg raised INSIDE a BIF and rescued is invisible to :erlang.error/_ tracing; only exception_trace on that BIF sees it (BeamLab.TraceTest)
+     test/d_trace_test.exs:56
+     Assertion with == failed
+     code:  assert msgs == []
+     left:  [
+              {:trace, #PID<0.209.0>, :call,
+               {:erlang, :error,
+                [
+                  :badarg,
+                  [1],
+                  [error_info: %{module: :erl_erts_errors}]
+                ]}}
+            ]
+     right: []
+     stacktrace:
+       test/d_trace_test.exs:58: (test)
+
+
+
+  3) test 04-47: catch :exit around GenServer.call to a dead pid is visible via call trace on :erlang.exit/1 (BeamLab.TraceTest)
+     test/d_trace_test.exs:69
+     match (=) failed
+     code:  assert [{:trace, _, :call, {:erlang, :exit, noproc: {GenServer, :call, _}}}] = msgs
+     left:  [{:trace, _, :call, {:erlang, :exit, noproc: {GenServer, :call, _}}}]
+     right: [
+              {:trace, #PID<0.216.0>, :call,
+               {:erlang, :exit, [:noproc]}},
+              {:trace, #PID<0.216.0>, :call,
+               {:erlang, :exit,
+                [
+                  noproc: {GenServer, :call,
+                   [#PID<0.215.0>, :ping, 5000]}
+                ]}}
+            ]
+     stacktrace:
+       test/d_trace_test.exs:73: (test)
+
+
+Finished in 1.1 seconds (0.00s async, 1.1s sync)
+
+Result: 4/7 passed
+Failed: 3 tests

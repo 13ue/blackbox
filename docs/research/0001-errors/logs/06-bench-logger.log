@@ -1,0 +1,195 @@
+### primary :info (debug off)
+Benchmarking Logger.debug off ...
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Calculating statistics...
+Formatting results...
+
+Name                       ips        average  deviation         median         99th %
+Logger.debug off       33.86 M       29.53 ns  ±5731.86%          25 ns       45.80 ns
+
+Memory usage statistics:
+
+Name                Memory usage
+Logger.debug off            24 B
+
+**All measurements for memory usage were the same**
+### primary :debug, only console handler at :info
+Benchmarking Logger.debug, no crumb handler ...
+Calculating statistics...
+Formatting results...
+
+Name                                     ips        average  deviation         median         99th %
+Logger.debug, no crumb handler        1.76 M      569.00 ns  ±1008.46%         500 ns         709 ns
+
+Memory usage statistics:
+
+Name                              Memory usage
+Logger.debug, no crumb handler         1.13 KB
+
+**All measurements for memory usage were the same**
+### primary :debug + pdict crumb handler
+Benchmarking Logger.debug -> pdict ring ...
+Calculating statistics...
+Formatting results...
+
+Name                                 ips        average  deviation         median         99th %
+Logger.debug -> pdict ring        1.18 M      850.52 ns  ±1689.70%         750 ns        1542 ns
+
+Memory usage statistics:
+
+Name                          Memory usage
+Logger.debug -> pdict ring         2.36 KB
+
+**All measurements for memory usage were the same**
+### primary :debug + ETS crumb handler
+Benchmarking Logger.debug -> ETS ring ...
+Calculating statistics...
+Formatting results...
+
+Name                               ips        average  deviation         median         99th %
+Logger.debug -> ETS ring        1.11 M      899.91 ns   ±484.83%         834 ns        1167 ns
+
+Memory usage statistics:
+
+Name                        Memory usage
+Logger.debug -> ETS ring         2.45 KB
+
+**All measurements for memory usage were the same**
+### raw ring writes, 1 process
+Benchmarking Ring.Ets.add ...
+Benchmarking Ring.Pdict.add ...
+Benchmarking Ring.Server.add (cast) ...
+Calculating statistics...
+Formatting results...
+
+Name                             ips        average  deviation         median         99th %
+Ring.Pdict.add               16.79 M       59.57 ns  ±6232.02%          42 ns         375 ns
+Ring.Server.add (cast)        4.35 M      229.66 ns  ±2098.92%         166 ns         375 ns
+Ring.Ets.add                  3.45 M      289.92 ns  ±2010.30%         250 ns         334 ns
+
+Comparison: 
+Ring.Pdict.add               16.79 M
+Ring.Server.add (cast)        4.35 M - 3.86x slower +170.09 ns
+Ring.Ets.add                  3.45 M - 4.87x slower +230.35 ns
+
+Memory usage statistics:
+
+Name                      Memory usage
+Ring.Pdict.add                     0 B
+Ring.Server.add (cast)            56 B - ∞ x memory usage +56 B
+Ring.Ets.add                      56 B - ∞ x memory usage +56 B
+
+**All measurements for memory usage were the same**
+### raw ring writes, 8 parallel processes
+Benchmarking Ring.Ets.add ...
+Benchmarking Ring.Pdict.add ...
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Benchmarking Ring.Server.add (cast) ...
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Calculating statistics...
+Formatting results...
+
+Name                             ips        average  deviation         median         99th %
+Ring.Pdict.add             2534.53 K        0.39 μs   ±612.26%      0.0208 μs       12.81 μs
+Ring.Ets.add                706.94 K        1.41 μs  ±1804.54%        0.29 μs        0.54 μs
+Ring.Server.add (cast)      548.91 K        1.82 μs  ±2388.85%        0.25 μs        1.33 μs
+
+Comparison: 
+Ring.Pdict.add             2534.53 K
+Ring.Ets.add                706.94 K - 3.59x slower +1.02 μs
+Ring.Server.add (cast)      548.91 K - 4.62x slower +1.43 μs
+
+Memory usage statistics:
+
+Name                      Memory usage
+Ring.Pdict.add                     0 B
+Ring.Ets.add                      56 B - ∞ x memory usage +56 B
+Ring.Server.add (cast)            56 B - ∞ x memory usage +56 B
+
+**All measurements for memory usage were the same**
+server mailbox after parallel run: {:message_queue_len, 8560997}
+full logger event: 256 heap bytes, 166 external bytes
+compact crumb {time, level, msg}: 56 heap bytes (+ binary 4 bytes off-heap)
+pdict ring of 50 crumbs: 4424 heap bytes
+ETS table after runs: 371920 rows, 59240944 bytes

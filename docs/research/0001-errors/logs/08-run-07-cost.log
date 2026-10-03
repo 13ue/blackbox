@@ -1,0 +1,25 @@
+Running ExUnit with seed: 1, max_cases: 22
+Including tags: [:flood]
+
+08-33 µs/call: Logger.error with handler=14.75 without=0.82 | Logger.debug crumb=1.06 without handler=0.72 | Spike.crumb=0.32 | from_log(12 frames, 20 crumbs)=1407.6
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2242 B
+
+
+  1) test 08-33: per-call cost in the caller: error capture, log crumb, manual crumb, crash normalization (Spike.CostTest)
+     test/cost_test.exs:36
+     Assertion with < failed
+     code:  assert normalize < 200
+     left:  1407.6035
+     right: 200
+     stacktrace:
+       test/cost_test.exs:63: (test)
+
+08-32 target=20000/s achieved=19993/s sent=40000 stored=40000 dropped=0 queue_max=19 buffer_mem_max=494984
+08-32 target=50000/s achieved=49981/s sent=100000 stored=100000 dropped=0 queue_max=7 buffer_mem_max=607168
+08-32 target=100000/s achieved=99945/s sent=200000 stored=200000 dropped=0 queue_max=492 buffer_mem_max=1235680
+08-32 target=200000/s achieved=199902/s sent=400000 stored=400000 dropped=0 queue_max=67 buffer_mem_max=1076768
+.
+Finished in 32.4 seconds (0.00s async, 32.4s sync)
+
+Result: 1/2 passed
+Failed: 1 test

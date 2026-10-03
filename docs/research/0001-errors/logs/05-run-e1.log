@@ -1,0 +1,21 @@
+Compiling 2 files (.ex)
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+    warning: unused import Lab05.HTTP
+    │
+  6 │   import Lab05.HTTP
+    │   ~
+    │
+    └─ test/e_live_view_test.exs:6:3
+
+05-33 mount exception meta keys: [:reason, :session, :socket, :stacktrace, :params, :uri, :kind, :telemetry_span_context]
+.05-34 frames: [["4", "4", "lv:phx-GNkijHk3DiPEwwAC", "phx_error", %{"reason" => "channel_crash"}]]
+05-34 handle_event exception meta keys: [:reason, :socket, :stacktrace, :params, :kind, :event, :telemetry_span_context]
+05-34 last_message: %Phoenix.Socket.Message{topic: "lv:phx-GNkijHk3DiPEwwAC", event: "event", payload: %{"event" => "boom", "type" => "click", "value" => %{...}}, ...}
+05-34 process_label: {Phoenix.LiveView, Lab05.Live, "lv:phx-GNkijHk3DiPEwwAC"}
+...
+Finished in 2.6 seconds (0.00s async, 2.6s sync)
+
+Result: 4 passed

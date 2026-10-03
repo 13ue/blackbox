@@ -1,0 +1,14 @@
+Running ExUnit with seed: 495729, max_cases: 22
+Including tags: [:flood]
+
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=210968 B queue_max=8 vm_total_before=69889471 vm_total_max=74245238 (+4253 KiB)
+08-27 probe idle p50/p99/max=9/37/59 µs flood p50/p99/max=8/88/859 µs
+.08-29 spawn crashes sent=30000 in 3001 ms captured=30000 db_count=30000
+.08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=0
+.08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=301864 queue_max=15 vm +1205 KiB
+08-30 probe idle p50/p99=2/13 µs, db down + flood p50/p99/max=2/18/101 µs; stored after recovery=30000
+.
+Finished in 24.9 seconds (0.00s async, 24.9s sync)
+
+Result: 4 passed

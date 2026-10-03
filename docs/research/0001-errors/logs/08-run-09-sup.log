@@ -1,0 +1,19 @@
+Running ExUnit with seed: 1, max_cases: 22
+Excluding tags: [:flood]
+
+
+
+  1) test 08-34: with sasl on, a crash of a SUPERVISED GenServer is still one event (supervisor reports are not new failures) (Spike.CaptureTest)
+     test/capture_test.exs:103
+     Assertion with == failed
+     code:  assert Enum.map(issues, &{&1.type, &1.count}) == [{"ArgumentError", 1}]
+     left:  [{"ArgumentError", 1}, {"log", 1}]
+     right: [{"ArgumentError", 1}]
+     stacktrace:
+       test/capture_test.exs:110: (test)
+
+..........
+Finished in 4.7 seconds (0.00s async, 4.7s sync)
+
+Result: 10/11 passed
+Failed: 1 test

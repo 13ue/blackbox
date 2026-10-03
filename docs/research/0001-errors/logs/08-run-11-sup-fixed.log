@@ -1,0 +1,8 @@
+Compiling 2 files (.ex)
+Running ExUnit with seed: 1, max_cases: 22
+Excluding tags: [:flood]
+
+............
+Finished in 5.2 seconds (0.00s async, 5.2s sync)
+
+Result: 12 passed

@@ -1,0 +1,8 @@
+local call, untraced: 16.6 ns/call
+local call, call-traced by a session (tracer = draining process): 314.2 ns/call
+local call, function has a trace pattern but the process is not traced: 23.9 ns/call
+receive 200000 queued msgs, untraced: 21.8 ns/msg
+receive, receive-traced by a session: 22.1 ns/msg (the tracing cost lands at send time for the sender too, not measured here)
+one trace message {:trace, pid, :receive, {:work, 1}}: 64 heap bytes in the tracer
+send to an untraced process: 113.7 ns/msg
+send to a receive-traced process: 106.4 ns/msg

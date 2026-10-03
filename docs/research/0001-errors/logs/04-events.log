@@ -1,0 +1,2345 @@
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.169.0> raised an exception\n** (ErlangError) E", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.176.0> raised an exception\n** (ArgumentError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.182.0> raised an exception\n** (ErlangError) E", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.208.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.214.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-12 kill
+
+
+== 04-11 Task.await timeout
+
+
+== 04-8 Task shutdown/normal
+
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.169.0> raised an exception\n** (ErlangError) E", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.175.0> raised an exception\n** (ArgumentError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.186.0> raised an exception\n** (ErlangError) E", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.206.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.218.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-15 init raise
+
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-20 stop normal/shutdown
+
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-23 call timeout
+
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.208.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-31 label plain
+%{label: "Process #PID<0.214.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.149.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.160.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-31 label plain
+%{label: "Process #PID<0.194.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.165.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.176.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-31 label plain
+%{label: "Process #PID<0.182.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-31 label plain
+%{label: "Process #PID<0.186.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.211.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.230.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.232.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.234.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-40 silent
+
+
+== 04-40 silent
+
+
+== 04-40 silent
+
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15590.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15633.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15635.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15637.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15643.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15658.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15671.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15689.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15728.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15734.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-23 call timeout
+
+
+== 04-29 brutal kill
+
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-40 silent
+
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15599.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15614.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15633.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15635.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15637.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-11 Task.await timeout
+
+
+== 04-8 Task shutdown/normal
+
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-12 kill
+
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15691.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15705.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-3 spawn exit
+
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15717.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15723.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15734.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-40 silent
+
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15594.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15596.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15598.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15604.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15620.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15665.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15671.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15677.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-3 spawn exit
+
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15689.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-12 kill
+
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15730.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-20 stop normal/shutdown
+
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-23 call timeout
+
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-40 silent
+
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15601.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15629.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15631.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15633.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15643.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15651.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15676.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15682.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-11 Task.await timeout
+
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15708.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15714.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-15 init raise
+
+
+== 04-29 brutal kill
+
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-40 silent
+
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15590.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15596.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15598.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15600.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15635.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15649.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15662.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15668.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15687.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-11 Task.await timeout
+
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15720.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-23 call timeout
+
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-40 silent
+
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15588.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15594.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15600.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15602.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15604.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15655.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15661.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15667.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-8 Task shutdown/normal
+
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15694.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15718.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-79 telemetry
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:reason, :stacktrace, :kind, :handler_id], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :error, kind: :report_map}
+
+== 04-72 init raise
+
+
+== 04-77 route B
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-73 spawn exit
+
+
+== 04-75a restart/give up
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-75b start error
+
+
+== 04-70a dict genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-70b dict task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-70c dict plain
+%{label: "Process #PID<0.321.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-70d dict proc_lib crash
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-78 monitor
+
+
+== 04-74 linked caller
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-76 route A
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-78 monitor
+
+
+== 04-77 route B
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-73 spawn exit
+
+
+== 04-74 linked caller
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-75a restart/give up
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-75b start error
+
+
+== 04-76 route A
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-72 init raise
+
+
+== 04-79 telemetry
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:reason, :stacktrace, :kind, :handler_id], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :error, kind: :report_map}
+
+== 04-70a dict genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-70b dict task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-70c dict plain
+%{label: "Process #PID<0.264.0> raised an exception\n** (RuntimeError) ", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-70d dict proc_lib crash
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-40 silent
+
+
+== 04-72 init raise
+
+
+== 04-73 spawn exit
+
+
+== 04-76 route A
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-77 route B
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-79 telemetry
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:reason, :stacktrace, :kind, :handler_id], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :error, kind: :report_map}
+
+== 04-75a restart/give up
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-75b start error
+
+
+== 04-70a dict genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-70b dict task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-70c dict plain
+%{label: "Process #PID<0.15691.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-70d dict proc_lib crash
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-78 monitor
+
+
+== 04-74 linked caller
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15722.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15724.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15726.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15760.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15766.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15787.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15793.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15812.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-12 kill
+
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15845.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15864.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-40 silent
+
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15666.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15668.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15670.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15680.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15686.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-74 linked caller
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-77 route B
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-78 monitor
+
+
+== 04-72 init raise
+
+
+== 04-79 telemetry
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:reason, :stacktrace, :kind, :handler_id], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :error, kind: :report_map}
+
+== 04-73 spawn exit
+
+
+== 04-75a restart/give up
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-75b start error
+
+
+== 04-70a dict genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-70b dict task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-70c dict plain
+%{label: "Process #PID<0.15761.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-70d dict proc_lib crash
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-76 route A
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15783.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15796.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15809.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-3 spawn exit
+
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15840.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15859.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-23 call timeout
+
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-40 silent
+
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15650.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15669.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15690.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15692.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15694.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-74 linked caller
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-70a dict genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-70b dict task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-70c dict plain
+%{label: "Process #PID<0.15717.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-70d dict proc_lib crash
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-76 route A
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-75a restart/give up
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-75b start error
+
+
+== 04-79 telemetry
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:reason, :stacktrace, :kind, :handler_id], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :error, kind: :report_map}
+
+== 04-77 route B
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-72 init raise
+
+
+== 04-78 monitor
+
+
+== 04-73 spawn exit
+
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15781.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15800.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15813.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-3 spawn exit
+
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15858.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15864.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-40 silent
+
+
+== 04-36a md task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :request_id, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-36b md genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :request_id, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-36c md plain
+%{label: "Process #PID<0.15641.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-32 label task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-34a self recursion
+%{label: "Process #PID<0.15653.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34a depth 8
+%{label: "Process #PID<0.15655.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-34b depth 64
+%{label: "Process #PID<0.15657.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-37 app stop
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-35 sys log
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-33 label genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-31 label plain
+%{label: "Process #PID<0.15685.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-38 app crash
+%{label: {:application_controller, :exit}, meta: [:domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :notice, kind: :report_map}
+
+== 04-75a restart/give up
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-75b start error
+
+
+== 04-78 monitor
+
+
+== 04-73 spawn exit
+
+
+== 04-76 route A
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-74 linked caller
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-72 init raise
+
+
+== 04-70a dict genserver
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-70b dict task
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-70c dict plain
+%{label: "Process #PID<0.15758.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-70d dict proc_lib crash
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-79 telemetry
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:function, :type, :config, :handler_id, :event_names], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :info, kind: :report_map}
+%{label: [:reason, :stacktrace, :kind, :handler_id], meta: [:domain, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:telemetry], level: :error, kind: :report_map}
+
+== 04-77 route B
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-6 Task.start raise
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-9 Task.async await
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-2 spawn throw
+%{label: "Process #PID<0.15794.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-11 Task.await timeout
+
+
+== 04-4 spawn badarg
+%{label: "Process #PID<0.15807.0> raised an exception\n** (ArgumentErro", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-12 kill
+
+
+== 04-7 Task.start exit
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-5 spawn_link raise
+%{label: "Process #PID<0.15827.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-3 spawn exit
+
+
+== 04-14 erlang.error
+%{label: "Process #PID<0.15839.0> raised an exception\n** (ErlangError)", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-13 Logger.error
+%{label: "hello", meta: [:domain, :file, :gl, :line, :mfa, :pid, :time], domain: [:elixir], level: :error, kind: :string}
+
+== 04-1 spawn raise
+%{label: "Process #PID<0.15850.0> raised an exception\n** (RuntimeError", meta: [:crash_reason, :error_logger, :gl, :pid, :time], domain: nil, level: :error, kind: :string}
+
+== 04-10 async_nolink
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-8 Task shutdown/normal
+
+
+== 04-21 stop boom
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-24 no_handle_info
+%{label: {GenServer, :no_handle_info}, meta: [:domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-17 handle_call raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-39 task sasl
+%{label: {Task.Supervisor, :terminating}, meta: [:callers, :crash_reason, :domain, :error_logger, :gl, :pid, :report_cb, :time], domain: [:otp, :elixir], level: :error, kind: :report_map}
+
+== 04-39b genserver sasl
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-28s max intensity sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :shutdown}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-29s brutal kill sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-26 gen_statem
+%{label: {:gen_statem, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-19 handle_info raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-27 sup restart
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-22 terminate raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-20 stop normal/shutdown
+
+
+== 04-18 handle_cast raise
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-16 init raise sasl
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+
+== 04-29 brutal kill
+
+
+== 04-28 max intensity
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-15 init raise
+
+
+== 04-27s sup restart sasl
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+%{label: {:proc_lib, :crash}, meta: [:ancestors, :crash_reason, :domain, :error_logger, :file, :gl, :initial_call, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :child_terminated}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :error, kind: :report_map}
+%{label: {:supervisor, :progress}, meta: [:domain, :error_logger, :file, :gl, :line, :logger_formatter, :mfa, :pid, :report_cb, :time], domain: [:otp, :sasl], level: :info, kind: :report_map}
+
+== 04-25 Agent
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-30 trapped exit
+%{label: {:gen_server, :terminate}, meta: [:crash_reason, :domain, :error_logger, :file, :gl, :line, :mfa, :pid, :report_cb, :time], domain: [:otp], level: :error, kind: :report_map}
+
+== 04-23 call timeout
+

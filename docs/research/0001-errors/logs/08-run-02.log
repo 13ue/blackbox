@@ -1,0 +1,36 @@
+Running ExUnit with seed: 1, max_cases: 22
+Excluding tags: [:flood]
+
+    warning: variable "s" is unused (if the variable is not meant to be used, prefix it with an underscore)
+    │
+  8 │     def handle_call(:boom, _, s) do
+    │                               ~
+    │
+    └─ test/crumbs_test.exs:8:31: Spike.CrumbsTest.Gs.handle_call/3
+
+...warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+...warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+warning: the following conditional expression:
+
+    (fn -> :ok end).()
+
+will always evaluate to:
+
+    dynamic(:ok)
+
+└─ fp_0.ex:2: FpMod.run/1
+
+.warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+......................
+Finished in 12.4 seconds (0.00s async, 12.4s sync)
+
+Result: 29 passed

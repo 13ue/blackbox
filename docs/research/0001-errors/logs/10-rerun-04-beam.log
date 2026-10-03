@@ -1,0 +1,16 @@
+Running ExUnit with seed: 7483, max_cases: 1
+
+    warning: unused require Logger
+    │
+  4 │   require Logger
+    │   ~
+    │
+    └─ test/c_details_test.exs:4:3
+
+..............Logger - error: {removed_failing_handler,bad_raise}
+Logger - error: {removed_failing_handler,bad_exit}
+Logger - error: {removed_failing_handler,bad_throw}
+..........................................................
+Finished in 49.4 seconds (0.00s async, 49.4s sync)
+
+Result: 72 passed

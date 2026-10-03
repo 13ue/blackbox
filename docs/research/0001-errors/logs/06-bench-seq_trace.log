@@ -1,0 +1,5 @@
+GenServer.call, no label: median of 5 runs 878.3 ns/call (runs [885, 891, 878, 867, 872])
+GenServer.call, label "req-0123456789": median of 5 runs 1006.2 ns/call (runs [969, 980, 1042, 1006, 1008])
+GenServer.call, label 1 KB map: median of 5 runs 2233.8 ns/call (runs [2267, 2253, 2200, 2234, 2207])
+set_token(:label, id): 23.1 ns
+get_token(:label): 198.9 ns

@@ -1,0 +1,117 @@
+Compiling 1 file (.ex)
+Generated beam_lab app
+Running ExUnit with seed: 137688, max_cases: 1
+
+.
+
+  1) test 04-64: a handler that logs from inside log/2 does not recurse into itself (BeamLab.HandlerSafetyTest)
+     test/f_handler_safety_test.exs:38
+     Assertion with == failed
+     code:  assert n == 1
+     left:  1000
+     right: 1
+     stacktrace:
+       test/f_handler_safety_test.exs:46: (test)
+
+
+
+  2) test 04-68: 10k crashing plain processes -> emulator reports through :logger_proxy; the handler sees all of them (BeamLab.HandlerSafetyTest)
+     test/f_handler_safety_test.exs:99
+     Assertion with == failed
+     code:  assert n == 10000
+     left:  1719
+     right: 10000
+     stacktrace:
+       test/f_handler_safety_test.exs:103: (test)
+
+....Logger - error: {removed_failing_handler,bad_raise}
+
+
+  3) test 04-60: a handler that raises / exits / throws is removed by :logger; the event still reaches other handlers; the caller is unaffected (BeamLab.HandlerSafetyTest)
+     test/f_handler_safety_test.exs:14
+     Expected false or nil, got true
+     code: refute Enum.any?(events, &(inspect(&1) =~ "#{id}"))
+     arguments:
+
+         # 1
+         [
+           %{
+             meta: %{
+               line: 19,
+               pid: #PID<0.15448.0>,
+               time: 1790500895207306,
+               file: ~c"/Users/lennartbuttner/Projects/1charta/docs/research/0031-errors/lab/04-beam/test/f_handler_safety_test.exs",
+               gl: #PID<0.15452.0>,
+               domain: [:elixir],
+               mfa: {BeamLab.HandlerSafetyTest,
+                :"test 04-60: a handler that raises / exits / throws is removed by :logger; the event still reaches other handlers; the caller is unaffected",
+                1}
+             },
+             msg: {:string, "trigger raise"},
+             level: :error,
+             handler_pid: #PID<0.15448.0>
+           },
+           %{
+             meta: %{
+               line: 61,
+               pid: #PID<0.15448.0>,
+               time: 1790500895207479,
+               file: ~c"logger_backend.erl",
+               gl: #PID<0.15452.0>,
+               mfa: {:logger_backend, :call_handlers, 3},
+               internal_log_event: true
+             },
+             msg: {:report,
+              [
+                logger: :removed_failing_handler,
+                handler: {:bad_raise, BeamLab.BadHandler},
+                log_event: %{
+                  meta: %{
+                    line: 19,
+                    pid: #PID<0.15448.0>,
+                    time: 1790500895207306,
+                    file: ~c"/Users/lennartbuttner/Projects/1charta/docs/research/0031-errors/lab/04-beam/test/f_handler_safety_test.exs",
+                    gl: #PID<0.15452.0>,
+                    domain: [:elixir],
+                    mfa: {BeamLab.HandlerSafetyTest,
+                     :"test 04-60: a handler that raises / exits / throws is removed by :logger; the event still reaches other handlers; the caller is unaffected",
+                     1}
+                  },
+                  msg: {:string, "trigger raise"},
+                  level: :error
+                },
+                config: %{
+                  id: :bad_raise,
+                  module: BeamLab.BadHandler,
+                  config: %{mode: :raise},
+                  formatter: {:logger_formatter, %{}}
+                },
+                reason: {:error,
+                 %RuntimeError{message: "handler boom"},
+                 [
+                   {BeamLab.BadHandler, :log, 2,
+                    [
+                      file: ~c"test/support/workers.ex",
+                      line: 88,
+                      error_info: %{module: Exception}
+                    ]}
+                 ]}
+              ]},
+             level: :debug,
+             handler_pid: #PID<0.15454.0>
+           }
+         ]
+
+         # 2
+         #Function<25.123721571/1 in BeamLab.HandlerSafetyTest."test 04-60: a handler that raises / exits / throws is removed by :logger; the event still reaches other handlers; the caller is unaffected"/1>
+
+     stacktrace:
+       test/f_handler_safety_test.exs:28: anonymous fn/2 in BeamLab.HandlerSafetyTest."test 04-60: a handler that raises / exits / throws is removed by :logger; the event still reaches other handlers; the caller is unaffected"/1
+       (elixir 1.20.4) lib/enum.ex:2622: Enum."-reduce/3-lists^foldl/2-0-"/3
+       test/f_handler_safety_test.exs:15: (test)
+
+
+Finished in 10.1 seconds (0.00s async, 10.1s sync)
+
+Result: 5/8 passed
+Failed: 3 tests

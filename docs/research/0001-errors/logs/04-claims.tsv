@@ -1,0 +1,72 @@
+04-1	spawn+raise: one :error event from the emulator, handler runs in :logger, domain [:otp], crash_reason in meta	red	one :error event, handler runs in :logger_proxy, NO domain, NO mfa; meta = pid, gl, time, error_logger %{tag: :error, emulator: true}, crash_reason (added by Elixir translator); msg translated to {:string, _}	04-1
+04-2	spawn+throw: crash_reason {{:nocatch,:boom},stack}	red	crash_reason {%ErlangError{original: {:nocatch, :boom}}, stack}: the throw kind is lost, looks like an error	04-2
+04-3	spawn+exit(:boom): nothing logged	green	nothing reaches any handler	04-3
+04-4	spawn+BIF badarg: logged as ArgumentError	green	same as 04-1, crash_reason {%ArgumentError{}, [{:erlang, :atom_to_binary, [1], _}]}	04-4
+04-5	spawn_link+raise: logged once; linked plain parent dies silently	green	one event; parent's death by link is not logged	04-5
+04-6	Task.start+raise: :error report {Task.Supervisor,:terminating} logged IN the task process, meta callers+crash_reason	green	domain [:otp, :elixir], meta callers, crash_reason, error_logger %{tag: :error_msg}, report_cb; report keys args/function/name/reason/process_label/starter; no mfa	04-6
+04-7	Task.start+exit(:boom): Task logs non-normal exits	green	logged, crash_reason {:boom, stack}	04-7
+04-8	Task exit :normal / {:shutdown,_}: nothing	green	nothing	04-8
+04-9	Task.async+await: task crash logged once, caller killed by link silently	green	one event, callers [caller]	04-9
+04-10	Task.Supervisor.async_nolink: logged once, yield gives {:exit,_}, meta has ancestors	red	logged once with callers; NO ancestors in meta; report.starter = caller	04-10
+04-11	Task.await timeout: caller exits {:timeout,{Task,:await,_}}, nothing logged	green	nothing logged (plain caller)	04-11
+04-12	exit(:kill) self or Process.exit(p,:kill): nothing logged	green	nothing	04-12
+04-13	Logger.error: handler runs in caller, domain [:elixir], mfa/file/line	green	as predicted; msg {:string, "hello"}	04-13
+04-14	:erlang.error(:foo) in plain process: ErlangError crash_reason	green	as predicted	04-14
+04-15	GenServer init raise (default config): start returns {:error,_}, nothing reaches handlers	green	nothing at all: the only report is a proc_lib crash report in domain [:otp,:sasl], stopped by the primary translator filter	04-15
+04-16	init raise with sasl on: proc_lib crash report with the full process snapshot	green	label {:proc_lib,:crash}, report [info_kw, neighbours]; info has initial_call, pid, registered_name, process_label, error_info, ancestors, message_queue_len, messages, links, dictionary, trap_exit, status, heap_size, stack_size, reductions; meta adds ancestors, initial_call, crash_reason	04-16
+04-17	handle_call raise: {:gen_server,:terminate} report nested under :report, handler in server process, client_info {pid,_,_}	red	report is FLAT: %{label,name,reason,log,state,last_message,process_label,client_info}; client_info = {pid, {pid, caller's current stacktrace}}; handler runs in the server; meta mfa/file/line point at gen_server internals	04-17
+04-18	handle_cast raise: last_message {:"$gen_cast",_}, client_info :undefined	green	as predicted (after flat-shape fix)	04-18
+04-19	handle_info throw: crash_reason {{:nocatch,:boom},_}	red	a throw in a gen_server callback is a RETURN VALUE: reason {:bad_return_value, :boom}, stacktrace []	04-19
+04-20	{:stop, :normal/:shutdown/{:shutdown,_}}: nothing logged	green	nothing	04-20
+04-21	{:stop, :boom}: logged, crash_reason {:boom, []}	green	as predicted, no stacktrace	04-21
+04-22	terminate raises: reason = terminate exception	green	the original reason is lost from crash_reason	04-22
+04-23	GenServer.call timeout: caller exits {:timeout,_}; nothing logged	green	nothing; server keeps running	04-23
+04-24	stray message to use GenServer w/o handle_info: :error {GenServer,:no_handle_info}, process lives	green	domain [:otp,:elixir]	04-24
+04-25	Agent.get raising fun: Agent server crashes with gen_server report, last_message {:get,_}	green	as predicted	04-25
+04-26	gen_statem raise: {:gen_statem,:terminate} report	green (after flat fix)	reason is {class, reason, stack}; has queue, modules, state {name,data}; no last_message	04-26
+04-27	supervised child crash (default): only the child's gen_server report	green	supervisor child_terminated + progress are filtered	04-27
+04-28	max intensity (default): supervisor dies :shutdown, not logged; only child reports	green	2 child reports, supervisor giving up is invisible	04-28
+04-29	brutal kill of supervised GenServer (default): nothing logged	green	nothing	04-29
+04-30	Process.exit(trapping server, :boom) from non-parent: {:EXIT} message; no clause -> FunctionClauseError	green	as predicted	04-30
+04-27s	with sasl: gen_server + proc_lib crash + child_terminated + progress	green	4 events (+ start progress)	04-27s
+04-28s	max intensity with sasl: {:supervisor,:shutdown} report	green	as predicted	04-28s
+04-29s	brutal kill with sasl: child_terminated reason :killed	green	as predicted; the ONLY trace a killed process leaves	04-29s
+04-31	Process.set_label in plain spawn: emulator event carries no label	green	label is nowhere in the event	04-31
+04-32	set_label in Task: report.process_label	green	report.report.process_label = {:job, 7}	04-32
+04-33	set_label in GenServer: report.process_label	green	as predicted	04-33
+04-34	backtrace_depth defaults to 8 and truncates; 64 keeps 21+	red	8 in a plain VM but ExUnit sets 20 (its :stacktrace_depth); truncation to 8 verified; 64 keeps 21+; and (2nd red) direct self-recursion at one call site collapses to one frame (down(20) -> 2 frames total)	04-34
+04-35	GenServer debug: [log: 5]: report.log has the last :sys events	green	[{:in, call}, {:out, reply, to, state}, ..., {:in, {:"$gen_cast", {:do,:raise}}}]: last message + replies + state after each reply	04-35
+04-36	dying process's Logger.metadata: in Task and GenServer reports, not in plain spawn	green	as predicted (plain spawn events are emitted in :logger_proxy)	04-36
+04-37	Application.stop: :info {:application_controller,:exit}	red	level :notice	04-37
+04-38	temporary app top sup killed: :info event only	red	:notice event only (exited :killed, type :temporary) plus nothing else	04-38
+04-40	swallowed rescue, {:error,_} return, catch :exit: nothing reaches any handler	green	nothing	04-40
+04-43	exception_trace on a module sees a raise swallowed by its caller	red	first run saw nothing because the module was not loaded yet (see 04-49); once loaded: {:trace, pid, :exception_from, {Silent,:inner,0}, {:error, %RuntimeError{}}}	04-43
+04-44	raise+rescue in ONE function: exception_trace sees nothing; call trace on :erlang.error/_ sees it	green	as predicted: {:trace, pid, :call, {:erlang, :error, [%RuntimeError{}, :none, [error_info: ...]]}}	04-44
+04-45	BIF badarg rescued: invisible to :erlang.error tracing	red	atom_to_binary/1 IS visible (Erlang-level wrapper calls erlang:error/3); badarith, element/2, badmatch, case_clause raised by instructions are invisible	04-45
+04-46	{:error,_} returns visible via return_trace	green	{:trace, pid, :return_from, {Silent,:lookup,1}, {:error,:nope}}; filtering must happen in the tracer	04-46
+04-47	catch :exit on GenServer.call to dead pid visible via call trace on :erlang.exit/1 (one message)	red	TWO exit calls: gen.erl exit(:noproc) internally, then GenServer.call re-exits {:noproc, {GenServer,:call,_}}: control-flow exits are noisy	04-47
+04-48	two sessions trace one process independently; destroying one leaves the other	green	as predicted	04-48
+04-49	pattern set while module unloaded matches 0 fns; module stays untraced after load	green	as predicted: :trace.function returns 0, no messages after autoload	04-49
+04-50	{:silent,true}/silent flag suppresses call msgs but keeps exception_from	red	silent mode suppresses exception_from too (0 messages)	04-50
+04-51	trace costs: traced exception_trace >5x; untraced processes <2x; erlang:error pattern ~0	red (untraced part)	baseline 2.6-3.1 ns/iter; pattern active but process NOT traced 13.6-14.8 ns (~4.5x, every process pays); exception_trace traced ~16 us/iter (~5000x, 4 msgs/iter); erlang:error/exit/throw call trace 2.6-3.4 ns (noise); setting {_,_,_} on 23,590 loaded functions takes 6-8 ms	04-51
+04-52	traced raise costs < 2x an untraced raise	red	~6-7x on the raise path: 100k raises 5.8-7.0 ms untraced vs 41-43 ms traced = +0.35 us per raise (one message each)	04-52
+04-53	raise cost is O(stack depth) (found by accident)	green (written after observation)	100k swallowed raises: 7.4 ms in a tail loop vs 5.03 s inside a `for` (100k-deep body recursion): ~48 us per raise at depth 100k	04-53
+04-39	with sasl: one Task crash = 2 events (Task report + proc_lib crash report)	red	1 event: Task.Supervised spawns without proc_lib, so no crash report; a GenServer call crash = 2 events (gen_server + proc_lib crash), same meta.pid	04-39
+04-60	a raising/exiting/throwing handler is removed; the event still reaches other handlers; OTP tells other handlers nothing	red	removed (all 3 kinds), caller unaffected, other handlers get the event; AND other handlers receive a :debug report [logger: :removed_failing_handler, handler, log_event, config, reason {class, reason, stack}] with meta internal_log_event: true	04-60
+04-63	handlers run in the caller: a 20 ms handler makes Logger.error take >= 20 ms	green	as predicted	04-63
+04-64	a handler logging from inside log/2 does not recurse into itself	red	it recurses with no OTP guard; only our counter cap (1000) stopped it	04-64
+04-65	10k Logger.error from 100 procs: a sync handler receives all 10k	green	all 10,000 in 11-22 ms; no drop in :logger core, Elixir discard_threshold does not apply to :logger handlers	04-65
+04-66	logger_std_h (file) under 10k flood from 100 procs drops a large share	green	500/10,000 written (burst limit 500 per 1 s window), plus mode-switch/flush notices in some runs	04-66
+04-67	logger_std_h burst: 2000 from one process -> ~500 written	green	500/2000; no drop notice in the file within 1.2 s	04-67
+04-68	10k plain-process crashes: the handler sees all 10k	red	1,665-4,799 of 10,000 arrived (timing-dependent): :logger_proxy enters drop mode by setting system_logger to undefined, the VM then DISCARDS emulator error reports; only 2 :notice events ("logger_proxy switched from async to drop mode") say so, with no count	04-68
+04-69	1 ms handler + 5k plain crashes: fewer than 5k survive	flaky (red 1 of 3)	logger_proxy queue overshoots its drop_mode_qlen 1000 (1,364-4,951 after 100 ms) because drop mode reacts late; delivered 3,455-5,000	04-69
+04-70	gen_server/proc_lib/Task report handlers see the dying process's dictionary; plain spawn does not	green	Process.get in the handler returns the dying process's value for gen_server, Task and proc_lib crash reports; nil for plain spawn (runs in :logger_proxy)	04-70
+04-71	add_primary_filter prepends: our filter runs before Elixir's translator	green	filters = [lab_spy, logger_translator, ...] (logger_server.erl do_add_filter: [Filter|Filters])	04-71
+04-72	init raise under GenServer.start: emitted, dropped by translator	green	primary spy sees {:proc_lib,:crash}; handlers see nothing	04-72
+04-73	bare spawn exit(:boom): never emitted	green	spy sees nothing	04-73
+04-74	linked Task caller dying with its task: only the task report is emitted	green	caller's death never emitted	04-74
+04-75	supervisor restart, start error, max-intensity shutdown: emitted, [:otp,:sasl] ones dropped	green	spy sees child_terminated, shutdown, start_error, proc_lib crash; handler sees only the gen_server report	04-75
+04-76	route A: sasl on + domain :stop filter on the console handler: we get sasl reports, console does not	red (harness)	first run mixed both handlers' events; with separate collectors: ours = gen_server + proc_lib crash + child_terminated + progress, console = gen_server only	04-76
+04-77	route B: our primary filter before the translator sees sasl reports, all handlers see none	green	as predicted	04-77
+04-78	route D: monitor sees :killed that logger never reports	green	as predicted	04-78
+04-79	raising :telemetry handler: detached, failure event, one :error log domain [:telemetry] (from source; lead relayed "silently")	red	detached + [:telemetry,:handler,:failure] event + :error report domain [:telemetry] as read; AND every :telemetry.attach logs an :info report too (2 extra events)	04-79

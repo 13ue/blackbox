@@ -1,0 +1,42 @@
+## repo:elixir-error-tracker/error-tracker+genserver
+total 1
+110 closed Safely convert payloads to strings https://github.com/elixir-error-tracker/error-tracker/pull/110
+## repo:elixir-error-tracker/error-tracker+logger
+total 1
+2 closed Error context https://github.com/elixir-error-tracker/error-tracker/pull/2
+## repo:mimiquate/tower+crash_reason
+total 4
+188 open Improve `Tower.Event.metadata` when exception is a `Splode.Error` https://github.com/mimiquate/tower/issues/188
+148 closed build(deps-dev): bump plug_cowboy from 2.7.3 to 2.7.4 https://github.com/mimiquate/tower/pull/148
+86 closed refactor: listens Bandit's plug call exceptions via Logger handler instead of Telemetry https://github.com/mimiquate/tower/pull/86
+114 closed build(deps): bump bandit from 1.6.4 to 1.6.5 https://github.com/mimiquate/tower/pull/114
+## repo:honeybadger-io/honeybadger-elixir+breadcrumbs
+total 14
+248 open Honeybadger.Logger process starts in wrong environments and terminates/times out for no clear reason https://github.com/honeybadger-io/honeybadger-elixir/issues/248
+312 open Group LiveView exceptions by module https://github.com/honeybadger-io/honeybadger-elixir/issues/312
+663 closed Dialyzer warnings with Elixir 1.19.3 in RingBuffer module https://github.com/honeybadger-io/honeybadger-elixir/issues/663
+684 closed fix: refactor RingBuffer.add, fix type warnings https://github.com/honeybadger-io/honeybadger-elixir/pull/684
+475 closed :breadcrumbs_enabled blowing up logs, consider putting elsewhere https://github.com/honeybadger-io/honeybadger-elixir/issues/475
+487 closed Stop using logger metadata for breadcrumbs https://github.com/honeybadger-io/honeybadger-elixir/pull/487
+436 closed How to disable in test mode? https://github.com/honeybadger-io/honeybadger-elixir/issues/436
+356 closed "FunctionClauseError: no function clause matching in Jason.Encode.list_loop/3" from HB reporting https://github.com/honeybadger-io/honeybadger-elixir/issues/356
+318 closed Dialyzer errors in 0.15.0 https://github.com/honeybadger-io/honeybadger-elixir/issues/318
+305 closed Fingerprint option https://github.com/honeybadger-io/honeybadger-elixir/pull/305
+## honeybadger-io/honeybadger-elixir/issues/475
+:breadcrumbs_enabled blowing up logs, consider putting elsewhere 2023-03-14 closed
+Our logs go to datadog and we use logging metadata to send extra context. Since turning on breadcrumbs its breaking logs when the data in hb_breadcrumbs is large enough to split the json line across multiple lines.
+
+There doesnt seem to be a way to use breadcrumbs but move their storage out of the logger context. For now we have disabled breadcrumbs even though they add a ton of value.
+## honeybadger-io/honeybadger-elixir/issues/487
+Stop using logger metadata for breadcrumbs 2023-04-16 closed
+Breadcrumbs used the logger metadata for convenient access to the process dictionary. That's not necessary, and it makes standard metadata logging unusable when shipping logs to a third party service.
+
+This moves breadcrumb storage to a separate key in the process dictionary.
+
+Closes #475
+## mimiquate/tower/issues/86
+refactor: listens Bandit's plug call exceptions via Logger handler instead of Telemetry 2024-11-12 closed
+Pending for feature parity with `plug_cowboy`:
+
+- [x] `crash_reason` in logger metadata (https://github.com/mtrudel/bandit/pull/417)
+- [ ] `conn` in logger metadata if available

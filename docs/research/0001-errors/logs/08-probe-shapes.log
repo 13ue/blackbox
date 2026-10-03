@@ -1,0 +1,29 @@
+== spawn handler_pid=#PID<0.72.0> level=error meta_keys=[:error_logger, :pid, :time, :gl, :crash_reason] domain=nil crash_reason?=true
+{:string, ["Process ", "#PID<0.178.0>", " raised an exception", 10, "** (RuntimeError) plain spawn", ["\n    " | "probe/shapes.exs:19: anonymous fn/0 in :elixir_compiler_2.__" <> ...]]}
+== task handler_pid=#PID<0.180.0> level=error meta_keys=[:error_logger, :pid, :time, :gl, :domain, :report_cb, :callers, :crash_reason] domain=[:otp, :elixir] crash_reason?=true
+{:report, %{label: {Task.Supervisor, :terminating}, report: %{args: [], function: #Function<2.43127165 in file:probe/shapes.exs>, name: #PID<0.180.0>, reason: {%RuntimeError{message: "task boom"}, ...}, ...}, ...}}
+== genserver handler_pid=#PID<0.181.0> level=error meta_keys=[:error_logger, :line, :pid, :time, :file, :gl, :domain, :report_cb, :mfa, :crash_reason] domain=[:otp] crash_reason?=true
+{:report, %{label: {:gen_server, :terminate}, name: #PID<0.181.0>, reason: {%RuntimeError{message: "gs boom"}, [{G, ...}, ...]}, ...}}
+== logger.error handler_pid=#PID<0.94.0> level=error meta_keys=[:pid, :time, :gl, :domain, :user_id] domain=[:elixir] crash_reason?=false
+{:string, "just a log"}
+    error: undefined function pid/3 (there is no such import)
+    │
+  2 │ IO.inspect(Process.info(pid(0,72,0), [:registered_name, :initial_call]), label: "0.72")
+    │                         ^
+    │
+    └─ probe/primary.exs:2:25
+
+** (CompileError) probe/primary.exs: cannot compile file (errors have been logged)
+
+primary: %{
+  level: :debug,
+  filter_default: :log,
+  filters: [
+    logger_translator: {&Logger.Utils.translator/2,
+     %{otp: true, sasl: false, translators: [{Logger.Translator, :translate}]}},
+    logger_process_level: {&Logger.Utils.process_level/2, []}
+  ],
+  metadata: %{}
+}
+0.72: [registered_name: :logger_proxy, initial_call: {:proc_lib, :init_p, 5}]
+handle_sasl_reports: false

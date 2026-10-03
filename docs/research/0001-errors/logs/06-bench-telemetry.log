@@ -1,0 +1,38 @@
+Benchmarking execute, 0 handlers ...
+Calculating statistics...
+Formatting results...
+
+Name                          ips        average  deviation         median         99th %
+execute, 0 handlers       11.85 M       84.35 ns  ±7239.88%          83 ns         125 ns
+
+Memory usage statistics:
+
+Name                   Memory usage
+execute, 0 handlers            32 B
+
+**All measurements for memory usage were the same**
+Benchmarking execute, 1 handler -> ETS ring ...
+Benchmarking execute, 1 handler -> pdict ring ...
+Benchmarking execute, 1 noop handler ...
+Calculating statistics...
+Formatting results...
+
+Name                                       ips        average  deviation         median         99th %
+execute, 1 noop handler                 8.42 M      118.78 ns  ±9346.77%          83 ns         167 ns
+execute, 1 handler -> pdict ring        6.61 M      151.27 ns  ±2974.54%         125 ns         458 ns
+execute, 1 handler -> ETS ring          2.77 M      361.29 ns  ±2017.10%         292 ns         625 ns
+
+Comparison: 
+execute, 1 noop handler                 8.42 M
+execute, 1 handler -> pdict ring        6.61 M - 1.27x slower +32.49 ns
+execute, 1 handler -> ETS ring          2.77 M - 3.04x slower +242.51 ns
+
+Memory usage statistics:
+
+Name                                Memory usage
+execute, 1 noop handler                    144 B
+execute, 1 handler -> pdict ring           144 B - 1.00x memory usage +0 B
+execute, 1 handler -> ETS ring             232 B - 1.61x memory usage +88 B
+
+**All measurements for memory usage were the same**
+telemetry crumb {t, event, measurements}: 128 heap bytes

@@ -1,0 +1,72 @@
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+05-37 query event meta keys: [:type, :options, :stacktrace, :result, :params, :source, :query, :repo, :cast_params]
+..05-39 queries: ["begin", "INSERT INTO \"things\" (\"name\") VALUES ($1) RETURNING \"id\"", "rollback"]
+..05-41 terminated=1 logs=[] meta keys=[]
+
+
+  1) test 05-41: pg_terminate_backend on an idle pool connection: DBConnection logs one :error 'disconnected' from the connection pid; no telemetry (Lab05.EctoTest)
+     test/f_ecto_test.exs:60
+     Assertion with == failed
+     code:  assert length(logs) == n
+     left:  0
+     right: 1
+     stacktrace:
+       test/f_ecto_test.exs:68: (test)
+
+
+
+  2) test 05-42: pool exhausted: the waiting caller gets DBConnection.ConnectionError; a query event carries it; nothing logged (Lab05.EctoTest)
+     test/f_ecto_test.exs:73
+     ** (EXIT from #PID<0.359.0>) an exception was raised:
+         ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command
+             (db_connection 2.10.2) lib/db_connection.ex:1124: DBConnection.rollback_or_raise/1
+             (elixir 1.20.4) lib/task/supervised.ex:105: Task.Supervised.invoke_mfa/2
+             (elixir 1.20.4) lib/task/supervised.ex:40: Task.Supervised.reply/4
+
+05-43 res={:error, %Postgrex.Error{message: nil, postgres: %{code: :query_canceled, line: "3466", message: "canceling statement due to user request", file: "postgres.c", unknown: "ERROR", severity: "ERROR", pg_
+05-43 logs=["Postgrex.Protocol (#PID<0.331.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (DBConnection.ConnectionError) client #PID<0.366.0> ({Lab05.EctoTest, :\"test 05-43: a client timeout (pg_sleep 1 with timeout: 100): error to the caller AND one :error log from the connection pid naming the clien"]
+
+
+  3) test 05-43: a client timeout (pg_sleep 1 with timeout: 100): error to the caller AND one :error log from the connection pid naming the client pid (Lab05.EctoTest)
+     test/f_ecto_test.exs:86
+     match (=) failed
+     code:  assert {:error, %DBConnection.ConnectionError{}} = res
+     left:  {:error, %DBConnection.ConnectionError{}}
+     right: {:error,
+             %Postgrex.Error{
+               message: nil,
+               postgres: %{
+                 code: :query_canceled,
+                 line: "3466",
+                 message: "canceling statement due to user request",
+                 file: "postgres.c",
+                 unknown: "ERROR",
+                 severity: "ERROR",
+                 pg_code: "57014",
+                 routine: "ProcessInterrupts"
+               },
+               connection_id: 67584,
+               query: nil
+             }}
+     stacktrace:
+       test/f_ecto_test.exs:93: (test)
+
+
+
+  4) test 05-44: database unreachable: DBConnection logs connect failures at :error on every backoff, no telemetry (Lab05.EctoTest)
+     test/f_ecto_test.exs:99
+     ** (exit) exited in: GenServer.stop(#PID<0.372.0>, :normal, :infinity)
+         ** (EXIT) no process: the process is not alive or there's no process currently associated with the given name, possibly because its application isn't started
+     code: Supervisor.stop(pid)
+     stacktrace:
+       (elixir 1.20.4) lib/gen_server.ex:1144: GenServer.stop/3
+       test/f_ecto_test.exs:103: (test)
+
+
+Finished in 4.2 seconds (0.00s async, 4.2s sync)
+
+Result: 4/8 passed
+Failed: 4 tests

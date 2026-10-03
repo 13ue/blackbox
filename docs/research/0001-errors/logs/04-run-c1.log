@@ -1,0 +1,49 @@
+Compiling 1 file (.ex)
+Generated beam_lab app
+Running ExUnit with seed: 7526, max_cases: 1
+
+    warning: unused require Logger
+    │
+  4 │   require Logger
+    │   ~
+    │
+    └─ test/c_details_test.exs:4:3
+
+
+
+  1) test 04-37: Application.stop -> one :info {:application_controller, :exit} event, reason :stopped (BeamLab.DetailsTest)
+     test/c_details_test.exs:67
+     Assertion with == failed
+     code:  assert e.level == :info
+     left:  :notice
+     right: :info
+     stacktrace:
+       test/c_details_test.exs:72: (test)
+
+.
+
+  2) test 04-38: a temporary app whose top supervisor is killed -> only an :info event (BeamLab.DetailsTest)
+     test/c_details_test.exs:77
+     Assertion with == failed
+     code:  assert e.level == :info
+     left:  :notice
+     right: :info
+     stacktrace:
+       test/c_details_test.exs:83: (test)
+
+....
+
+  3) test 04-34: backtrace_depth defaults to 8 and truncates crash stacks; raising it to 64 keeps 21+ frames (BeamLab.DetailsTest)
+     test/c_details_test.exs:24
+     Assertion with == failed
+     code:  assert :erlang.system_flag(:backtrace_depth, 8) == 8
+     left:  20
+     right: 8
+     stacktrace:
+       test/c_details_test.exs:25: (test)
+
+
+Finished in 2.6 seconds (0.00s async, 2.6s sync)
+
+Result: 5/8 passed
+Failed: 3 tests

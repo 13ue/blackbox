@@ -1,0 +1,150 @@
+
+.
+
+ 12) test 05-17: [:phoenix, :error_rendered] fires with status 500, kind, reason, stacktrace for a raise (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:163
+     match (=) failed
+     code:  assert [%{meta: %{status: 500, kind: :error, reason: %RuntimeError{}, stacktrace: [_ | _]}}] =
+              C.tels(msgs, :error_rendered)
+     left:  [%{meta: %{status: 500, kind: :error, reason: %RuntimeError{}, stacktrace: [_ | _]}}]
+     right: [
+              %{
+                meta: %{
+                  reason: :function_clause,
+                  status: 500,
+                  log: :debug,
+                  stacktrace: [
+                    {Lab05.Controller, :"action (overridable 2)",
+                     [
+                       %Plug.Conn{
+                         adapter: {Bandit.Adapter, :...},
+                         assigns: %{},
+                         body_params: %{},
+                         cookies: %Plug.Conn.Unfetched{
+                           aspect: :cookies
+                         },
+                         halted: false,
+                         host: "127.0.0.1",
+                         method: "GET",
+                         owner: nil,
+                         params: %{},
+                         path_info: ["raise"],
+                         path_params: %{},
+                         port: 4351,
+                         private: %{
+                           :phoenix_view => %{"json" => Lab05.JSON},
+                           :plug_session_fetch => #Function<1.76585640/1 in Plug.Session.fetch_session/1>,
+                           :before_send => [#Function<0.24950767/1 in Plug.Telemetry.call/2>],
+                           :phoenix_endpoint => Lab05.Endpoint,
+                           :phoenix_controller => Lab05.Controller,
+                           :phoenix_action => :raise_,
+                           :phoenix_router => Lab05.Router,
+                           :phoenix_layout => %{},
+                           :phoenix_format => "json",
+                           Lab05.Router => []
+                         },
+                         query_params: %{},
+                         query_string: "",
+                         remote_ip: {127, 0, 0, 1},
+                         req_cookies: %Plug.Conn.Unfetched{
+                           aspect: :cookies
+                         },
+                         req_headers: [
+                           {"host", "127.0.0.1:4351"},
+                           {"accept", "application/json"},
+                           {"connection", "keep-alive"}
+                         ],
+                         request_path: "/raise",
+                         resp_body: nil,
+                         resp_cookies: %{},
+                         resp_headers: [
+                           {"cache-control",
+                            "max-age=0, private, must-revalidate"}
+                         ],
+                         scheme: :http,
+                         script_name: [],
+                         secret_key_base: :...,
+                         state: :unset,
+                         status: nil
+                       },
+                       []
+                     ], [file: ~c"lib/lab05/web.ex", line: 25]},
+                    {Lab05.Controller, :action, 2,
+                     [file: ~c"lib/lab05/web.ex", line: 10]},
+                    {Lab05.Controller, :phoenix_controller_pipeline,
+                     2, [file: ~c"lib/lab05/web.ex", line: 10]},
+                    {Phoenix.Router, :__call__, 5,
+                     [file: ~c"lib/phoenix/router.ex", line: 428]},
+                    {Lab05.Endpoint, :plug_builder_call, 2,
+                     [file: ~c"lib/lab05/web.ex", line: 89]},
+                    {Lab05.Endpoint, :call, 2,
+                     [file: ~c"lib/lab05/web.ex", line: 89]},
+                    {Bandit.Pipeline, :call_plug!, 2,
+                     [file: ~c"lib/bandit/pipeline.ex", line: 129]},
+                    {Bandit.Pipeline, :run, 5,
+                     [file: ~c"lib/bandit/pipeline.ex", line: 42]},
+                    {Bandit.HTTP1.Handler, :handle_data, 3,
+                     [
+                       file: ~c"lib/bandit/http1/handler.ex",
+                       line: 23
+                     ]},
+                    {Bandit.DelegatingHandler, :handle_data, 3,
+                     [
+                       file: ~c"lib/bandit/delegating_handler.ex",
+                       line: 18
+                     ]},
+                    {Bandit.DelegatingHandler, :handle_continue, 2,
+                     [
+                       file: ~c"lib/bandit/delegating_handler.ex",
+                       line: 8
+                     ]},
+                    {:gen_server, :try_handle_continue, 3,
+                     [file: ~c"gen_server.erl", line: 2424]},
+                    {:gen_server, :loop, 4,
+                     [file: ~c"gen_server.erl", line: 2291]},
+                    {:proc_lib, :init_p_do_apply, 3,
+                     [file: ~c"proc_lib.erl", line: 333]}
+                  ],
+                  kind: :error,
+                  conn: %Plug.Conn{
+                    adapter: {Bandit.Adapter, :...},
+                    assigns: %{},
+                    body_params: %{},
+                    cookies: %Plug.Conn.Unfetched{aspect: :cookies},
+                    halted: false,
+                    host: "127.0.0.1",
+                    method: "GET",
+                    owner: nil,
+                    params: %{},
+                    path_info: ["raise"],
+                    path_params: %{},
+                    port: 4351,
+                    private: %{
+                      :phoenix_view => %{"json" => Lab05.JSON},
+                      :plug_session_fetch => #Function<1.76585640/1 in Plug.Session.fetch_session/1>,
+                      :before_send => [#Function<0.24950767/1 in Plug.Telemetry.call/2>],
+                      :phoenix_endpoint => Lab05.Endpoint,
+                      :phoenix_controller => Lab05.Controller,
+                      :phoenix_action => :raise_,
+                      :phoenix_router => Lab05.Router,
+                      :phoenix_layout => %{},
+                      :phoenix_format => "json",
+                      Lab05.Router => []
+                    },
+                    query_params: %{},
+                    query_string: "",
+                    remote_ip: {...},
+                    ...
+                  }
+                },
+                ...
+              }
+            ]
+     stacktrace:
+       test/a_phoenix_bandit_test.exs:165: (test)
+
+
+Finished in 5.3 seconds (0.00s async, 5.3s sync)
+
+Result: 5/17 passed
+Failed: 12 tests

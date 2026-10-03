@@ -1,0 +1,9 @@
+Compiling 1 file (.ex)
+Running ExUnit with seed: 211498, max_cases: 22
+Excluding tags: [:test, :flood]
+Including tags: [test: "test 08-31: without any flush call, the 100 ms tick writes a batch within 400 ms"]
+
+.
+Finished in 0.2 seconds (0.00s async, 0.2s sync)
+
+Result: 1 passed, 6 excluded

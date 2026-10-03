@@ -1,0 +1,40 @@
+.05-48 cancel events: [{[:oban, :job, :stop], :cancelled}]
+....05-51 kill: kind=:exit reason=:killed logs=0
+....05-45 oban exception meta keys: [:args, :attempt, :conf, :error, :id, :job, :kind, :max_attempts, :prefix, :queue, :reason, :result, :stacktrace, :state, :tags, :worker]
+..05-43 res={:error, %DBConnection.ConnectionError{message: "tcp recv: closed (the connection was closed by the pool, possibly due to a timeout or because the pool has been terminated)", severity: :error, reason:
+05-43 logs=["Postgrex.Protocol (#PID<0.3101.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (DBConnection.ConnectionError) client #PID<0.3107.0> ({Lab05.EctoTest, :\"test 05-43: a client timeout (pg_sleep 1 with timeout: 100): error to the caller AND one :error log from the connection pid naming the cli"]
+
+
+  1) test 05-43: a client timeout (pg_sleep 1 with timeout: 100): error to the caller AND one :error log from the connection pid naming the client pid (Lab05.EctoTest)
+     test/f_ecto_test.exs:118
+     match (=) failed
+     code:  assert {:error, %Postgrex.Error{postgres: %{code: :query_canceled}}} = res
+     left:  {:error, %Postgrex.Error{postgres: %{code: :query_canceled}}}
+     right: {:error,
+             %DBConnection.ConnectionError{
+               message: "tcp recv: closed (the connection was closed by the pool, possibly due to a timeout or because the pool has been terminated)",
+               severity: :error,
+               reason: :closed
+             }}
+     stacktrace:
+       test/f_ecto_test.exs:126: (test)
+
+05-39 queries: ["begin", "INSERT INTO \"things\" (\"name\") VALUES ($1) RETURNING \"id\"", "rollback"]
+.05-44 connect failures in ~1s: 10; first: ["Postgrex.Protocol (#PID<0.3121.0> (\"db_conn_1\")) failed to connect: ** (DBConnection.ConnectionError) tcp connect (localhost:1): connection refused - :econnrefused"]
+.05-42 after 221ms: {:error, %DBConnection.ConnectionError{message: "[small_repo] connection not available and request was dropped from queue after 221ms. This means requests are coming in and your connection pool cannot serve them fast eno; query events=1
+.05-41b logs=["Postgrex.Protocol (#PID<0.3102.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command"]
+.05-41 results=[{Postgrex.Error, :admin_shutdown}, :ok]
+05-41 logs=["Postgrex.Protocol (#PID<0.3101.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command\n\n    query: s"]
+..05-37 query event meta keys: [:type, :options, :stacktrace, :result, :params, :source, :query, :repo, :cast_params]
+...05-4 bandit exception meta keys: [:stacktrace, :exception, :kind, :plug, :conn, :telemetry_span_context, :connection_telemetry_span_context]
+....05-14 Logger.error meta keys: [:line, :pid, :time, :file, :gl, :domain, :application, :mfa, :user_id]
+..05-9 throw crash_reason: {{:nocatch, :oops}, ...}
+05-9 exit crash_reason: {:bye, [{...}, ...]}
+..05-10 task log meta keys: [:error_logger, :pid, :time, :gl, :domain, :report_cb, :callers, :crash_reason]
+.05-6 order: [[:phoenix, :router_dispatch, :exception], [:phoenix, :error_rendered], [:bandit, :request, :exception], :log]
+.....05-23 garbage names=[[:bandit, :request, :start], [:bandit, :request, :stop]] logs=[error: "** (Bandit.HTTPError) Request line HTTP error: \"NOT HTTP AT ALL\\r\\n\""]
+..
+Finished in 28.4 seconds (0.00s async, 28.4s sync)
+
+Result: 64/65 passed
+Failed: 1 test

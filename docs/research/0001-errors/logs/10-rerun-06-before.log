@@ -1,0 +1,7 @@
+Running ExUnit with seed: 60819, max_cases: 22
+Excluding tags: [:bench]
+
+....................................................
+Finished in 4.3 seconds (0.00s async, 4.3s sync)
+
+Result: 52 passed, 2 excluded

@@ -1,0 +1,16 @@
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+05-18 cowboy log meta keys: [:error_logger, :pid, :time, :gl, :domain, :report_cb, :conn, :crash_reason]
+05-18 cowboy log text: #PID<0.584.0> running Lab05.CowboyEndpoint (connection #PID<0.583.0>, stream id 1) terminated
+Server: 127.0.0.1:4352 (http)
+Request: GET /raise
+** (exit) an exception was raised:
+    ** (RuntimeError)
+.05-19 cowboy exception meta keys: [:pid, :reason, :stacktrace, :kind, :ref, :req, :resp_status, :resp_headers, :streamid]
+05-19 pids: log=#PID<0.590.0> cowboy=#PID<0.590.0> router=#PID<0.591.0>
+...
+Finished in 6.5 seconds (0.00s async, 6.5s sync)
+
+Result: 4 passed

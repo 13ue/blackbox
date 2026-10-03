@@ -1,0 +1,166 @@
+<header class="top col">
+  <span class="mark" aria-hidden="true">1</span>
+  <h1>Blackbox: every failure on the BEAM, and what came before it</h1>
+  <p class="lede">The ask: "the most useful and amazing error/exception/bug tracking observability tool for elixir there ever could be. it should get ALL errors that occur in the beam ... especially what happened before any given error ... prove TDD everything technical that is not clear." Eight agents read sentry-elixir and every other BEAM tool, counted what developers say, and ran five labs of 256 tests against Elixir 1.20.4 and OTP 28. A ninth agent then attacked the draft: it reran every suite, added 17 tests and 12 mutation checks, and found three blockers. This page is the revised result.</p>
+  <p class="meta">27 September 2026 · nine researchers · reports, logs and labs in <code>docs/research/0031-errors/</code> · the decision record is <code>docs/adr/0031-blackbox-every-failure-and-what-came-before.md</code> (Accepted 3 October 2026)</p>
+  <nav class="toc" aria-label="Contents">
+    <a href="#summary">Summary</a><a href="#proof">Proof</a><a href="#review">The review</a><a href="#surface">What each hook sees</a><a href="#sentry">Sentry and the field</a><a href="#once">One failure, once</a><a href="#before">What came before</a><a href="#costs">Costs</a><a href="#pipeline">Pipeline</a><a href="#page">The page</a><a href="#agents">Agents</a><a href="#charta">1charta</a><a href="#steps">Steps</a><a href="#questions">Answers</a><a href="#sources">Sources</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="col" id="summary">
+  <h2>Blackbox, a flight recorder for the BEAM</h2>
+  <p>Blackbox (<code>blackbox</code>) is a library, kept in <code>packages/blackbox/</code> for now and planned as a hex package. It catches every failure the BEAM lets it see, keeps what happened before each one, stores it in the app's own Postgres and shows one timeline per failure to people and to agents. 1charta is its first user. v1 is the spike, ported and hardened, not a rewrite; what the review found unproven or unneeded for 1charta waits (ADR section 11). The decision in eight lines:</p>
+  <div class="stickies">
+    <div class="note"><b>One install, its own OTP app</b><span><code>:blackbox</code> boots before the host and stops after it. A primary filter of its own catches the SASL reports Elixir hides, with no setting changed; one <code>:logger</code> handler at <code>:all</code> splits events from crumbs; telemetry for Phoenix, Plug and Bandit. A watchdog re-adds what gets removed.</span></div>
+    <div class="note"><b>One failure, one occurrence</b><span>A 500 is sighted four times in one process. A process-dictionary mark remembers which sources saw it: a new source merges, a source seen before is a real repeat and counts.</span></div>
+    <div class="note"><b>A ring in every busy process</b><span>50 crumbs in the process dictionary, 42 ns each, binaries capped at 200 B, Logger text scrubbed when added, reset per request. The handler runs in the dying process, so it reads the ring for free.</span></div>
+    <div class="note"><b>Cause across processes</b><span>Own ring, then <code>$callers</code> to a live parent (Tasks), then <code>client_info</code> (GenServer calls). Casts and sends wait for the <code>seq_trace</code> label, which is later.</span></div>
+    <div class="note"><b>Locals, the BEAM way</b><span>The last message, the state, the <code>:sys</code> log and the caller's stack are already in OTP's crash report. Nobody else reads them. Blackbox does, through <code>format_status/1</code> and the scrubber.</span></div>
+    <div class="note"><b>Never hurts the app</b><span>In the failing process: classify, fingerprint, <code>send</code> raw bounded terms. An atomics cap, an aggregating buffer, one writer on its own one-connection pool, a flush on stop and a spool file.</span></div>
+    <div class="note"><b>Its own Postgres, no services</b><span>Two tables, upsert by fingerprint, 100 occurrences per issue, 30 days. Open, resolved, muted; "regressed" is derived. No Kafka, no SaaS, no network on the error path.</span></div>
+    <div class="note"><b>Agents read, never run</b><span>JSON and Markdown routes behind a required <code>authorize</code>; event text in a fence longer than any backtick run; browser events marked untrusted. PhantomFix (VU#212479) is why.</span></div>
+  </div>
+  <div class="tiles">
+    <div><b>256</b><span>tests in five labs, each written before it ran</span></div>
+    <div><b>54</b><span>red on first run: a belief about the BEAM that was wrong</span></div>
+    <div><b>9 of 12</b><span>mutations of the spike turned its tests red (10); step 1 closes the other 3</span></div>
+    <div><b>0 dropped</b><span>at 200k <code>Logger.error</code>/s, one fingerprint (08-32)</span></div>
+    <div><b>~5 µs</b><span>p50 per request for full "before" capture, invisible over HTTP (06-G)</span></div>
+    <div><b>4 → 1</b><span>sightings of one HTTP 500, merged in one process (05-59)</span></div>
+    <div><b>30k / 30k</b><span>stored after the database was down for 3 s at 10k errors/s, rerun by the review (08-30)</span></div>
+    <div><b>0 errors</b><span>in 3,683 lines of 1charta's prod log: every deploy throws history away (07)</span></div>
+  </div>
+</section>
+
+<section class="col" id="proof">
+  <h2>How "prove TDD" was done</h2>
+  <p>Every technical claim that was not obvious became an ExUnit test, written before it ran, asserting what the agent believed. The first outcome was recorded. A red test meant the belief was wrong; its assertion was then changed to what the BEAM really does. Elixir 1.20.4 / OTP 28, Apple M3 Pro.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Lab</th><th>Tests</th><th>Red first</th><th>What it proved</th></tr></thead>
+    <tbody>
+      <tr><td><a href="lab/01-sentry/">lab/01-sentry</a></td><td class="num">27</td><td class="num">7</td><td>what sentry 13.5.1 really catches</td></tr>
+      <tr><td><a href="lab/04-beam/">lab/04-beam</a></td><td class="num">72</td><td class="num">20</td><td>what every failure path sends to a <code>:logger</code> handler</td></tr>
+      <tr><td><a href="lab/05-frameworks/">lab/05-frameworks</a></td><td class="num">65</td><td class="num">13</td><td>what each framework reports, and how often</td></tr>
+      <tr><td><a href="lab/06-before/">lab/06-before</a></td><td class="num">52</td><td class="num">7</td><td>what can be known before a failure, and its price</td></tr>
+      <tr><td><a href="lab/08-spike/">lab/08-spike</a></td><td class="num">40</td><td class="num">7</td><td>the whole core under floods and faults (+26 red against no code yet)</td></tr>
+      <tr><td>Total</td><td class="num">256</td><td class="num">54</td><td>about one belief in five was wrong</td></tr>
+      <tr><td><a href="lab/10-review/">lab/10-review</a></td><td class="num">17 + 12 mutations</td><td class="num">2</td><td>the review's doubts, and whether the spike's tests catch broken code</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Ten beliefs the BEAM corrected</h3>
+  <p>Each card: what the agent wrote down first, what the test showed instead, and the test ids. Red tags went red on their first run; grey tags are supporting tests that were green. Many of the ADR's decisions exist because one of these went red.</p>
+  <div class="beliefs">
+    <div><i>A GenServer that raises in <code>init</code> reaches a handler at <code>:all</code>.</i><p>Nothing reaches any handler. Elixir's primary <code>logger_translator</code> filter runs with <code>sasl: false</code> and stops every <code>[:otp, :sasl]</code> report: init crashes, restarts, give-ups, brutal kills.</p><span class="tag b">06-9</span><span class="tag b">08-7</span><span class="tag">04-15</span><span class="tag">04-27..29</span></div>
+    <div><i><code>Logger.configure(handle_sasl_reports: true)</code> at runtime turns them on.</i><p>It does nothing. What works: a primary filter of our own, added with <code>:logger.add_primary_filter/2</code>. It is prepended, so it runs before the translator, sees the reports and passes the event on untouched.</p><span class="tag b">08-7</span><span class="tag">04-71</span><span class="tag">04-77</span></div>
+    <div><i>10,000 crashing <code>spawn</code>s at once: the handler sees 10,000.</i><p>1,665 to 4,799 arrive. <code>:logger_proxy</code> enters drop mode and the VM discards emulator reports; two <code>:notice</code> lines say so, with no count.</p><span class="tag b">04-68</span></div>
+    <div><i>A <code>throw</code> in <code>handle_info</code> is reported as <code>{:nocatch, :boom}</code>.</i><p>In a GenServer callback a throw is a return value: <code>{:bad_return_value, :boom}</code> with an empty stack.</p><span class="tag b">04-19</span></div>
+    <div><i>A handler that logs from inside <code>log/2</code> does not recurse.</i><p>It recurses with no OTP guard; only the test's own counter cap at 1,000 stopped it. And a handler that raises is removed, announced only at <code>:debug</code>.</p><span class="tag b">04-64</span><span class="tag b">04-60</span></div>
+    <div><i>A crash in a <code>call</code> reports <code>{:"$gen_call", from, msg}</code> as the last message.</i><p><code>last_message</code> is the bare request. The caller is in <code>client_info</code>: its pid and its live stacktrace.</p><span class="tag b">06-12</span></div>
+    <div><i>A spawned Task does not inherit the <code>seq_trace</code> label.</i><p>Every spawned process inherits it, Task or raw <code>spawn</code>, and the review saw it reach the lib's own writer (10-9a). That is why the label waits for later.</p><span class="tag b">06-25</span><span class="tag">10-9a</span></div>
+    <div><i><code>put_process_level(:debug)</code> opens debug logs for one process.</i><p>Impossible: the process level is a primary filter that can only drop. Per-module levels work, so debug crumbs are opt-in per module.</p><span class="tag b">06-47</span></div>
+    <div><i>Phoenix's <code>router_dispatch</code> exception carries the <code>RuntimeError</code>.</i><p>It carries a <code>Plug.Conn.WrapperError</code>, and the conn in the metadata is the one from before the controller. The inner conn is the right one.</p><span class="tag b">05-3</span></div>
+    <div><i>An application that stops is logged at <code>:info</code>; sentry's crash event has the last message and state.</i><p>Application exits are <code>:notice</code>, below <code>:error</code> (04-37). Sentry's raise path skips the parsing that would add last message and state (01-2a).</p><span class="tag b">04-37</span><span class="tag b">01-2a</span></div>
+  </div>
+</section>
+
+<section class="col" id="review">
+  <h2>The review: what it broke, and what the ADR does now</h2>
+  <p>After the draft, agent 10 did a heavy-scrutiny review (<a href="10-review.md">report 10</a>). It reran every lab one at a time, wrote 17 claim tests of its own in <a href="lab/10-review/">lab/10-review</a> (2 red first), and ran 12 mutation checks: each breaks one claimed behaviour in a copy of the spike and runs the spike's tests. <b>9 of 12 mutations turned a test red.</b> The three that survived were exactly the grouping and memory claims the ADR leaned on: the anonymous-fun strip (M2), frame selection (M11) and the ring bound (M7). The ADR was revised on every finding.</p>
+  <h3>Three blockers</h3>
+  <div class="pairs">
+    <div><b>R-1 · The handler level contradicted the crumbs</b><span>A <code>:notice</code> handler never receives <code>:info</code> (10-12), so info crumbs through the handler could not work. <span class="new">Now: the handler runs at <code>:all</code>, the primary level decides what arrives, and <code>log/2</code> splits events from crumbs.</span></span></div>
+    <div><b>R-2 · 1charta's privacy was not met</b><span>Last messages carry board ops and chat text positionally (<code>{:apply, ops, ...}</code>, <code>{:say, from, text}</code>); exception messages embed values (Postgrex <code>Key (name)=(my-private-space)</code>, KeyError prints the map, 10-11); crumbs held raw <code>/b/&lt;id&gt;</code> lines; <code>/tab/error</code> posts the board key. <span class="new">Now: <code>format_status/1</code> covers state, message and log; value-bearing exceptions are scrubbed field by field; call messages in exit reasons are reduced to their tag; crumb text is scrubbed when added; <code>capture_browser/2</code> never gets the key.</span></span></div>
+    <div><b>R-3 · Boot and shutdown lost the failures that matter most</b><span>Started after the Repo, nothing caught boot crashes; nothing flushed on stop, so a deploy's last batch and a <code>start_permanent</code> halt's cascade died with the VM. <span class="new">Now: capture starts from Blackbox's own OTP application, the store attachment flushes on stop, and what is left goes to a spool file imported on the next boot.</span></span></div>
+  </div>
+  <h3>Serious findings</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Id</th><th>Finding</th><th>Now</th></tr></thead>
+    <tbody>
+      <tr><td>R-4</td><td>The primary-filter SASL route had no end-to-end test; every spike SASL test used the translator route; the "console byte-identical" test did not exist</td><td>step 1 ports 08-7, 08-34..36 to the primary filter and adds a real console byte-compare</td></tr>
+      <tr><td>R-5</td><td>Dedupe dropped a real repeat in one process uncounted (10-1)</td><td>dedupe by source: a source already in the mark is a new failure and counts</td></tr>
+      <tr><td>R-6</td><td>Cowboy's content key merges equal failures of different requests</td><td>Cowboy is later; it must pair sightings, not suppress</td></tr>
+      <tr><td>R-7</td><td>Log grouping split per line on letter ids: ~20,000 issues from 20,000 lines (10-2)</td><td>logs group by call site <code>{mfa, line}</code>; masked template only as fallback</td></tr>
+      <tr><td>R-8</td><td>The <code>seq_trace</code> label leaks into the lib's writer and the DB pool (10-9a) and was never joined to a trail</td><td>deferred to section 11</td></tr>
+      <tr><td>R-9</td><td>Fun-index strip and frame selection survived mutation; empty-stack fallback unbuilt; tail calls erase the app frame (10-3)</td><td>step 1 tests that fail on M2 and M11; in-app rule with fallbacks; the tail-call ceiling is named</td></tr>
+      <tr><td>R-10</td><td>"No public ingest" is false once <code>/tab/error</code> feeds Blackbox</td><td>browser events are <code>source: browser</code>, untrusted, out of the default agent listing</td></tr>
+      <tr><td>R-11</td><td>Auth, CSRF, DNS rebinding, escaping and fence rules unspecified</td><td>section 8's security rules</td></tr>
+      <tr><td>R-12</td><td>The writer shared the app's pool</td><td>its own one-connection dynamic repo</td></tr>
+      <tr><td>R-13</td><td>"No formatting in the failing process" was not what was measured</td><td>raw bounded terms are sent; step 1 re-measures, with a 1 MB state</td></tr>
+      <tr><td>R-14</td><td>Wall-clock budgets flake on a shared machine</td><td>budgets in reductions; wall time logged, never asserted</td></tr>
+      <tr><td>R-15</td><td>The translator also stops <code>[:supervisor_report]</code> and unknown-label reports</td><td>the filter takes those too (08-17b)</td></tr>
+      <tr><td>R-16</td><td>Raw crumbs pin refc binaries: a 100-byte slice kept 4 MB alive (10-10); the ring bound untested (M7)</td><td>binaries copied and capped at 200 B; a <code>flat_size</code> test</td></tr>
+      <tr><td>R-17</td><td>05-43 failed once under full-suite load</td><td>stated as a caveat (below)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Minor ones also fixed in the ADR: the poison-batch policy is design, not proven (R-18); a flood costs one upsert and up to three occurrence rows per tick (R-19, 10-15); samples are first, latest and one between, with their own time (R-20); the watchdog pauses and gives up (R-21); a Logger app restart blinds SASL capture for up to 5 s (R-22, 10-6); stale line numbers (R-27); "Four hooks" listed six (R-29); Hologram has no command wrapper, so a middleware sets the context (R-30).</p>
+  <h3>What held up</h3>
+  <ul class="plain">
+    <li>The BEAM facts: the translator hides SASL by default; a prepended primary filter sees it (04-71/72/75/77 green on the rerun); <code>Logger.add_translator/1</code> keeps it first (10-7); its cost is noise, 0.67 vs 0.64 µs (10-8); a raising filter is removed and logging goes on (10-5).</li>
+    <li>The pipeline: in-flight cap, merge-back, writer kill, self-skip and upsert counts all turn the spike's tests red when broken (M1, M3-M6, M8-M10, M12).</li>
+    <li>The DB-down test is real: 30,000 of 30,000 stored after recovery on the rerun. "0 dropped" is a counted zero checked against Postgres (for one fingerprint).</li>
+    <li><code>backtrace_depth</code> 32 over 8 costs noise: 47.47 vs 47.58 µs per deep raise (10-16). Report 01 reran 27 of 27.</li>
+  </ul>
+  <div class="warn"><b>One caveat</b>On the review's rerun, 05-43 failed once under full-suite load: the pool closed the socket (<code>DBConnection.ConnectionError{reason: :closed}</code>) before <code>query_canceled</code> arrived. Alone it passed 5 of 5. So "every suite green three runs in a row" does not hold for lab 05 on that run.</div>
+</section>
+
+<section id="surface">
+  <div class="col">
+  <h2>What each hook sees</h2>
+  <p>Rows are every kind of failure the labs produced, from report 04's "what reaches a <code>:logger</code> handler" table and report 05's capture matrix. "Logger" means Elixir's defaults; "+ SASL" is the rejected alternative, <code>handle_sasl_reports: true</code>. Numbers are events per failure. The last column is Blackbox v1 as revised: Phoenix, Plug and Bandit telemetry, the logger handler and the primary filter. Dashed cells wait for ADR section 11.</p>
+  <div class="legend"><span><span class="tag g">seen</span></span><span><span class="tag b">missed</span></span><span><span class="tag">partial, other signal</span></span><span><span class="tag lt">later, section 11</span></span></div>
+  </div>
+  <div class="wide">
+  <div class="scroll cm"><table>
+    <thead><tr><th>Failure</th><th>Logger, default</th><th>Logger + SASL</th><th>Telemetry</th><th>Blackbox v1</th><th>Test</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="6">Plain processes and Tasks</td></tr>
+      <tr><td>raise / throw / error in <code>spawn</code></td><td class="y"><span>1, via proxy</span></td><td class="y"><span>1</span></td><td class="p"><span>none</span></td><td class="y"><span>yes; a burst's loss shows as "lost: unknown"</span></td><td>04-1, 04-68</td></tr>
+      <tr><td><code>exit(:boom)</code>, kill, death by link, unsupervised</td><td class="n"><span>0</span></td><td class="n"><span>0</span></td><td class="p"><span>none</span></td><td class="l"><span><code>Blackbox.monitor/1</code>, later</span></td><td>04-3, 04-12, 04-73</td></tr>
+      <tr><td>Task crash or non-normal exit</td><td class="y"><span>1, in the task</span></td><td class="y"><span>1</span></td><td class="n"><span>no</span></td><td class="y"><span>yes, joined to the request by <code>$callers</code></span></td><td>04-6, 04-39, 05-10</td></tr>
+      <tr><td>caller-side <code>call</code> / <code>await</code> timeout</td><td class="n"><span>0</span></td><td class="n"><span>0</span></td><td class="n"><span>no</span></td><td class="n"><span>only if the caller then dies logged</span></td><td>04-11, 04-23</td></tr>
+      <tr><td>rescued, <code>{:error, _}</code>, <code>catch :exit</code></td><td class="n"><span>0</span></td><td class="n"><span>0</span></td><td class="n"><span>no</span></td><td class="p"><span><code>capture_exception</code> where called; 30 s trace later</span></td><td>04-40, 04-45, 04-51</td></tr>
+      <tr><td><code>Logger.error</code></td><td class="y"><span>1, in caller</span></td><td class="y"><span>1</span></td><td class="p"><span>n/a</span></td><td class="y"><span>yes, grouped by call site</span></td><td>04-13, 10-2</td></tr>
+      <tr class="grp"><td colspan="6">OTP behaviours and supervisors</td></tr>
+      <tr><td>GenServer call / cast / info crash</td><td class="y"><span>1</span></td><td class="y"><span>2 (+proc_lib)</span></td><td class="n"><span>no</span></td><td class="y"><span>1 (handler + filter merged by source), with last message, state, caller</span></td><td>04-17, 04-39</td></tr>
+      <tr><td>GenServer <code>init</code> crash</td><td class="n"><span>0</span></td><td class="y"><span>1</span></td><td class="n"><span>no</span></td><td class="y"><span>yes, via the primary filter</span></td><td>04-15, 04-72</td></tr>
+      <tr><td><code>:gen_statem</code> / Agent crash</td><td class="y"><span>1</span></td><td class="y"><span>2</span></td><td class="n"><span>no</span></td><td class="y"><span>1</span></td><td>04-25, 04-26</td></tr>
+      <tr><td>supervisor restart</td><td class="n"><span>0 extra</span></td><td class="y"><span>+2</span></td><td class="n"><span>Supervisor emits none</span></td><td class="y"><span>counted on the child's issue (primary filter)</span></td><td>04-27, 04-75</td></tr>
+      <tr><td>supervisor gives up (max intensity)</td><td class="n"><span>0</span></td><td class="y"><span>1</span></td><td class="n"><span>no</span></td><td class="y"><span>its own issue (primary filter)</span></td><td>04-28s, 08-36</td></tr>
+      <tr><td>brutal kill of a supervised child</td><td class="n"><span>0</span></td><td class="y"><span>1 (<code>child_terminated</code>)</span></td><td class="n"><span>no</span></td><td class="y"><span>kept as <code>exit :killed</code> (primary filter)</span></td><td>04-29s, 08-35</td></tr>
+      <tr><td><code>[:supervisor_report]</code>, unknown-label <code>:error</code> reports</td><td class="n"><span>0</span></td><td class="n"><span>0</span></td><td class="n"><span>no</span></td><td class="y"><span>yes, via the primary filter</span></td><td>08-17b</td></tr>
+      <tr><td>application stop or crash</td><td class="y"><span>1, at <code>:notice</code></span></td><td class="y"><span>1</span></td><td class="n"><span>no</span></td><td class="y"><span>yes; <code>log/2</code> makes it an event</span></td><td>04-37, 04-38</td></tr>
+      <tr><td>a crash while the host boots, before its Repo</td><td class="y"><span>printed only</span></td><td class="y"><span>same</span></td><td class="n"><span>no</span></td><td class="y"><span>yes: <code>:blackbox</code> starts first, events wait in the buffer</span></td><td>step 1</td></tr>
+      <tr><td>the cascade before a halt, a deploy's last batch</td><td class="p"><span>printed only</span></td><td class="p"><span>same</span></td><td class="n"><span>no</span></td><td class="y"><span>flush on stop, then the spool file</span></td><td>step 1</td></tr>
+      <tr><td>a telemetry handler that raises</td><td class="y"><span>1</span></td><td class="y"><span>1</span></td><td class="y"><span><code>[:telemetry, :handler, :failure]</code></span></td><td class="y"><span>yes; watchdog re-attaches</span></td><td>04-79</td></tr>
+      <tr><td>a logger handler or filter that raises; a Logger app restart</td><td class="p"><span>removed, noted on <code>:debug</code> or stdout</span></td><td class="p"><span>same</span></td><td class="n"><span>no</span></td><td class="y"><span>watchdog re-adds within 5 s, "capture off N s"</span></td><td>04-60, 10-5, 10-6</td></tr>
+      <tr class="grp"><td colspan="6">Web: Phoenix, Bandit, Cowboy, channels, LiveView</td></tr>
+      <tr><td>controller raise, 5xx, Bandit</td><td class="y"><span>1 (conn in meta)</span></td><td class="y"><span>1</span></td><td class="y"><span>router_dispatch, error_rendered, bandit</span></td><td class="y"><span>1 (dedupe by source)</span></td><td>05-5, 05-6, 05-59</td></tr>
+      <tr><td>controller raise, 5xx, Cowboy</td><td class="y"><span>1, conn pid</span></td><td class="y"><span>1</span></td><td class="y"><span>router_dispatch + cowboy</span></td><td class="l"><span>later: pair sightings across two pids</span></td><td>05-19, 05-60</td></tr>
+      <tr><td>exception with <code>plug_status</code> &lt; 500</td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="y"><span>router_dispatch + server</span></td><td class="p"><span>counter, not an issue</span></td><td>05-7</td></tr>
+      <tr><td>NoRouteError (404)</td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="p"><span>only error_rendered</span></td><td class="p"><span>counter</span></td><td>05-8</td></tr>
+      <tr><td>handled 500 (<code>send_resp</code>)</td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="p"><span>only stop status</span></td><td class="n"><span>not in v1</span></td><td>05-13</td></tr>
+      <tr><td>Bandit protocol error</td><td class="y"><span>1</span></td><td class="y"><span>1</span></td><td class="n"><span>no (stop <code>error:</code>)</span></td><td class="y"><span>yes, through the logger</span></td><td>05-23</td></tr>
+      <tr><td>channel <code>join</code> / <code>handle_in</code> raise</td><td class="y"><span>1 crash report</span></td><td class="y"><span>1</span></td><td class="n"><span>none exist</span></td><td class="l"><span>crash report caught; channel fields later</span></td><td>05-26, 05-28</td></tr>
+      <tr><td>LiveView raise, any callback</td><td class="y"><span>1</span></td><td class="y"><span>1</span></td><td class="p"><span>LV <code>:exception</code>, not <code>handle_info</code></span></td><td class="l"><span>crash report caught; LV attachment later</span></td><td>05-33, 05-35</td></tr>
+      <tr class="grp"><td colspan="6">Data, jobs, HTTP clients, Hologram</td></tr>
+      <tr><td>Ecto query error in a surviving process</td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="p"><span>query event <code>{:error, _}</code></span></td><td class="p"><span>crumb only</span></td><td>05-38</td></tr>
+      <tr><td>DB connection dies / DB down</td><td class="y"><span>10 lines/s per conn</span></td><td class="y"><span>same</span></td><td class="n"><span>no</span></td><td class="y"><span>one issue per call site; writer on its own pool</span></td><td>05-41, 05-44</td></tr>
+      <tr><td>Oban job raises, times out, is killed</td><td class="n"><span>no (Oban logs nothing)</span></td><td class="n"><span>no</span></td><td class="y"><span><code>[:oban, :job, :exception]</code></span></td><td class="l"><span>later (1charta has no Oban)</span></td><td>05-45, 05-51, 05-52</td></tr>
+      <tr><td>Req upstream 500 / timeout, handled</td><td class="p"><span>Req's retry <code>:warning</code></span></td><td class="p"><span>same</span></td><td class="p"><span>finch stop result</span></td><td class="p"><span>crumb</span></td><td>05-54, 05-56</td></tr>
+      <tr><td>Hologram command raise</td><td class="y"><span>1 (Bandit)</span></td><td class="y"><span>1</span></td><td class="y"><span>router_dispatch + bandit</span></td><td class="y"><span>1, grouped by command via a middleware</span></td><td>05-J (read)</td></tr>
+      <tr><td>Hologram action, or a result that cannot be encoded</td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="p"><span>browser source via <code>/tab/error</code>, untrusted</span></td><td>05-J, 07</td></tr>
+      <tr class="grp"><td colspan="6">The VM itself</td></tr>
+      <tr><td>burst of plain <code>spawn</code> crashes</td><td class="p"><span>1,665-4,799 of 10k</span></td><td class="p"><span>same</span></td><td class="n"><span>no</span></td><td class="p"><span>drop-mode notice shown on every page</span></td><td>04-68</td></tr>
+      <tr><td>long GC, large heap, long message queue</td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="l"><span><code>trace:system/3</code> session, later</span></td><td>06-32, 06-39</td></tr>
+      <tr><td>the VM dies (<code>erl_crash.dump</code>)</td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="n"><span>no</span></td><td class="l"><span>dump import later; <code>ERL_CRASH_DUMP</code> set now</span></td><td>07</td></tr>
+    </tbody>
+  </table></div>
+  </div>
+  <div class="col">
+    <p class="small"><b>Dropped vs never emitted</b> (04-70..79). Dropped by Elixir's translator, so caught by Blackbox's own primary filter: an <code>init</code> crash under <code>GenServer.start</code>, proc_lib crash reports, supervisor <code>start_error</code>, <code>child_terminated</code>, <code>shutdown</code> and <code>progress</code>. Never emitted by anyone, so no filter or handler can see them: <code>exit/1</code> in a bare <code>spawn</code>, a linked Task caller dying with its task, kills of unsupervised processes, <code>:normal</code> and <code>{:shutdown, _}</code>, caller-side timeouts.</p>
+    <div class="warn"><b>Still invisible in v1, and the page says so</b>Unsupervised processes that <code>exit</code> or are killed; swallowed exceptions; casts not joined to their request; NIF crashes and OOM kills (the OS kills the VM, no dump); <code>halt</code> from code; port exits to trapping owners; os_mon alarms; browser errors outside boards; a burst of plain <code>spawn</code> crashes, which the VM drops before any handler.</div>
+  </div>
+</section>

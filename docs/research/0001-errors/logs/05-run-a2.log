@@ -1,0 +1,231 @@
+Compiling 1 file (.ex)
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+
+
+  1) test 05-1: a controller raise gives exactly one :error log with crash_reason {exception, stacktrace} (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:27
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{500, _}, msgs} = hit("/raise")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:28: (test)
+
+
+
+  2) test 05-2: Bandit puts the conn into the log metadata (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:33
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{500, _}, msgs} = hit("/raise")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:34: (test)
+
+
+
+  3) test 05-3: [:phoenix, :router_dispatch, :exception] fires once with conn, route, plug, plug_opts, kind, reason (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:39
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {_, msgs} = hit("/raise")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:40: (test)
+
+
+
+  4) test 05-4: [:bandit, :request, :exception] fires once with the exception and stacktrace (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:46
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {_, msgs} = hit("/raise")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:47: (test)
+
+
+
+  5) test 05-5: log and both telemetry sightings run in one pid (the request process) (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:53
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {_, msgs} = hit("/raise")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:54: (test)
+
+
+
+  6) test 05-6: order is router_dispatch exception, error_rendered, bandit exception, log (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:60
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {_, msgs} = hit("/raise")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:61: (test)
+
+
+
+  7) test 05-7: plug_status 404 exception: no :error log, but router_dispatch and bandit exception events fire (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:74
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{404, _}, msgs} = hit("/not_found")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:75: (test)
+
+
+
+  8) test 05-8: NoRouteError: no log, no router_dispatch exception, bandit exception fires, error_rendered 404 (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:82
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{404, _}, msgs} = hit("/nope")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:83: (test)
+
+
+
+  9) test 05-9: throw and exit in a controller are logged at :error with kind-shaped crash_reason (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:91
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{500, _}, msgs} = hit("/throw")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:92: (test)
+
+
+
+ 10) test 05-10: Task.start crash inside a request: one :error log from another pid whose $callers holds the request pid; no exception telemetry (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:105
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{200, _}, msgs} = hit("/task")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:106: (test)
+
+
+
+ 11) test 05-11: ActionClauseError is plug_status 400: no log, router_dispatch exception, error_rendered 400 (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:116
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{400, _}, msgs} = hit("/action/2")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:117: (test)
+
+
+
+ 12) test 05-12: malformed JSON raises in the endpoint before the router: no log, no router_dispatch, bandit exception, error_rendered 400 (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:124
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{400, _}, msgs} = hit(:post, "/json", "{nope")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:125: (test)
+
+
+
+ 13) test 05-13: send_resp(500) without raising: no log, no exception event; only stop events with status 500 (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:132
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{500, _}, msgs} = hit("/500")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:133: (test)
+
+
+
+ 14) test 05-14: Logger.error in a controller: meta has pid, mfa, user_id, request_id absent, no conn (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:139
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{200, _}, msgs} = hit("/logged")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:140: (test)
+
+
+
+ 15) test 05-15: Repo.query! error in a controller: logged at :error (500) and the query event carries {:error, %Postgrex.Error{}} (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:149
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {{500, _}, msgs} = hit("/db")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:150: (test)
+
+
+
+ 16) test 05-16: the conn in router_dispatch exception metadata holds raw params: password is NOT filtered (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:157
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {_, msgs} = hit(:post, "/secret", ~s({"password":"hunter2","name":"x"}))
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:158: (test)
+
+
+
+ 17) test 05-17: [:phoenix, :error_rendered] fires with status 500, kind, reason, stacktrace for a raise (Lab05.PhoenixBanditTest)
+     test/a_phoenix_bandit_test.exs:163
+     ** (UndefinedFunctionError) function :http_util.timestamp/0 is undefined (module :http_util is not available)
+     code: {_, msgs} = hit("/raise")
+     stacktrace:
+       (inets 9.6.2.3) :http_util.timestamp()
+       (inets 9.6.2.3) httpc.erl:1198: :httpc.handle_request/9
+       (lab05 0.1.0) test/support/http.ex:6: Lab05.HTTP.req/5
+       test/a_phoenix_bandit_test.exs:23: Lab05.PhoenixBanditTest.hit/3
+       test/a_phoenix_bandit_test.exs:164: (test)
+
+
+Finished in 0.1 seconds (0.00s async, 0.1s sync)
+
+Result: 0/17 passed
+Failed: 17 tests

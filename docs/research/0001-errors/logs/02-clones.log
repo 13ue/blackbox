@@ -1,0 +1,20 @@
+elixir-error-tracker/error-tracker 630ea49 2026-07-19
+mimiquate/tower 057aa00 2026-07-01
+appsignal/appsignal-elixir 4aef537 2026-09-11
+honeybadger-io/honeybadger-elixir 1eaf148 2026-09-24
+ForzaElixir/rollbax 5ea0ab4 2021-05-13
+bugsnag-elixir/bugsnag-elixir 0e1e2ba 2022-07-30
+newrelic/elixir_agent e2a0e33 2026-09-18
+scoutapp/scout_apm_elixir d7ae4a5 2026-09-03
+open-telemetry/opentelemetry-erlang 9cb8b36 2026-09-21
+open-telemetry/opentelemetry-erlang-contrib 0cbae53 2026-09-21
+spandex-project/spandex a40c10a 2022-10-20
+akoutmos/prom_ex 2ebcd0e 2026-06-19
+fatal: could not read Username for 'https://github.com': Device not configured
+phoenix/phoenix_live_dashboard  
+ferd/recon cb45e7b 2026-04-23
+zhongwencool/observer_cli 04aee9f 2026-09-22
+phoenixframework/phoenix_live_dashboard 83a0bd1 2026-09-16
+erlang/otp de741b7 2026-09-25 30.0-rc0
+beam-telemetry/telemetry d5f3d7d
+telemetry: src/telemetry.erl:72-124 doc, :221-231 catch -> detach + [telemetry,handler,failure]

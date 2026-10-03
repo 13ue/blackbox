@@ -1,0 +1,126 @@
+Compiling 1 file (.ex)
+Generated lab05 app
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+
+
+  1) test 05-45: a raising job: [:oban, :job, :exception] with kind, reason, stacktrace, job, state :failure; NO :error log (Lab05.ObanTest)
+     test/g_oban_test.exs:38
+     ** (ExUnit.TimeoutError) test timed out after 60000ms. You can change the timeout:
+
+       1. per test by setting "@tag timeout: x" (accepts :infinity)
+       2. per test module by setting "@moduletag timeout: x" (accepts :infinity)
+       3. globally via "ExUnit.start(timeout: x)" configuration
+       4. by running "mix test --timeout x" which sets timeout
+       5. or by running "mix test --trace" which sets timeout to infinity
+          (useful when using IEx.pry/0)
+
+     where "x" is the timeout given as integer in milliseconds (defaults to 60_000).
+
+     code: {_, msgs} = run(W.Raise, %{"secret" => "hunter2"})
+     stacktrace:
+       (lab05 0.1.0) lib/lab05/capture.ex:85: Lab05.Capture.collect/2
+       test/g_oban_test.exs:23: Lab05.ObanTest.run/2
+       test/g_oban_test.exs:39: (test)
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2
+       (stdlib 7.3.0.2) timer.erl:599: :timer.tc/2
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4
+
+
+
+  2) test 05-46: last attempt: state :discard (Lab05.ObanTest)
+     test/g_oban_test.exs:46
+     ** (ExUnit.TimeoutError) test timed out after 60000ms. You can change the timeout:
+
+       1. per test by setting "@tag timeout: x" (accepts :infinity)
+       2. per test module by setting "@moduletag timeout: x" (accepts :infinity)
+       3. globally via "ExUnit.start(timeout: x)" configuration
+       4. by running "mix test --timeout x" which sets timeout
+       5. or by running "mix test --trace" which sets timeout to infinity
+          (useful when using IEx.pry/0)
+
+     where "x" is the timeout given as integer in milliseconds (defaults to 60_000).
+
+     code: {_, msgs} = run(W.Last)
+     stacktrace:
+       (lab05 0.1.0) lib/lab05/capture.ex:85: Lab05.Capture.collect/2
+       test/g_oban_test.exs:23: Lab05.ObanTest.run/2
+       test/g_oban_test.exs:47: (test)
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2
+       (stdlib 7.3.0.2) timer.erl:599: :timer.tc/2
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4
+
+
+
+  3) test 05-47: {:error, reason}: exception event with reason %Oban.PerformError{} (Lab05.ObanTest)
+     test/g_oban_test.exs:51
+     ** (ExUnit.TimeoutError) test timed out after 60000ms. You can change the timeout:
+
+       1. per test by setting "@tag timeout: x" (accepts :infinity)
+       2. per test module by setting "@moduletag timeout: x" (accepts :infinity)
+       3. globally via "ExUnit.start(timeout: x)" configuration
+       4. by running "mix test --timeout x" which sets timeout
+       5. or by running "mix test --trace" which sets timeout to infinity
+          (useful when using IEx.pry/0)
+
+     where "x" is the timeout given as integer in milliseconds (defaults to 60_000).
+
+     code: {_, msgs} = run(W.ErrorTuple)
+     stacktrace:
+       (lab05 0.1.0) lib/lab05/capture.ex:85: Lab05.Capture.collect/2
+       test/g_oban_test.exs:23: Lab05.ObanTest.run/2
+       test/g_oban_test.exs:52: (test)
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2
+       (stdlib 7.3.0.2) timer.erl:599: :timer.tc/2
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4
+
+
+
+  4) test 05-48: {:cancel, _}: a :stop event with state :cancelled, no exception event (Lab05.ObanTest)
+     test/g_oban_test.exs:56
+     ** (ExUnit.TimeoutError) test timed out after 60000ms. You can change the timeout:
+
+       1. per test by setting "@tag timeout: x" (accepts :infinity)
+       2. per test module by setting "@moduletag timeout: x" (accepts :infinity)
+       3. globally via "ExUnit.start(timeout: x)" configuration
+       4. by running "mix test --timeout x" which sets timeout
+       5. or by running "mix test --trace" which sets timeout to infinity
+          (useful when using IEx.pry/0)
+
+     where "x" is the timeout given as integer in milliseconds (defaults to 60_000).
+
+     code: {_, msgs} = run(W.Cancel)
+     stacktrace:
+       (lab05 0.1.0) lib/lab05/capture.ex:85: Lab05.Capture.collect/2
+       test/g_oban_test.exs:23: Lab05.ObanTest.run/2
+       test/g_oban_test.exs:57: (test)
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2
+       (stdlib 7.3.0.2) timer.erl:599: :timer.tc/2
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4
+
+
+
+  5) test 05-49: {:snooze, 60}: a :stop event with state :snoozed (Lab05.ObanTest)
+     test/g_oban_test.exs:63
+     ** (ExUnit.TimeoutError) test timed out after 60000ms. You can change the timeout:
+
+       1. per test by setting "@tag timeout: x" (accepts :infinity)
+       2. per test module by setting "@moduletag timeout: x" (accepts :infinity)
+       3. globally via "ExUnit.start(timeout: x)" configuration
+       4. by running "mix test --timeout x" which sets timeout
+       5. or by running "mix test --trace" which sets timeout to infinity
+          (useful when using IEx.pry/0)
+
+     where "x" is the timeout given as integer in milliseconds (defaults to 60_000).
+
+     code: {_, msgs} = run(W.Snooze)
+     stacktrace:
+       (lab05 0.1.0) lib/lab05/capture.ex:85: Lab05.Capture.collect/2
+       test/g_oban_test.exs:23: Lab05.ObanTest.run/2
+       test/g_oban_test.exs:64: (test)
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2
+       (stdlib 7.3.0.2) timer.erl:599: :timer.tc/2
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4
+

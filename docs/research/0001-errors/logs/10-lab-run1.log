@@ -1,0 +1,23 @@
+Compiling 9 files (.ex)
+Running ExUnit with seed: 908394, max_cases: 22
+Excluding tags: [:flood]
+         Map.fetch!(%{token: "ck_live_SECRET"}, :missing)
+     the map:
+         %{token: binary()}
+     does not have all required keys:
+         :missing
+     therefore this function will always raise
+     type warning found at:
+10-11 postgrex: "ERROR 23505 (unique_violation) duplicate key value violates unique constraint \"review_spaces_name_key\"\n\n    table: review_spaces\n    constraint: review_spaces_name_key\n\nKey (name)=(my-private-space) already exists."
+10-11 keyerror: "key :missing not found in:\n\n    %{token: \"ck_live_SECRET\"}\n"
+.10-8 Logger.debug µs/event without filter=0.67 with domain filter=0.641
+..10-3 top frames A: [Ecto.Adapters.SQL, Review.Test, Review.Test, ExUnit.Runner]
+.10-1 counts=[1] captured_delta_after=0
+.10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+.10-10 binaries referenced after GC: [4000000]
+.10-2 sent=20000 in 2000 ms counted=19926 dropped=74 issues_written=19926 samples_written=19926
+...10-7 filters after add_translator: [:review_first, :logger_process_level, :logger_translator]
+.Logger - error: {removed_failing_filter,review_bad}
+.
+Finished in 11.9 seconds (0.00s async, 11.9s sync)
+Result: 12 passed

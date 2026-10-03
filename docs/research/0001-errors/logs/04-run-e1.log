@@ -1,0 +1,50 @@
+Running ExUnit with seed: 358429, max_cases: 1
+
+.
+
+  1) test 04-50: {:silent, true} in the match spec suppresses call messages but keeps exception_from (BeamLab.TraceCostTest)
+     test/e_trace_cost_test.exs:99
+     Expected truthy, got false
+     code: assert Enum.any?(msgs, &match?({:trace, _, :exception_from, {Silent, :inner, 0}, _}, &1))
+     arguments:
+
+         # 1
+         []
+
+         # 2
+         #Function<8.17514783/1 in BeamLab.TraceCostTest."test 04-50: {:silent, true} in the match spec suppresses call messages but keeps exception_from"/1>
+
+     stacktrace:
+       test/e_trace_cost_test.exs:110: (test)
+
+
+
+  2) test 04-51: costs of trace sessions on 1M tiny calls (Silent.loop/1) (BeamLab.TraceCostTest)
+     test/e_trace_cost_test.exs:59
+     ** (ExUnit.TimeoutError) test timed out after 300000ms. You can change the timeout:
+
+       1. per test by setting "@tag timeout: x" (accepts :infinity)
+       2. per test module by setting "@moduletag timeout: x" (accepts :infinity)
+       3. globally via "ExUnit.start(timeout: x)" configuration
+       4. by running "mix test --timeout x" which sets timeout
+       5. or by running "mix test --trace" which sets timeout to infinity
+          (useful when using IEx.pry/0)
+
+     where "x" is the timeout given as integer in milliseconds (defaults to 60_000).
+
+     code: own = measure("b {Silent,_,_} exception_trace, process traced",
+     stacktrace:
+       test/e_trace_cost_test.exs:45: anonymous fn/3 in BeamLab.TraceCostTest.measure/3
+       (elixir 1.20.4) lib/enum.ex:4636: Enum.map_range/4
+       (elixir 1.20.4) lib/enum.ex:4636: Enum.map/2
+       test/e_trace_cost_test.exs:38: BeamLab.TraceCostTest.measure/3
+       test/e_trace_cost_test.exs:64: (test)
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2
+       (stdlib 7.3.0.2) timer.erl:599: :timer.tc/2
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4
+
+
+Finished in 331.8 seconds (0.00s async, 331.8s sync)
+
+Result: 1/3 passed
+Failed: 2 tests

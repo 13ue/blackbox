@@ -1,0 +1,34 @@
+## A logger tests (first run)
+cmd: cd lab/06-before && mix test test/a_logger_test.exs
+Running ExUnit with seed: 483020 -> 7 passed, 0 failures (all green first run)
+## B crash context
+first run seed 516303: 8/10, red: 06-9 (no proc_lib crash report: Elixir primary filter logger_translator sasl:false), 06-12 (last_message is bare :crash, client_info {pid,{pid,stack}})
+after fixing assertions: seed 301253 10 passed
+## C telemetry: seed 423530 4 passed (all green first run)
+## D seq_trace: first run seed ? 4/6 red 06-23 (confounded by inheritance), 06-25 (spawn inherits token); after fix seed 363866 6 passed
+## E sys/system_monitor/otel: seed 535828 7 passed (all green first run)
+## E2 scrub: seed 646535 1 passed (green first run)
+## F trace sessions: first run seed 224072 4/6 red 06-36 (receive trace includes code_server reply), 06-40 (test bug in helper); then +06-40b control; 3 runs seeds 958673 420655 871901: 7 passed each
+## G plug: seed 125960 3 passed (green first run), bench 06-45/06-46 in logs/06-plug-latency.log
+## H process level: first run 1/2, red 06-47 (put_process_level cannot lower below primary); fixed: 2 passed
+Running ExUnit with seed: 425637, max_cases: 22
+Result: 46/47 passed, 2 excluded
+Failed: 1 test
+Running ExUnit with seed: 418232, max_cases: 22
+Result: 47 passed, 2 excluded
+Running ExUnit with seed: 416437, max_cases: 22
+Result: 47 passed, 2 excluded
+Running ExUnit with seed: 21398, max_cases: 22
+Result: 47 passed, 2 excluded
+Running ExUnit with seed: 849013, max_cases: 22
+Result: 47 passed, 2 excluded
+Running ExUnit with seed: 962582, max_cases: 22
+Result: 47 passed, 2 excluded
+## final: flaky 06-41 was a test race (worker ran before flags set), fixed with a :go handshake; seed 425637 now green; 3 runs seeds 21398 849013 962582: 47 passed, 2 excluded (bench)
+Running ExUnit with seed: 863259, max_cases: 22
+Result: 52 passed, 2 excluded
+Running ExUnit with seed: 736442, max_cases: 22
+Result: 52 passed, 2 excluded
+Running ExUnit with seed: 563600, max_cases: 22
+Result: 52 passed, 2 excluded
+## I join (from lead via 02): seed 859058 4 passed + 06-53 seed 441897 5 passed (all green first run); full suite 3 runs seeds 863259 736442 563600: 52 passed, 2 excluded

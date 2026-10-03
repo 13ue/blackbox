@@ -1,0 +1,9 @@
+call, no debug: 835.9 ns/call
+call, debug log 10: 892.4 ns/call
+call, debug log 50: 898.7 ns/call
+:sys log 10 entries in server state: 4848 bytes of get_status (whole status)
+system snapshot (9 fields, incl. ets.all): 116.15 µs, 608 heap bytes
+system snapshot cheap (3 fields): 41.53 µs, 80 heap bytes
+Process.info(self(), 8 items): 10.59 µs, 3728 heap bytes
+Ring.Pdict.read(other_pid) with 50 crumbs (Process.info :dictionary): 11.1 µs
+:ets.all count now: 52, process_count 157

@@ -1,0 +1,19 @@
+Running ExUnit with seed: 872851, max_cases: 22
+
+warning: variable "conn" is unused (if the variable is not meant to be used, prefix it with an underscore)
+└─ test/bandit_test.exs: Lab01.BanditTest.Router.do_match/4
+
+warning: variable "conn" is unused (if the variable is not meant to be used, prefix it with an underscore)
+└─ test/bandit_test.exs: Lab01.BanditTest.CapturedRouter.do_match/4
+
+01-9 first 50 median us=52 max us=8241 all max us=51297 total ms=899 over50ms=17
+.
+11:48:51.039 [warning] Event dropped due to being a duplicate of a previously-captured event.
+
+11:48:51.090 [warning] Event dropped due to being a duplicate of a previously-captured event.
+....
+11:48:52.903 [warning] Event dropped due to being a duplicate of a previously-captured event.
+......................
+Finished in 15.7 seconds (0.00s async, 15.7s sync)
+
+Result: 27 passed

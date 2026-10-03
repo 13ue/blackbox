@@ -1,0 +1,36 @@
+lines 3683
+debug 0
+info 3683
+notice 0
+warning 0
+error 0
+critical 0
+alert 0
+emergency 0
+--- exception modules
+--- error first words
+--- warning first words
+--- first/last ts
+07:38:21.243
+09:06:00.929
+started 2026-09-27T07:38:18.647386913Z restarts=0 created=2026-09-27T07:37:42.422921907Z
+alllines 3685
+--- info kinds
+   1028 Sent N in N
+    718 Sent N in Nm
+    548 POST /tab/curs
+    319 GET /api/vN/th
+    299 GET /api/vN/bo
+    252 POST /hologram
+    223 HEAD /hologram
+     53 GET /hologram/
+     39 Chunked N in
+     23 == Running N
+     23 == Migrated N
+     14 GET /tab/curso
+     11 alter table sp
+     10 GET /
+      9 GET /me/keyrin
+--- non-level lines
+0
+1

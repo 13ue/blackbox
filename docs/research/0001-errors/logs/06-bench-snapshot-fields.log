@@ -1,0 +1,11 @@
+:erlang.memory(): 46.931 µs
+:erlang.memory(:total): 49.267 µs
+statistics(:total_run_queue_lengths): 0.017 µs
+statistics(:run_queue): 0.054 µs
+system_info(:process_count): 0.022 µs
+length(:ets.all()): 34.436 µs
+statistics(:reductions): 0.074 µs
+statistics(:io): 34.833 µs
+Process.info(self(), :current_stacktrace): 10.356 µs
+Process.info(self(), [:message_queue_len, :memory, :reductions]): 0.075 µs
+Process.info(self(), :links): 0.056 µs

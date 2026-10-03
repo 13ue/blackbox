@@ -1,0 +1,12 @@
+real stack frames: 8
+get_application unloaded module: 11.43 µs
+get_application loaded (Enum): 10.68 µs
+format_stacktrace_entry unloaded x12: 288.83 µs
+format_stacktrace_entry real stack: 141.77 µs
+fingerprint unloaded 12 frames: 178.18 µs
+fingerprint real stack: 107.44 µs
+fingerprint :log: 6.94 µs
+~r inline String.replace: 1.42 µs
+precompiled regex String.replace: 0.9 µs
+sha256 of small term: 0.19 µs
+loaded apps: 26

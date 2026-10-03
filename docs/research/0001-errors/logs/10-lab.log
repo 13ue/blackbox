@@ -1,0 +1,22 @@
+10-8 Logger.debug µs/event without filter=0.67 with domain filter=0.641
+10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+10-2 sent=20000 in 2000 ms counted=19926 dropped=74 issues_written=19926 samples_written=19926
+10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+10-8 Logger.debug µs/event without filter=0.615 with domain filter=0.632
+10-2 sent=20000 in 2000 ms counted=20000 dropped=0 issues_written=20000 samples_written=20000
+10-8 Logger.debug µs/event without filter=0.747 with domain filter=0.671
+10-2 sent=20000 in 2001 ms counted=19820 dropped=180 issues_written=19820 samples_written=19820
+10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+10-2 sent=20000 in 2001 ms counted=20000 dropped=0 issues_written=20000 samples_written=20000
+10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+10-8 Logger.debug µs/event without filter=0.702 with domain filter=0.676
+10-8 Logger.debug µs/event without filter=0.614 with domain filter=0.639
+10-2 sent=20000 in 2001 ms counted=19882 dropped=118 issues_written=19882 samples_written=19882
+10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+10-8 Logger.debug µs/event without filter=0.633 with domain filter=0.646
+10-2 sent=20000 in 2000 ms counted=20000 dropped=0 issues_written=20000 samples_written=20000
+10-2 sent=20000 in 2001 ms counted=20000 dropped=0 issues_written=20000 samples_written=20000
+10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+10-8 Logger.debug µs/event without filter=0.763 with domain filter=0.682
+10-16 raise+rescue 40 deep, µs per raise: depth 8=47.467 depth 32=47.58

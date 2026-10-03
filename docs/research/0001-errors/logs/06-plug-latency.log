@@ -1,0 +1,33 @@
+off: HTTP 8 clients x 2000 p50 225.7 µs p99 417.4 µs | in-process Plug p50 61.8 µs p99 153.3 µs
+on: HTTP 8 clients x 2000 p50 246.0 µs p99 463.2 µs | in-process Plug p50 165.9 µs p99 720.7 µs
+off: HTTP 8 clients x 2000 p50 244.7 µs p99 480.8 µs | in-process Plug p50 254.3 µs p99 434.3 µs
+on: HTTP 8 clients x 2000 p50 240.9 µs p99 585.7 µs | in-process Plug p50 376.2 µs p99 931.5 µs
+--- run 2 (3 alternating rounds, fresh process per in-process run) ---
+off: HTTP 8 clients x 2000 p50 173.5 µs p99 321.1 µs | in-process Plug p50 4.8 µs p99 17.4 µs
+on: HTTP 8 clients x 2000 p50 204.2 µs p99 408.0 µs | in-process Plug p50 10.0 µs p99 72.2 µs
+off: HTTP 8 clients x 2000 p50 237.1 µs p99 473.3 µs | in-process Plug p50 5.2 µs p99 25.5 µs
+on: HTTP 8 clients x 2000 p50 192.9 µs p99 376.3 µs | in-process Plug p50 9.8 µs p99 67.5 µs
+off: HTTP 8 clients x 2000 p50 218.2 µs p99 437.1 µs | in-process Plug p50 5.2 µs p99 31.3 µs
+on: HTTP 8 clients x 2000 p50 241.3 µs p99 484.3 µs | in-process Plug p50 10.0 µs p99 71.6 µs
+--- 06-46 decomposition ---
+round 1 off: in-process Plug p50 5.0 µs p90 6.0 µs p99 25.6 µs
+round 1 debug_level_only: in-process Plug p50 8.1 µs p90 15.9 µs p99 71.3 µs
+round 1 debug_level_and_crumb_handler: in-process Plug p50 9.4 µs p90 16.9 µs p99 76.9 µs
+round 1 telemetry_crumbs_and_label: in-process Plug p50 5.5 µs p90 6.4 µs p99 37.3 µs
+round 1 all: in-process Plug p50 9.7 µs p90 13.9 µs p99 68.2 µs
+round 2 off: in-process Plug p50 5.0 µs p90 5.8 µs p99 18.0 µs
+round 2 debug_level_only: in-process Plug p50 8.0 µs p90 10.3 µs p99 63.3 µs
+round 2 debug_level_and_crumb_handler: in-process Plug p50 9.1 µs p90 12.7 µs p99 69.2 µs
+round 2 telemetry_crumbs_and_label: in-process Plug p50 5.4 µs p90 6.7 µs p99 39.0 µs
+round 2 all: in-process Plug p50 9.8 µs p90 13.3 µs p99 69.4 µs
+round 3 off: in-process Plug p50 5.1 µs p90 5.6 µs p99 25.5 µs
+round 3 debug_level_only: in-process Plug p50 8.2 µs p90 10.3 µs p99 66.2 µs
+round 3 debug_level_and_crumb_handler: in-process Plug p50 9.5 µs p90 12.9 µs p99 72.6 µs
+round 3 telemetry_crumbs_and_label: in-process Plug p50 5.5 µs p90 6.0 µs p99 26.8 µs
+round 3 all: in-process Plug p50 9.8 µs p90 13.5 µs p99 67.3 µs
+off: HTTP 8 clients x 2000 p50 176.5 µs p99 353.4 µs | in-process Plug p50 5.0 µs p99 18.8 µs
+on: HTTP 8 clients x 2000 p50 227.2 µs p99 451.5 µs | in-process Plug p50 9.9 µs p99 61.9 µs
+off: HTTP 8 clients x 2000 p50 215.5 µs p99 458.6 µs | in-process Plug p50 5.0 µs p99 16.8 µs
+on: HTTP 8 clients x 2000 p50 214.5 µs p99 499.7 µs | in-process Plug p50 9.4 µs p99 54.8 µs
+off: HTTP 8 clients x 2000 p50 204.3 µs p99 378.3 µs | in-process Plug p50 5.0 µs p99 16.2 µs
+on: HTTP 8 clients x 2000 p50 189.4 µs p99 353.0 µs | in-process Plug p50 9.8 µs p99 59.1 µs

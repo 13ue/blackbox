@@ -1,0 +1,22 @@
+Compiling 1 file (.ex)
+Running ExUnit with seed: 538417, max_cases: 1
+
+...............
+
+  1) test default Elixir config (handle_sasl_reports: false) 04-17: handle_call raise -> one {:gen_server, :terminate} :error report in the server process; caller exits (BeamLab.OtpTest)
+     test/b_otp_test.exs:26
+     Assertion with == failed
+     code:  assert Map.keys(r) -- [:elixir_translation] ==
+              Enum.sort([:label, :name, :reason, :log, :state, :last_message, :process_label, :client_info])
+     left:  [:label, :name, :reason, :log, :state, :last_message,
+             :process_label, :client_info]
+     right: [:client_info, :label, :last_message, :log, :name, :process_label,
+             :reason, :state]
+     stacktrace:
+       test/b_otp_test.exs:36: (test)
+
+...
+Finished in 5.7 seconds (0.00s async, 5.7s sync)
+
+Result: 18/19 passed
+Failed: 1 test

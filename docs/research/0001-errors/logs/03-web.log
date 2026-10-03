@@ -1,0 +1,22 @@
+Sun Sep 27 11:01:57 CEST 2026 start
+HN Algolia searches (curl, no WebSearch budget): sentry noise | sentry alert fatigue | error tracking self-hosted | bugsink | glitchtip | sentry pricing | sentry self-hosted
+Threads pulled via hn.algolia.com/api/v1/items/<id>, flattened, keyword-coded (themes.py in scratchpad r03/):
+ 43725815 "I gave up on self-hosted Sentry" 150 comments: selfhost_heavy 29, price 19, simple_alt 15, love 12, locals 4, grouping 3, noise 2
+ 44190643 "Track Errors First" 52: simple_alt 11, love 9, locals 6, price 3, noise 2
+ 41754386 "Local Variables as Accidental Breadcrumbs" 44: locals_context 17, love 5
+ 47049776 "Launch HN Sonarly" 17: noise 6, grouping 4
+ 48195021 "Show HN Superlog" 48: love 12, price 5, locals 4
+ 36008564 GlitchTip 18: simple_alt 5
+ (keyword counts = comments matching a regex; crude; hand-read quotes in report)
+WebFetch: docs.sentry.io/concepts/data-management/event-grouping/ ; docs.sentry.io/product/issues/issue-details/breadcrumbs/
+Reddit search.json and old.reddit: HTTP 403 (blocked for curl) -> Reddit not counted. elixirforum.com/search.json -> 302 to /tags/search (forum no longer answers Discourse JSON) -> ElixirForum left to agent 02.
+HN more searches: error tracker elixir, elixir sentry, honeycomb wide events, flight recorder go, sentry seer, sentry mcp, rollbar, posthog error tracking, time travel debugging, observability 2.0
+WebFetch kb.cert.org/vuls/id/212479 (PhantomFix, VU#212479, CVE-2026-90999, disclosed 2026-09-16)
+WebFetch go.dev/blog/flight-recorder ; blog.sentry.io/how-sentry-decreased-issue-noise-with-ai/
+git clone --depth 1 getsentry/sentry-mcp -> 7486ab1 2026-09-25 ; 63 files in packages/mcp-core/src/tools/catalog (~61 tools)
+grep untrusted: only Seer output wrapped in <seer_analysis> provenance tags (tool-helpers/seer.ts:118-130, formatting.ts:1958); raw event fields (exception message, breadcrumbs) are not wrapped
+WebFetch docs.rollbar.com/docs/rollbarjs-telemetry ; docs.bugsnag.com/platforms/javascript/customizing-breadcrumbs/ ; docs.honeybadger.io/lib/ruby/getting-started/breadcrumbs/ ; posthog.com/docs/error-tracking ; docs.datadoghq.com/error_tracking/ ; bugsink.com/blog/local-variables-as-accidental-breadcrumbs/ ; bugsink.com/blog/track-errors-first/ ; charity.wtf/2024/12/20/on-versioning-observabilities-1-0-2-0-3-0-10-0/
+WebFetch docs.sentry.io: states-triage/, states-triage/escalating-issues/, ai-in-sentry/seer/, event-grouping/fingerprint-rules/, event-grouping/stack-trace-rules/, platforms/javascript/session-replay/understanding-sessions/
+WebFetch docs.oracle.com JFR (jfapi why-use + jmc-5-4 runtime guide about.htm); pernos.co/about/overview/; rr-project.org; docs.replay.io
+HN comment search (tags=comment, 40 hits each): "sentry noise", "sentry grouping", "sentry breadcrumbs" (+ others fetched, unused). Filtered to comments that literally match the topic, hand-coded; tally in report section 3/4.
+puppeteer headless probe sandbox.sentry.io/issues/ -> email gate 'Interactive Sandbox ... enter your email' -> no login created, no shots taken (rule: never create logins). WebFetch docs.sentry.io/product/issues/issue-details/ ; bugsink.com

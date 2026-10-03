@@ -1,0 +1,49 @@
+Running ExUnit with seed: 785301, max_cases: 22
+Including tags: [:flood]
+
+    warning: variable "s" is unused (if the variable is not meant to be used, prefix it with an underscore)
+    │
+  8 │     def handle_call(:boom, _, s) do
+    │                               ~
+    │
+    └─ test/crumbs_test.exs:8:31: Spike.CrumbsTest.Gs.handle_call/3
+
+...warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+.warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+warning: the following conditional expression:
+
+    (fn -> :ok end).()
+
+will always evaluate to:
+
+    dynamic(:ok)
+
+└─ fp_0.ex:2: FpMod.run/1
+
+..warning: redefining module FpMod (current version defined in memory)
+└─ fp_0.ex:1: FpMod (module)
+
+..............08-33 µs/call: Logger.error with handler=12.24 without=0.61 | Logger.debug crumb=0.91 without handler=0.6 | Spike.crumb=0.2 | from_log(12 frames, 20 crumbs)=35.67 | finish in buffer=214.49
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+.08-32 target=20000/s achieved=19989/s sent=40000 stored=40000 dropped=0 queue_max=1 buffer_mem_max=627568
+08-32 target=50000/s achieved=49980/s sent=100000 stored=100000 dropped=0 queue_max=419 buffer_mem_max=1024552
+08-32 target=100000/s achieved=99988/s sent=200000 stored=200000 dropped=0 queue_max=556 buffer_mem_max=3562056
+08-32 target=200000/s achieved=199938/s sent=400000 stored=400000 dropped=0 queue_max=1950 buffer_mem_max=4289344
+.08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+.08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+.08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=3007704 queue_max=6 vm +1086 KiB
+08-30 probe idle p50/p99=1/19 µs, db down + flood p50/p99/max=2/25/480 µs; stored after recovery=30000
+.08-27 sent=50000 in 5000 ms (9998/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=3008928 B queue_max=18 vm_total_before=80619462 vm_total_max=82676158 (+2008 KiB)
+08-27 probe idle p50/p99/max=3/30/45 µs flood p50/p99/max=3/42/202 µs
+...............
+Finished in 58.2 seconds (0.00s async, 58.2s sync)
+
+Result: 40 passed

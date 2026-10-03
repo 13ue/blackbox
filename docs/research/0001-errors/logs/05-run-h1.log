@@ -1,0 +1,142 @@
+Compiling 1 file (.ex)
+Generated lab05 app
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+
+
+  1) test 05-54: a 500 with retry: false is {:ok, %Req.Response{status: 500}}: no log, no exception event (Lab05.ReqTest)
+     test/h_req_test.exs:21
+     match (=) failed
+     code:  assert [%{meta: %{result: {:ok, %Finch.Response{status: 500}}}}] = finch_stops(msgs)
+     left:  [%{meta: %{result: {:ok, %Finch.Response{status: 500}}}}]
+     right: [
+              %{
+                meta: %{
+                  name: Req.Finch,
+                  request: %Finch.Request{
+                    scheme: :http,
+                    host: "127.0.0.1",
+                    port: 4354,
+                    method: "GET",
+                    path: "/500",
+                    headers: [{"user-agent", "req/0.7.4"}],
+                    body: nil,
+                    query: nil,
+                    unix_socket: nil,
+                    pool_tag: :default,
+                    private: %{}
+                  },
+                  result: {:ok,
+                   {%Req.Request{
+                      method: :get,
+                      url: URI.parse("http://127.0.0.1:4354/500"),
+                      headers: %{"user-agent" => ["req/0.7.4"]},
+                      body: nil,
+                      options: %{retry: false},
+                      halted: false,
+                      adapter: Req.Finch,
+                      request_steps: [
+                        put_user_agent: &Req.Steps.put_user_agent/1,
+                        compressed: &Req.Steps.compressed/1,
+                        encode_body: &Req.Steps.encode_body/1,
+                        put_base_url: &Req.Steps.put_base_url/1,
+                        auth: &Req.Steps.auth/1,
+                        put_params: &Req.Steps.put_params/1,
+                        put_path_params: &Req.Steps.put_path_params/1,
+                        put_range: &Req.Steps.put_range/1,
+                        cache: &Req.Steps.cache/1,
+                        compress_body: &Req.Steps.compress_body/1,
+                        checksum: &Req.Steps.checksum/1,
+                        put_aws_sigv4: &Req.Steps.put_aws_sigv4/1
+                      ],
+                      response_steps: [
+                        retry: &Req.Steps.retry/1,
+                        handle_http_errors: &Req.Steps.handle_http_errors/1,
+                        redirect: &Req.Steps.redirect/1,
+                        http_digest: &Req.Steps.handle_http_digest/1,
+                        decompress_body: &Req.Steps.decompress_body/1,
+                        verify_checksum: &Req.Steps.verify_checksum/1,
+                        decode_body: &Req.Steps.decode_body/1
+                      ],
+                      error_steps: [retry: &Req.Steps.retry/1],
+                      private: %{}
+                    },
+                    {500,
+                     [
+                       {"date", "Sun, 27 Sep 2026 09:23:02 GMT"},
+                       {"content-length", "13"},
+                       {"vary", "accept-encoding"},
+                       {"cache-control",
+                        "max-age=0, private, must-revalidate"}
+                     ], [[] | "upstream down"], []}}},
+                  telemetry_span_context: #Reference<0.756697456.795344900.191978>
+                },
+                name: [:finch, :request, :stop],
+                from: #PID<0.644.0>,
+                meas: %{
+                  monotonic_time: -576460751535572833,
+                  duration: 28877500
+                }
+              }
+            ]
+     stacktrace:
+       test/h_req_test.exs:26: (test)
+
+05-55 warnings: ["retry: got response with status 500, will retry in 10ms, 3 attempts left", "retry: got response with status 500, will retry in 10ms, 2 attempts left", "retry: got response with status 500, will retry in 10ms, 1 attempt left"]
+.05-56 finch stop meta keys: [:name, :request, :result, :telemetry_span_context] result={:error, %Finch.TransportError{reason: :econnrefused, source: %Mint.TransportError{reason: :econnrefused}}, {%Req.Reques
+
+
+  2) test 05-56: connection refused with retry: false: {:error, %Req.TransportError{reason: :econnrefused}}; finch stop carries the error; no exception event; no log (Lab05.ReqTest)
+     test/h_req_test.exs:40
+     match (=) failed
+     code:  assert {:error, _} = s.meta.result
+     left:  {:error, _}
+     right: {:error,
+             %Finch.TransportError{
+               reason: :econnrefused,
+               source: %Mint.TransportError{reason: :econnrefused}
+             },
+             {%Req.Request{
+                method: :get,
+                url: URI.parse("http://127.0.0.1:4399/"),
+                headers: %{"user-agent" => ["req/0.7.4"]},
+                body: nil,
+                options: %{retry: false},
+                halted: false,
+                adapter: Req.Finch,
+                request_steps: [
+                  put_user_agent: &Req.Steps.put_user_agent/1,
+                  compressed: &Req.Steps.compressed/1,
+                  encode_body: &Req.Steps.encode_body/1,
+                  put_base_url: &Req.Steps.put_base_url/1,
+                  auth: &Req.Steps.auth/1,
+                  put_params: &Req.Steps.put_params/1,
+                  put_path_params: &Req.Steps.put_path_params/1,
+                  put_range: &Req.Steps.put_range/1,
+                  cache: &Req.Steps.cache/1,
+                  compress_body: &Req.Steps.compress_body/1,
+                  checksum: &Req.Steps.checksum/1,
+                  put_aws_sigv4: &Req.Steps.put_aws_sigv4/1
+                ],
+                response_steps: [
+                  retry: &Req.Steps.retry/1,
+                  handle_http_errors: &Req.Steps.handle_http_errors/1,
+                  redirect: &Req.Steps.redirect/1,
+                  http_digest: &Req.Steps.handle_http_digest/1,
+                  decompress_body: &Req.Steps.decompress_body/1,
+                  verify_checksum: &Req.Steps.verify_checksum/1,
+                  decode_body: &Req.Steps.decode_body/1
+                ],
+                error_steps: [retry: &Req.Steps.retry/1],
+                private: %{}
+              }, {nil, [], [], []}}}
+     stacktrace:
+       test/h_req_test.exs:45: (test)
+
+..
+Finished in 1.5 seconds (0.00s async, 1.5s sync)
+
+Result: 3/5 passed
+Failed: 2 tests

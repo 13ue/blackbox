@@ -1,0 +1,13 @@
+Compiling 7 files (.ex)
+Generated spike app
+poison: nothing
+filters after: [:logger_translator, :logger_process_level]
+configure sasl: :ok
+translator after configure: {&Logger.Utils.translator/2,
+ %{otp: true, sasl: false, translators: [{Logger.Translator, :translate}]}}
+proc_lib: nothing
+report with label, no crash_reason: nothing
+report without label: reached {:report, %{foo: 1}}
+report + bogus crash_reason: reached {:report, %{foo: 1}}
+Logger.error + bogus crash_reason: reached {:string, "poison"}
+translate: :skip

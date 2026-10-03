@@ -1,0 +1,22 @@
+Running ExUnit with seed: 1, max_cases: 22
+Excluding tags: [:flood]
+
+......
+
+  1) test 08-36: with sasl on, a supervisor giving up (max restart intensity) is captured besides the child crashes (Spike.CaptureTest)
+     test/capture_test.exs:123
+     Assertion with == failed
+     code:  assert Enum.map(issues, &{&1.type, &1.count}) |> Enum.sort() == [
+              {"ArgumentError", 2},
+              {"exit :reached_max_restart_intensity", 1}
+            ]
+     left:  [{"ArgumentError", 2}, {"log", 1}]
+     right: [{"ArgumentError", 2}, {"exit :reached_max_restart_intensity", 1}]
+     stacktrace:
+       test/capture_test.exs:133: (test)
+
+.......
+Finished in 6.2 seconds (0.00s async, 6.2s sync)
+
+Result: 13/14 passed
+Failed: 1 test

@@ -1,0 +1,15 @@
+
+
+ 26) test 08-4: Logger.error without a crash is an event of kind :log (Spike.CaptureTest)
+     test/capture_test.exs:52
+     ** (UndefinedFunctionError) function Spike.Buffer.set_writer/1 is undefined (module Spike.Buffer is not available)
+     stacktrace:
+       Spike.Buffer.set_writer(#Function<0.131078508/1 in Spike.Sink.to/1>)
+       test/capture_test.exs:12: Spike.CaptureTest.__ex_unit_setup_0/1
+       test/capture_test.exs:1: Spike.CaptureTest.__ex_unit__/2
+
+
+Finished in 0.1 seconds (0.1s async, 0.00s sync)
+
+Result: 0/26 passed
+Failed: 26 tests

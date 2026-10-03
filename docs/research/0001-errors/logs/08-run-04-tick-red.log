@@ -1,0 +1,20 @@
+Compiling 1 file (.ex)
+Running ExUnit with seed: 903343, max_cases: 22
+Excluding tags: [:test, :flood]
+Including tags: [test: "test 08-31: without any flush call, the 100 ms tick writes a batch within 400 ms"]
+
+
+
+  1) test 08-31: without any flush call, the 100 ms tick writes a batch within 400 ms (Spike.PipelineTest)
+     test/pipeline_test.exs:62
+     Assertion failed, no matching message after 400ms
+     The process mailbox is empty.
+     code: assert_receive {:batch, [%{count: 1, samples: [%{message: "tick only"}]}]}
+     stacktrace:
+       test/pipeline_test.exs:64: (test)
+
+
+Finished in 0.5 seconds (0.00s async, 0.5s sync)
+
+Result: 0/1 passed, 6 excluded
+Failed: 1 test

@@ -1,0 +1,184 @@
+Running ExUnit with seed: 1, max_cases: 22
+Excluding tags: [:flood]
+
+..
+
+  1) test 08-37: GenServer.call timeouts with different args and pids are ONE issue (Sentry #933) (Spike.CaptureTest)
+     test/capture_test.exs:136
+     match (=) failed
+     code:  assert [%{type: "exit {:timeout, _}", count: 3}] = issues
+     left:  [%{type: "exit {:timeout, _}", count: 3}]
+     right: [
+              %{
+                count: 3,
+                type: "FunctionClauseError",
+                samples: [
+                  %{
+                    label: nil,
+                    message: "no function clause matching in Agent.Server.handle_call/3",
+                    pid: "#PID<0.261.0>",
+                    at: 1790501275853486,
+                    state: ":ok",
+                    mfa: "{:gen_server, :error_info, 7}",
+                    last_message: "{:slow, 1, #Reference<0.505448592.1869611010.116892>}",
+                    stacktrace: ["(elixir 1.20.4) lib/agent/server.ex:15: Agent.Server.handle_call/3",
+                     "(stdlib 7.3.0.2) gen_server.erl:2470: :gen_server.try_handle_call/4",
+                     "(stdlib 7.3.0.2) gen_server.erl:2499: :gen_server.handle_msg/3",
+                     "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"],
+                    source: :logger,
+                    kind: :error,
+                    callers: [],
+                    caller_crumbs: [],
+                    crumbs: []
+                  },
+                  %{
+                    label: nil,
+                    message: "no function clause matching in Agent.Server.handle_call/3",
+                    pid: "#PID<0.265.0>",
+                    at: 1790501275853506,
+                    state: ":ok",
+                    mfa: "{:gen_server, :error_info, 7}",
+                    last_message: "{:slow, 3, #Reference<0.505448592.1869611009.121167>}",
+                    stacktrace: ["(elixir 1.20.4) lib/agent/server.ex:15: Agent.Server.handle_call/3",
+                     "(stdlib 7.3.0.2) gen_server.erl:2470: :gen_server.try_handle_call/4",
+                     "(stdlib 7.3.0.2) gen_server.erl:2499: :gen_server.handle_msg/3",
+                     "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"],
+                    source: :logger,
+                    kind: :error,
+                    callers: [],
+                    caller_crumbs: [],
+                    crumbs: []
+                  },
+                  %{
+                    label: nil,
+                    message: "no function clause matching in Agent.Server.handle_call/3",
+                    pid: "#PID<0.263.0>",
+                    at: 1790501275853585,
+                    state: ":ok",
+                    mfa: "{:gen_server, :error_info, 7}",
+                    last_message: "{:slow, 2, #Reference<0.505448592.1869611010.116901>}",
+                    stacktrace: ["(elixir 1.20.4) lib/agent/server.ex:15: Agent.Server.handle_call/3",
+                     "(stdlib 7.3.0.2) gen_server.erl:2470: :gen_server.try_handle_call/4",
+                     "(stdlib 7.3.0.2) gen_server.erl:2499: :gen_server.handle_msg/3",
+                     "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"],
+                    source: :logger,
+                    kind: :error,
+                    callers: [],
+                    caller_crumbs: [],
+                    crumbs: []
+                  }
+                ],
+                fingerprint: "28f054c05da340a7a1d663d1",
+                last_at: 1790501275853585,
+                first_at: 1790501275853486
+              },
+              %{
+                count: 3,
+                type: "exit {:timeout, _}",
+                samples: [
+                  %{
+                    label: nil,
+                    message: "{:timeout, {GenServer, :call, [#PID<0.263.0>, {:slow, 2, #Reference<0.505448592.1869611010.116901>}, 1]}}",
+                    pid: "#PID<0.264.0>",
+                    at: 1790501275854074,
+                    state: nil,
+                    mfa: nil,
+                    last_message: nil,
+                    stacktrace: ["(elixir 1.20.4) lib/gen_server.ex:1183: GenServer.call/3",
+                     "(elixir 1.20.4) lib/task/supervised.ex:105: Task.Supervised.invoke_mfa/2"],
+                    source: :logger,
+                    kind: :exit,
+                    callers: ["#PID<0.260.0>"],
+                    caller_crumbs: [],
+                    crumbs: []
+                  },
+                  %{
+                    label: nil,
+                    message: "{:timeout, {GenServer, :call, [#PID<0.265.0>, {:slow, 3, #Reference<0.505448592.1869611009.121167>}, 1]}}",
+                    pid: "#PID<0.266.0>",
+                    at: 1790501275854097,
+                    state: nil,
+                    mfa: nil,
+                    last_message: nil,
+                    stacktrace: ["(elixir 1.20.4) lib/gen_server.ex:1183: GenServer.call/3",
+                     "(elixir 1.20.4) lib/task/supervised.ex:105: Task.Supervised.invoke_mfa/2"],
+                    source: :logger,
+                    kind: :exit,
+                    callers: ["#PID<0.260.0>"],
+                    caller_crumbs: [],
+                    crumbs: []
+                  },
+                  %{
+                    label: nil,
+                    message: "{:timeout, {GenServer, :call, [#PID<0.261.0>, {:slow, 1, #Reference<0.505448592.1869611010.116892>}, 1]}}",
+                    pid: "#PID<0.262.0>",
+                    at: 1790501275854113,
+                    state: nil,
+                    mfa: nil,
+                    last_message: nil,
+                    stacktrace: ["(elixir 1.20.4) lib/gen_server.ex:1183: GenServer.call/3",
+                     "(elixir 1.20.4) lib/task/supervised.ex:105: Task.Supervised.invoke_mfa/2"],
+                    source: :logger,
+                    kind: :exit,
+                    callers: ["#PID<0.260.0>"],
+                    caller_crumbs: [],
+                    crumbs: []
+                  }
+                ],
+                fingerprint: "be7637754c4448f7d3984c89",
+                last_at: 1790501275854113,
+                first_at: 1790501275854074
+              }
+            ]
+     stacktrace:
+       test/capture_test.exs:142: (test)
+
+...
+
+  2) test 08-36: with sasl on, a supervisor giving up (max restart intensity) is captured besides the child crashes (Spike.CaptureTest)
+     test/capture_test.exs:123
+     Assertion failed, no matching message after 100ms
+     The following variables were pinned:
+       sup = #PID<0.277.0>
+     Showing 1 of 1 message in the mailbox
+     code: assert_receive {:EXIT, ^sup, :shutdown}
+     mailbox:
+       pattern: {:EXIT, ^sup, :shutdown}
+       value:   {:batch,
+                 [
+                   %{
+                     count: 1,
+                     type: "ArgumentError",
+                     samples: [
+                       %{
+                         label: nil,
+                         message: "gs boom",
+                         pid: "#PID<0.278.0>",
+                         at: 1790501277767716,
+                         state: "%{}",
+                         mfa: "{:gen_server, :error_info, 7}",
+                         last_message: ":boom",
+                         stacktrace: ["test/capture_test.exs:8: Spike.CaptureTest.Gs.handle_call/3",
+                          "(stdlib 7.3.0.2) gen_server.erl:2470: :gen_server.try_handle_call/4",
+                          "(stdlib 7.3.0.2) gen_server.erl:2499: :gen_server.handle_msg/3",
+                          "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"],
+                         source: :logger,
+                         kind: :error,
+                         callers: [],
+                         caller_crumbs: [],
+                         crumbs: []
+                       }
+                     ],
+                     fingerprint: "1079e26be169bc96bc052e87",
+                     last_at: 1790501277767716,
+                     first_at: 1790501277767716
+                   }
+                 ]}
+     stacktrace:
+       test/capture_test.exs:130: (test)
+
+.......
+Finished in 5.9 seconds (0.00s async, 5.9s sync)
+
+Result: 12/14 passed
+Failed: 2 tests

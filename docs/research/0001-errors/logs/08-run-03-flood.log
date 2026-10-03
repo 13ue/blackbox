@@ -1,0 +1,28 @@
+Compiling 1 file (.ex)
+Generated spike app
+Running ExUnit with seed: 1, max_cases: 22
+Including tags: [:flood]
+
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+.08-30 db down: sent=30000 writer_failures=0 pending_issues=2 buffer_mem_max=153928 queue_max=4 vm +1311 KiB
+08-30 probe idle p50/p99=2/17 µs, db down + flood p50/p99/max=2/33/93 µs; stored after recovery=30000
+
+
+  1) test 08-30: DB down during 10k errors/s for 3 s: app unaffected, memory flat, all counted once the DB is back (Spike.FloodTest)
+     test/flood_test.exs:55
+     Assertion with >= failed
+     code:  assert failures >= 2
+     left:  0
+     right: 2
+     stacktrace:
+       test/flood_test.exs:70: (test)
+
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=0
+.08-27 sent=50000 in 5000 ms (9998/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=157600 B queue_max=2 vm_total_before=74162049 vm_total_max=75199585 (+1013 KiB)
+08-27 probe idle p50/p99/max=2/38/90 µs flood p50/p99/max=2/30/119 µs
+.
+Finished in 24.9 seconds (0.00s async, 24.9s sync)
+
+Result: 3/4 passed
+Failed: 1 test

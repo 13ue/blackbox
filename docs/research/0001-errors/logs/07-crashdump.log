@@ -1,0 +1,165 @@
+slogan length 1032
+Slogan: Runtime terminating during boot ({badarg,[{io,put_chars,[standard_error,[<<42,42,32,40,69,88,73,84,32,102,114,111,109,32,35,80,73,68,60,48,46,57,52,46,48,62,41,32,101,120,105,116,101,100,32,105,110,58,32,71,101,110,83,101,114,118,101,114,46,115,116,111,112,40,35,80,73,68,60,48,46,51,56,49,46,48,62,44,32,58,110,111,114,109,97,108,44,32,58,105,110,102,105,110,105,116,121,41,10,32,32,32,32,42,42,32,40,69,88,73,84,41,32,101,120,105,116,101,100,32,105,110,58,32,58,115,121,115,46,116,101,114,109,105,110,97,116,101,40,35,80,73,68,60,48,46,51,56,49,46,48,62,44,32,58,110,111,114,109,97,108,44,32,58,105,110,102,105,110,105,116,121,41,10,32,32,32,32,32,32,32,32,42,42,32,40,69,88,73,84,41,32,97,110,32,101,120,99,101,112,116,105,111,110,32,119,97,115,32,114,97,105,115,101,100,58,10,32,32,32,32,32,32,32,32,32,32,32,32,42,42,32,40,69,114,108,97,110,103,69,114,114,111,114,41,32,69,114,108,97,110,103,32,101,114,114,111,114,58,32,58,116,101,114,109,105,110,97,116,101,100,58,10,10,32,32,42,32,49,115,116,32,97,114,103,117,109,1
+
+decoded slogan binary (truncated by erts):
+** (EXIT from #PID<0.94.0>) exited in: GenServer.stop(#PID<0.381.0>, :normal, :infinity)
+    ** (EXIT) exited in: :sys.terminate(#PID<0.381.0>, :normal, :infinity)
+        ** (EXIT) an exception was raised:
+            ** (ErlangError) Erlang error: :terminated:
+
+  * 1st argum
+   1 =allocated_areas
+   1 =atoms
+   1 =end
+ 129 =ets
+4594 =fun
+   9 =hash_table
+   1 =loaded_modules
+   1 =memory
+ 568 =mod
+   1 =node
+  25 =port
+ 244 =proc
+ 202 =proc_dictionary
+ 244 =proc_heap
+ 244 =proc_stack
+  63 =timer
+=memory
+total: 81916913
+processes: 18546952
+processes_used: 18508120
+system: 63369961
+atom: 1013483
+atom_used: 1013483
+binary: 5669056
+code: 19750232
+ets: 1968864
+=hash_table:atom_tab
+size: 32768
+used: 20114
+ 199 Spawned as: proc_lib:init_p/5
+  25 Spawned as: application_master:start_it/4
+  22 Name: 'Elixir.Postgrex.Protocol'
+  22 Name: 'Elixir.DBConnection.Holder'
+   9 Spawned as: erlang:apply/2
+   3 Spawned as: erts_dirty_process_signal_handler:start/0
+   2 Name: telemetry_handler_table
+   2 Name: ssl_pem_cache
+   2 Name: logger
+   2 Name: inet_db
+   2 Name: gproc_monitor
+   2 Name: gproc
+   2 Name: elixir_config
+   2 Name: dtls_listener_sup
+   2 Name: code_server
+   2 Name: 'Elixir.Req.Finch'
+   2 Name: 'Elixir.Req.Finch.SupervisorRegistry'
+   2 Name: 'Elixir.Req.Finch.SupervisorRegistry.PIDPartition0'
+   2 Name: 'Elixir.Req.Finch.PIDPartition0'
+   2 Name: 'Elixir.Postgrex.Types'
+   2 Name: 'Elixir.Postgrex.TypeManager'
+   2 Name: 'Elixir.Postgrex.TypeManager.PIDPartition0'
+   2 Name: 'Elixir.Postgrex.SCRAM.LockedCache'
+   2 Name: 'Elixir.Postgrex.Parameters'
+   2 Name: 'Elixir.Plug.Upload'
+   2 Name: 'Elixir.Phoenix.PubSub'
+   2 Name: 'Elixir.Mix.TasksServer'
+   2 Name: 'Elixir.Mix.State'
+   2 Name: 'Elixir.ExUnit.Server'
+   2 Name: 'Elixir.ExUnit.CaptureServer'
+   2 Name: 'Elixir.Ecto.Repo.Registry'
+   2 Name: 'Elixir.ChartaWeb.Endpoint'
+   2 Name: 'Elixir.Charta.SpaceHere'
+   2 Name: 'Elixir.Charta.SpaceHere.PIDPartition0'
+   2 Name: 'Elixir.Charta.Repo'
+   2 Name: 'Elixir.Charta.PubSub'
+   2 Name: 'Elixir.Charta.PubSub.PIDPartition2'
+   2 Name: 'Elixir.Charta.PubSub.PIDPartition1'
+   2 Name: 'Elixir.Charta.PubSub.PIDPartition0'
+   2 Name: 'Elixir.Charta.BoardRegistry'
+   2 Name: 'Elixir.Charta.BoardRegistry.PIDPartition0'
+   1 Spawned as: socket_registry:start/0
+   1 Spawned as: prim_file:start/0
+   1 Spawned as: inet_gethost_native:server_init/2
+   1 Spawned as: erts_trace_cleaner:start/0
+   1 Spawned as: erts_literal_area_collector:start/0
+   1 Spawned as: erts_code_purger:start/0
+   1 Spawned as: erl_init:start/2
+   1 Spawned as: 'Elixir.Task.Supervised':noreply/4
+   1 Name: user_drv_reader
+   1 Name: tls_sup
+   1 Name: tls_server_sup
+   1 Name: tls_server_session_ticket_sup
+   1 Name: tls_connection_sup
+   1 Name: tls_client_ticket_store
+   1 Name: timer_server
+   1 Name: timer
+   1 Name: telemetry_sup
+   1 Name: telemetry_poller_sup
+   1 Name: telemetry_poller_default
+13381:Name: user_drv_reader
+18080-Slot: 0
+18081-Connected: <0.0.0>
+18083-Input: 0
+18084-Output: 0
+18089-Slot: 16
+18090-Connected: <0.100.0>
+18091-Links: <0.100.0>
+18100-Slot: 32
+18101-Connected: <0.237.0>
+18102-Links: <0.237.0>
+18104-Input: 81
+18109-Slot: 88
+18110-Connected: <0.349.0>
+18111-Links: <0.349.0>
+18113-Input: 0
+18119-Slot: 96
+18120-Connected: <0.329.0>
+18121-Links: <0.329.0>
+18123-Input: 0
+18129-Slot: 104
+18130-Connected: <0.330.0>
+18131-Links: <0.330.0>
+18133-Input: 0
+18139-Slot: 112
+18140-Connected: <0.341.0>
+18141-Links: <0.341.0>
+18143-Input: 0
+18149-Slot: 120
+18150-Connected: <0.331.0>
+18151-Links: <0.331.0>
+18153-Input: 0
+18159-Slot: 128
+18160-Connected: <0.342.0>
+18161-Links: <0.342.0>
+18163-Input: 0
+18169-Slot: 136
+18170-Connected: <0.332.0>
+18171-Links: <0.332.0>
+18173-Input: 0
+18179-Slot: 144
+--- test modules loaded:
+=mod:'Elixir.Mix.Tasks.Test'
+=mod:'Elixir.Mix.Compilers.Test'
+=mod:'Elixir.ExUnit.DocTest'
+=mod:'Elixir.ExUnit.Test'
+=mod:'Elixir.Charta.MembersTest'
+       5
+=mod:'Elixir.Mix.Tasks.Loadconfig'
+=mod:'Elixir.Mix.Tasks.Deps.Loadpaths'
+=mod:'Elixir.Mix.Tasks.Archive.Check'
+=mod:'Elixir.Mix.Tasks.Ecto.Create'
+=mod:'Elixir.Mix.Tasks.App.Config'
+=mod:'Elixir.Mix.Tasks.Compile'
+=mod:'Elixir.Mix.Tasks.Loadpaths'
+=mod:'Elixir.Mix.Tasks.Compile.All'
+=mod:'Elixir.Mix.Tasks.Compile.Yecc'
+=mod:'Elixir.Mix.Tasks.Compile.Leex'
+=mod:'Elixir.Mix.Tasks.Compile.Erlang'
+=mod:'Elixir.Mix.Tasks.Compile.Elixir'
+=mod:'Elixir.Mix.Tasks.Compile.App'
+=mod:'Elixir.Mix.Tasks.Compile.Hologram'
+=mod:'Elixir.Mix.Tasks.Ecto.Migrate'
+=mod:'Elixir.Mix.Tasks.Test'
+=mod:'Elixir.Mix.Tasks.App.Start'
+16256-Message queue length: 0

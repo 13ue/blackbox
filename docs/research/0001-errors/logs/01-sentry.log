@@ -1,0 +1,46 @@
+# 01 sentry log
+2026-09-27 git clone https://github.com/getsentry/sentry-elixir -> scratchpad/src/sentry-elixir
+latest tag 13.5.1 = ac8f14e (2026-09-02); main = edb3ecf (2026-09-24); 33 commits between
+elixir --version: Elixir 1.20.4 (compiled with Erlang/OTP 28)
+
+## lab/01-sentry surface_test.exs (sentry 13.5.1 from hex, Elixir 1.20.4, OTP 28)
+first run seed 0: 11 tests, 2 failures
+  01-2a RED: e.extra[:last_message] nil; extra = %{domain: [:otp], logger_level: :error, logger_metadata: %{}}
+  01-2i RED: bare spawn caller exiting on GenServer.call timeout -> captured() == [] (VM logs nothing for exit in non-proc_lib process)
+probe: Task caller -> message "exited in: GenServer.call(#PID<..>, :sleep, 50)\n ** (EXIT) time out",
+       extra.crash_reason "{:timeout, {GenServer, :call, [#PID<0.292.0>, :sleep, 50]}}", fingerprint ["timeout","genserver_call",":sleep"], no exception
+after changing assertions to observed truth: 3 runs
+  seed 829785: 12 passed
+  seed 198971: 12 passed
+  seed 568701: 12 passed
+Apple M3 Pro
+
+## bandit_test.exs + pipeline_test.exs first run (seed 0): 9 tests, 1 failure
+  01-4 RED only on `e.extra.domain == [:bandit]`: actual [:elixir, :bandit]; everything else as predicted
+  01-3 green (event LOST), 01-5 green (2 sent, hashes differ), 01-5b green, 01-6/7 green, 01-8a/b/c green
+## overload_test.exs first run (seed 0): RED on `max(first 50) < 10000`: 11339 us (warm-up); switched to median
+  01-9 first 50 median us=56 max us=11339 all max us=55493 total ms=918 over50ms=17
+## full suite 3 runs after fixes
+  seed 229186: 22 passed  (01-9 median 56 us, max 53713 us, 17 calls >= 50 ms)
+  seed 716142: 22 passed  (01-9 median 62 us, max 53994 us, 17)
+  seed 205168: 22 passed  (01-9 median 56 us, max 54582 us, 17)
+not flaky in 3 runs.
+
+## GitHub issues
+curl api.github.com/search/issues?q=repo:getsentry/sentry-elixir+is:issue per_page=100 pages 1-5 (page 5 retried after 403 rate limit)
+total 457 issues (11 open) as of 2026-09-27; by year: 2014 1, 2015 2, 2016 50, 2017 66, 2018 39, 2019 29, 2020 31, 2021 26, 2022 22, 2023 45, 2024 67, 2025 47, 2026 32
+title-regex buckets (approximate, overlapping): missed 23, dup/noise/filter 30, context/breadcrumbs/metadata 54, logger/handler/process 85, plug/phoenix/server 48, oban/quantum/cron 21, stacktrace/source 23, grouping/fingerprint 10, perf/overload/transport 28, tracing 39
+saved to scratchpad/gh01/all.json
+
+## surface2_test.exs first run (seed 0): 3 tests, 2 failures
+  01-2l RED: GenServer.start with init raise -> no event; probe with a raw :logger handler: NO log event at all; start returned {:error, {%RuntimeError{message: "init boom"}, stack}}
+  01-2n RED: only 1 event (inner task "Task #PID<0.290.0> started from #PID<0.289.0> terminating"); caller killed by link exit, not logged
+  01-2m green (gen_statem raise -> 1 event)
+added 01-2o (claim no event, green) + probe: raw handler saw "no log event" for supervisor start_error
+  :logger.get_primary_config().filters -> {:logger_translator, &Logger.Utils.translator/2, %{otp: true, sasl: false, ...}}, {:logger_process_level, ...}
+  Elixir 1.20.4 lib/logger/lib/logger/utils.ex:12-13: translator(%{meta: %{domain: [:otp, :sasl | _]}}, %{sasl: false}) -> :stop
+added 01-2p (green)
+## full suite 3 runs (27 tests)
+  seed 899688: 27 passed (01-9 median 59 us, max 53922, 17 >= 50 ms)
+  seed 679913: 27 passed (01-9 median 52 us, max 58940, 17)
+  seed 175623: 27 passed (01-9 median 55 us, max 59580, 18)

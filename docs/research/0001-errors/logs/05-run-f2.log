@@ -1,0 +1,93 @@
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+05-37 query event meta keys: [:type, :options, :stacktrace, :result, :params, :source, :query, :repo, :cast_params]
+..05-39 queries: ["begin", "INSERT INTO \"things\" (\"name\") VALUES ($1) RETURNING \"id\"", "rollback"]
+..05-41 results=[:ok, :ok]
+05-41 logs=["Postgrex.Protocol (#PID<0.332.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (DBConnection.ConnectionError) tcp send: closed"]
+
+
+  1) test 05-41: pg_terminate_backend on an idle pool connection: nothing is logged at once; the next user of that connection gets FATAL 57P01, then a 'disconnected' :error log (Lab05.EctoTest)
+     test/f_ecto_test.exs:70
+     Expected truthy, got false
+     code: assert Enum.any?(results, &match?({:error, %Postgrex.Error{postgres: %{code: :admin_shutdown}}}, &1))
+     arguments:
+
+         # 1
+         [
+           ok: %Postgrex.Result{
+             command: :select,
+             columns: ["pg_sleep"],
+             rows: [[:void]],
+             num_rows: 1,
+             connection_id: 68039,
+             messages: []
+           },
+           ok: %Postgrex.Result{
+             command: :select,
+             columns: ["pg_sleep"],
+             rows: [[:void]],
+             num_rows: 1,
+             connection_id: 68022,
+             messages: []
+           }
+         ]
+
+         # 2
+         #Function<9.66020751/1 in Lab05.EctoTest."test 05-41: pg_terminate_backend on an idle pool connection: nothing is logged at once; the next user of that connection gets FATAL 57P01, then a 'disconnected' :error log"/1>
+
+     stacktrace:
+       test/f_ecto_test.exs:79: (test)
+
+05-41b logs=["Postgrex.Protocol (#PID<0.332.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (Postgrex.Error) FATAL 57P01 (admin_shutdown) terminating connection due to administrator command"]
+.05-42 after 1349ms: {:ok, %Postgrex.Result{command: :select, columns: ["?column?"], rows: [[1]], num_rows: 1, connection_id: 68059, messages: []}}; query events=3
+
+
+  2) test 05-42: pool exhausted: the waiting caller gets DBConnection.ConnectionError; a query event carries it; nothing logged (Lab05.EctoTest)
+     test/f_ecto_test.exs:95
+     match (=) failed
+     code:  assert {:error, %DBConnection.ConnectionError{}} = res
+     left:  {:error, %DBConnection.ConnectionError{}}
+     right: {:ok,
+             %Postgrex.Result{
+               command: :select,
+               columns: ["?column?"],
+               rows: [[1]],
+               num_rows: 1,
+               connection_id: 68059,
+               messages: []
+             }}
+     stacktrace:
+       test/f_ecto_test.exs:103: (test)
+
+05-43 res={:error, %Postgrex.Error{message: nil, postgres: %{code: :query_canceled, line: "3466", message: "canceling statement due to user request", file: "postgres.c", unknown: "ERROR", severity: "ERROR", pg_
+05-43 logs=["Postgrex.Protocol (#PID<0.331.0> ({Postgrex.Protocol, \"lab_0031_05\"})) disconnected: ** (DBConnection.ConnectionError) client #PID<0.375.0> ({Lab05.EctoTest, :\"test 05-43: a client timeout (pg_sleep 1 with timeout: 100): error to the caller AND one :error log from the connection pid naming the clien"]
+.
+
+  3) test 05-44: database unreachable: DBConnection logs connect failures at :error on every backoff, no telemetry (Lab05.EctoTest)
+     test/f_ecto_test.exs:122
+     ** (ExUnit.TimeoutError) test timed out after 60000ms. You can change the timeout:
+
+       1. per test by setting "@tag timeout: x" (accepts :infinity)
+       2. per test module by setting "@moduletag timeout: x" (accepts :infinity)
+       3. globally via "ExUnit.start(timeout: x)" configuration
+       4. by running "mix test --timeout x" which sets timeout
+       5. or by running "mix test --trace" which sets timeout to infinity
+          (useful when using IEx.pry/0)
+
+     where "x" is the timeout given as integer in milliseconds (defaults to 60_000).
+
+     code: msgs = C.collect(1000)
+     stacktrace:
+       (lab05 0.1.0) lib/lab05/capture.ex:70: Lab05.Capture.collect/2
+       test/f_ecto_test.exs:125: (test)
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:533: ExUnit.Runner.exec_test/2
+       (stdlib 7.3.0.2) timer.erl:599: :timer.tc/2
+       (ex_unit 1.20.4) lib/ex_unit/runner.ex:455: anonymous fn/6 in ExUnit.Runner.spawn_test_monitor/4
+
+
+Finished in 69.0 seconds (0.00s async, 69.0s sync)
+
+Result: 6/9 passed
+Failed: 3 tests

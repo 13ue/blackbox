@@ -1,0 +1,66 @@
+Compiling 1 file (.ex)
+Running ExUnit with seed: 456136, max_cases: 1
+
+.
+
+  1) test 04-2: spawn + throw -> one :error event, crash_reason {{:nocatch, :boom}, stack} (BeamLab.ProcessesTest)
+     test/a_processes_test.exs:17
+     match (=) failed
+     code:  assert {{:nocatch, :boom}, _} = e.meta.crash_reason
+     left:  {{:nocatch, :boom}, _}
+     right: {%ErlangError{original: {:nocatch, :boom}, reason: nil},
+             [
+               {BeamLab.Case, :crash, 1,
+                [file: ~c"test/support/case.ex", line: 20]}
+             ]}
+     stacktrace:
+       test/a_processes_test.exs:20: (test)
+
+......
+
+  2) test 04-1: spawn + raise -> one :error event from the emulator, handled in the logger process, crash_reason in meta (BeamLab.ProcessesTest)
+     test/a_processes_test.exs:6
+     Assertion with == failed
+     code:  assert e.handler_pid == Process.whereis(:logger)
+     left:  #PID<0.72.0>
+     right: #PID<0.43.0>
+     stacktrace:
+       test/a_processes_test.exs:10: (test)
+
+....
+
+  3) test 04-10: Task.Supervisor.async_nolink: task crash logged once, caller sees {:exit, reason} from yield (BeamLab.ProcessesTest)
+     test/a_processes_test.exs:82
+     ** (KeyError) key :ancestors not found in:
+
+         %{
+           error_logger: %{tag: :error_msg},
+           pid: #PID<0.247.0>,
+           time: 1790499884117078,
+           gl: #PID<0.69.0>,
+           domain: [:otp, :elixir],
+           report_cb: &Logger.Utils.translated_cb/1,
+           callers: [#PID<0.244.0>],
+           crash_reason: {%RuntimeError{message: "boom"},
+            [
+              {BeamLab.Case, :crash, 1,
+               [
+                 file: ~c"test/support/case.ex",
+                 line: 19,
+                 error_info: %{module: Exception}
+               ]},
+              {Task.Supervised, :invoke_mfa, 2,
+               [file: ~c"lib/task/supervised.ex", line: 105]},
+              {Task.Supervised, :reply, 4, [file: ~c"lib/task/supervised.ex", line: 40]}
+            ]}
+         }
+
+     code: assert [^sup | _] = e.meta.ancestors
+     stacktrace:
+       test/a_processes_test.exs:89: (test)
+
+
+Finished in 3.9 seconds (0.00s async, 3.9s sync)
+
+Result: 11/14 passed
+Failed: 3 tests

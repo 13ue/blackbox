@@ -1,0 +1,174 @@
+Compiling 1 file (.ex)
+Generated lab05 app
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+05-26 frames after crash: [["1", "1", "room:a", "phx_error", %{"reason" => "channel_crash"}]]
+05-26 channel crash meta keys: [:error_logger, :line, :pid, :time, :file, :gl, :domain, :mfa, :report_cb, :crash_reason]
+05-26 last_message: %Phoenix.Socket.Message{topic: "room:a", event: "boom", payload: %{"card" => 1}, ref: "2", join_ref: "1"}
+..05-28 frames: [["1", "1", "room:crash", "phx_reply", %{"response" => %{"reason" => "join crashed"}, "status" => "error"}]]
+
+
+  1) test 05-28: join raise: one :error log, client gets an error reply, channel_joined fires with result :error (Lab05.ChannelTest)
+     test/d_channel_test.exs:58
+     match (=) failed
+     code:  assert [_log] = C.logs(msgs, :error)
+     left:  [_log]
+     right: [
+              %{
+                meta: %{
+                  error_logger: %{
+                    tag: :error,
+                    report_cb: &:gen_server.format_log/1
+                  },
+                  line: 2785,
+                  pid: #PID<0.697.0>,
+                  time: 1790500209837641,
+                  file: ~c"gen_server.erl",
+                  gl: #PID<0.69.0>,
+                  domain: [:otp],
+                  mfa: {:gen_server, :error_info, 7},
+                  report_cb: &Logger.Utils.translated_cb/1,
+                  crash_reason: {%RuntimeError{
+                     message: "boom in join"
+                   },
+                   [
+                     {Lab05.Channel, :join, 3,
+                      [
+                        file: ~c"lib/lab05/web.ex",
+                        line: 112,
+                        error_info: %{module: Exception}
+                      ]},
+                     {Phoenix.Channel.Server, :channel_join, 4,
+                      [
+                        file: ~c"lib/phoenix/channel/server.ex",
+                        line: 401
+                      ]},
+                     {Phoenix.Channel.Server, :handle_info, 2,
+                      [
+                        file: ~c"lib/phoenix/channel/server.ex",
+                        line: 315
+                      ]},
+                     {:gen_server, :try_handle_info, 3,
+                      [file: ~c"gen_server.erl", line: 2434]},
+                     {:gen_server, :handle_msg, 3,
+                      [file: ~c"gen_server.erl", line: 2420]},
+                     {:proc_lib, :init_p_do_apply, 3,
+                      [file: ~c"proc_lib.erl", line: 333]}
+                   ]}
+                },
+                msg: {:report,
+                 %{
+                   label: {:gen_server, :terminate},
+                   name: #PID<0.697.0>,
+                   reason: {%RuntimeError{message: "boom in join"},
+                    [
+                      {Lab05.Channel, :join, 3,
+                       [
+                         file: ~c"lib/lab05/web.ex",
+                         line: 112,
+                         error_info: %{module: Exception}
+                       ]},
+                      {Phoenix.Channel.Server, :channel_join, 4,
+                       [
+                         file: ~c"lib/phoenix/channel/server.ex",
+                         line: 401
+                       ]},
+                      {Phoenix.Channel.Server, :handle_info, 2,
+                       [
+                         file: ~c"lib/phoenix/channel/server.ex",
+                         line: 315
+                       ]},
+                      {:gen_server, :try_handle_info, 3,
+                       [file: ~c"gen_server.erl", line: 2434]},
+                      {:gen_server, :handle_msg, 3,
+                       [file: ~c"gen_server.erl", line: 2420]},
+                      {:proc_lib, :init_p_do_apply, 3,
+                       [file: ~c"proc_lib.erl", line: 333]}
+                    ]},
+                   log: [],
+                   state: #Reference<0.3543234031.3477078017.237264>,
+                   last_message: {Phoenix.Channel, %{},
+                    {#PID<0.696.0>,
+                     #Reference<0.3543234031.3477078017.237260>},
+                    %Phoenix.Socket{
+                      assigns: %{},
+                      channel: Lab05.Channel,
+                      channel_pid: nil,
+                      endpoint: Lab05.Endpoint,
+                      handler: Lab05.UserSocket,
+                      id: nil,
+                      joined: false,
+                      join_ref: "1",
+                      private: %{},
+                      pubsub_server: Lab05.PubSub,
+                      ref: nil,
+                      serializer: Phoenix.Socket.V2.JSONSerializer,
+                      topic: "room:crash",
+                      transport: :websocket,
+                      transport_pid: #PID<0.696.0>
+                    }},
+                   process_label: {Phoenix.Channel, Lab05.Channel,
+                    "room:crash"},
+                   client_info: :undefined,
+                   elixir_translation: [
+                     [
+                       "GenServer ",
+                       "#PID<0.697.0>",
+                       " terminating",
+                       [
+                         [10 | "** (RuntimeError) boom in join"],
+                         ["\n    " |
+                          "(lab05 0.1.0) lib/lab05/web.ex:112: Lab05.Channel.join/3"],
+                         ["\n    " |
+                          "(phoenix 1.8.15) lib/phoenix/channel/server.ex:401: Phoenix.Channel.Server.channel_join/4"],
+                         ["\n    " |
+                          "(phoenix 1.8.15) lib/phoenix/channel/server.ex:315: Phoenix.Channel.Server.handle_info/2"],
+                         ["\n    " |
+                          "(stdlib 7.3.0.2) gen_server.erl:2434: :gen_server.try_handle_info/3"],
+                         ["\n    " |
+                          "(stdlib 7.3.0.2) gen_server.erl:2420: :gen_server.handle_msg/3"],
+                         ["\n    " |
+                          "(stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"]
+                       ],
+                       ["\nProcess Label: ",
+                        "{Phoenix.Channel, Lab05.Channel, \"room:crash\"}"],
+                       "\nLast message",
+                       [],
+                       ": ",
+                       "{Phoenix.Channel, %{}, {#PID<0.696.0>, #Reference<0.3543234031.3477078017.237260>}, %Phoenix.Socket{assigns: %{}, channel: Lab05.Channel, channel_pid: nil, endpoint: Lab05.Endpoint, handler: Lab05.UserSocket, id: nil, joined: false, join_ref: \"1\", private: %{}, pubsub_server: Lab05.PubSub, ref: nil, serializer: Phoenix.Socket.V2.JSONSerializer, topic: \"room:crash\", transport: :websocket, transport_pid: #PID<0.696.0>}}"
+                     ],
+                     "\nState: ",
+                     "#Reference<0.3543234031.3477078017.237264>"
+                   ]
+                 }},
+                level: :error,
+                from: #PID<0.697.0>
+              },
+              %{
+                meta: %{
+                  line: 50,
+                  pid: #PID<0.696.0>,
+                  time: 1790500209839134,
+                  file: ~c"lib/phoenix/channel/server.ex",
+                  gl: #PID<0.69.0>,
+                  domain: [:elixir],
+                  application: :phoenix,
+                  mfa: {Phoenix.Channel.Server, :join, 4}
+                },
+                msg: {:string,
+                 "an exception was raised:\n    ** (RuntimeError) boom in join\n        (lab05 0.1.0) lib/lab05/web.ex:112: Lab05.Channel.join/3\n        (phoenix 1.8.15) lib/phoenix/channel/server.ex:401: Phoenix.Channel.Server.channel_join/4\n        (phoenix 1.8.15) lib/phoenix/channel/server.ex:315: Phoenix.Channel.Server.handle_info/2\n        (stdlib 7.3.0.2) gen_server.erl:2434: :gen_server.try_handle_info/3\n        (stdlib 7.3.0.2) gen_server.erl:2420: :gen_server.handle_msg/3\n        (stdlib 7.3.0.2) proc_lib.erl:333: :proc_lib.init_p_do_apply/3"},
+                level: :error,
+                from: #PID<0.696.0>
+              }
+            ]
+     stacktrace:
+       test/d_channel_test.exs:65: (test)
+
+.05-30 status line: HTTP/1.1 500 Internal Server Error; names=[[:bandit, :request, :start], [:phoenix, :error_rendered], [:bandit, :request, :exception]]
+...
+Finished in 3.5 seconds (0.00s async, 3.5s sync)
+
+Result: 6/7 passed
+Failed: 1 test

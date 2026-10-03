@@ -1,0 +1,129 @@
+===> Analyzing applications...
+===> Compiling telemetry
+Compiling 2 files (.ex)
+Generated beam_lab app
+Running ExUnit with seed: 435310, max_cases: 1
+
+
+
+  1) test telemetry handler failure (relay from lead) 04-79: a raising :telemetry handler is detached, a [:telemetry, :handler, :failure] event fires, and an :error log (domain [:telemetry]) reaches :logger (BeamLab.RoutesTest)
+     test/g_routes_test.exs:148
+     match (=) failed
+     code:  assert [e] = events
+     left:  [e]
+     right: [
+              %{
+                meta: %{
+                  line: 137,
+                  pid: #PID<0.275.0>,
+                  time: 1790501517558481,
+                  file: ~c"/Users/lennartbuttner/Projects/1charta/docs/research/0031-errors/lab/04-beam/deps/telemetry/src/telemetry.erl",
+                  gl: #PID<0.69.0>,
+                  domain: [:telemetry],
+                  report_cb: &:telemetry.report_cb/1,
+                  mfa: {:telemetry, :attach_many, 4}
+                },
+                msg: {:report,
+                 %{
+                   function: #Function<16.94191781/4 in BeamLab.RoutesTest."test telemetry handler failure (relay from lead) 04-79: a raising :telemetry handler is detached, a [:telemetry, :handler, :failure] event fires, and an :error log (domain [:telemetry]) reaches :logger"/1>,
+                   type: :local,
+                   config: nil,
+                   handler_id: :lab_fail_watch,
+                   event_names: [[:telemetry, :handler, :failure]]
+                 }},
+                level: :info,
+                handler_dict_marker: nil,
+                handler_pid: #PID<0.275.0>
+              },
+              %{
+                meta: %{
+                  line: 137,
+                  pid: #PID<0.275.0>,
+                  time: 1790501517559891,
+                  file: ~c"/Users/lennartbuttner/Projects/1charta/docs/research/0031-errors/lab/04-beam/deps/telemetry/src/telemetry.erl",
+                  gl: #PID<0.69.0>,
+                  domain: [:telemetry],
+                  report_cb: &:telemetry.report_cb/1,
+                  mfa: {:telemetry, :attach_many, 4}
+                },
+                msg: {:report,
+                 %{
+                   function: #Function<17.94191781/4 in BeamLab.RoutesTest."test telemetry handler failure (relay from lead) 04-79: a raising :telemetry handler is detached, a [:telemetry, :handler, :failure] event fires, and an :error log (domain [:telemetry]) reaches :logger"/1>,
+                   type: :local,
+                   config: nil,
+                   handler_id: :lab_bad,
+                   event_names: [[:lab, :ev]]
+                 }},
+                level: :info,
+                handler_dict_marker: nil,
+                handler_pid: #PID<0.275.0>
+              },
+              %{
+                meta: %{
+                  line: 214,
+                  pid: #PID<0.275.0>,
+                  time: 1790501517559918,
+                  file: ~c"/Users/lennartbuttner/Projects/1charta/docs/research/0031-errors/lab/04-beam/deps/telemetry/src/telemetry.erl",
+                  gl: #PID<0.69.0>,
+                  domain: [:telemetry],
+                  report_cb: &:telemetry.report_cb/1,
+                  mfa: {:telemetry, :do_execute, 4}
+                },
+                msg: {:report,
+                 %{
+                   reason: %RuntimeError{message: "telemetry boom"},
+                   stacktrace: [
+                     {BeamLab.RoutesTest,
+                      :"-test telemetry handler failure (relay from lead) 04-79: a raising :telemetry handler is detached, a [:telemetry, :handler, :failure] event fires, and an :error log (domain [:telemetry]) reaches :logger/1-fun-1-",
+                      4,
+                      [
+                        file: ~c"test/g_routes_test.exs",
+                        line: 151,
+                        error_info: %{module: Exception}
+                      ]},
+                     {:telemetry, :do_execute, 4,
+                      [
+                        file: ~c"/Users/lennartbuttner/Projects/1charta/docs/research/0031-errors/lab/04-beam/deps/telemetry/src/telemetry.erl",
+                        line: 202
+                      ]},
+                     {BeamLab.Case, :run, 3,
+                      [file: ~c"test/support/case.ex", line: 26]},
+                     {BeamLab.RoutesTest,
+                      :"test telemetry handler failure (relay from lead) 04-79: a raising :telemetry handler is detached, a [:telemetry, :handler, :failure] event fires, and an :error log (domain [:telemetry]) reaches :logger",
+                      1,
+                      [file: ~c"test/g_routes_test.exs", line: 152]},
+                     {ExUnit.Runner, :exec_test, 2,
+                      [file: ~c"lib/ex_unit/runner.ex", line: 533]},
+                     {:timer, :tc, 2,
+                      [file: ~c"timer.erl", line: 599]},
+                     {ExUnit.Runner,
+                      :"-spawn_test_monitor/4-fun-1-", 6,
+                      [file: ~c"lib/ex_unit/runner.ex", line: 455]}
+                   ],
+                   kind: :error,
+                   handler_id: :lab_bad
+                 }},
+                level: :error,
+                handler_dict_marker: nil,
+                handler_pid: #PID<0.275.0>
+              }
+            ]
+     stacktrace:
+       test/g_routes_test.exs:156: (test)
+
+........
+
+  2) test ways to get them without printing them (relay from 01) 04-76: route A: translator sasl: true + a domain filter on the console handler: we get them, the console does not (BeamLab.RoutesTest)
+     test/g_routes_test.exs:103
+     Assertion with == failed
+     code:  assert length(sasl) == 3
+     left:  4
+     right: 3
+     stacktrace:
+       test/g_routes_test.exs:117: (test)
+
+
+Finished in 3.5 seconds (0.00s async, 3.5s sync)
+
+Result: 8/10 passed
+Failed: 2 tests

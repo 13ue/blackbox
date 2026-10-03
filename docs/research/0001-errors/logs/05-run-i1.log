@@ -1,0 +1,11 @@
+Compiling 2 files (.ex)
+Generated lab05 app
+primary logger level: :debug
+Running ExUnit with seed: 0, max_cases: 22
+Excluding tags: [:bench]
+
+..05-61 router stack == log stack? true; wrapper.stack == log stack? true
+..
+Finished in 0.9 seconds (0.00s async, 0.9s sync)
+
+Result: 4 passed

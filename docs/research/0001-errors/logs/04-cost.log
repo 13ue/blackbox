@@ -1,0 +1,217 @@
+g 100k raise+rescue, no pattern                              5039477 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                     5364029 us  setup 677 us  msgs 100000
+04-50 silent msgs: []
+
+== 2026-09-27 09:11:45.228111Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern                                          2724 us  setup 0 us  msgs 0
+04-50 silent msgs: []
+04-53 100k raise+rescue: tail loop 7397 us, inside `for` (deep stack) 5031219 us
+g 100k raise+rescue, no pattern                                 5837 us  setup 3 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       41080 us  setup 685 us  msgs 100000
+
+== 2026-09-27 09:18:30.178499Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern                                           534 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced               1640526 us  setup 745 us  msgs 400002
+c {Silent,_,_} exception_trace, process NOT traced              2110 us  setup 845 us  msgs 0
+d erlang:error/exit/throw call trace, process traced             630 us  setup 2564 us  msgs 0
+e {_,_,_} exception_trace (all loaded), traced               1584086 us  setup 5713 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced              1457 us  setup 5652 us  msgs 0
+04-53 100k raise+rescue: tail loop 7904 us, inside `for` (deep stack) 4765095 us
+04-50 silent msgs: []
+
+== 2026-09-27 09:18:58.855052Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern                                           279 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced               1604880 us  setup 664 us  msgs 400002
+c {Silent,_,_} exception_trace, process NOT traced              1803 us  setup 931 us  msgs 0
+d erlang:error/exit/throw call trace, process traced             444 us  setup 1722 us  msgs 0
+e matched functions: 23590
+e matched functions: 23590
+e matched functions: 23590
+e {_,_,_} exception_trace (all loaded), traced               1607125 us  setup 8218 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced              1586 us  setup 5912 us  msgs 0
+g 100k raise+rescue, no pattern                                 7009 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       43118 us  setup 658 us  msgs 100000
+
+== 2026-09-27 09:19:23.487266Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                6176 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1671663 us  setup 1112 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           27768 us  setup 558 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5197 us  setup 1177 us  msgs 0
+e matched functions: 23668
+e matched functions: 23668
+e matched functions: 23668
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1630697 us  setup 7108 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     27784 us  setup 5424 us  msgs 0
+ns per iteration: %{all: 16306.97, other: 13.884, base: 3.088, own: 16716.63, errs: 2.5985, all_other: 13.892}
+
+== 2026-09-27 09:19:35.114966Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                5101 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1594381 us  setup 659 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           27208 us  setup 591 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          6703 us  setup 1504 us  msgs 0
+e matched functions: 23668
+e matched functions: 23668
+e matched functions: 23668
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1607861 us  setup 6080 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     29675 us  setup 6107 us  msgs 0
+ns per iteration: %{all: 16078.61, other: 13.604, base: 2.5505, own: 15943.81, errs: 3.3515, all_other: 14.8375}
+g 100k raise+rescue, no pattern                                 6049 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       43522 us  setup 800 us  msgs 100000
+04-50 silent msgs: []
+04-53 100k raise+rescue: tail loop 11300 us, inside `for` (deep stack) 4786502 us
+
+== 2026-09-27 09:23:28.755103Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                5135 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1607833 us  setup 681 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           28673 us  setup 620 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          6431 us  setup 1632 us  msgs 0
+e matched functions: 24479
+e matched functions: 24479
+e matched functions: 24479
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1629698 us  setup 6788 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     28521 us  setup 6598 us  msgs 0
+ns per iteration: %{all: 16296.98, other: 14.3365, base: 2.5675, own: 16078.33, errs: 3.2155, all_other: 14.2605}
+
+== 2026-09-27 09:24:12.191922Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                9309 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1662347 us  setup 764 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           27880 us  setup 779 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5315 us  setup 1217 us  msgs 0
+e matched functions: 24472
+e matched functions: 24472
+e matched functions: 24472
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1617223 us  setup 6425 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     27962 us  setup 7264 us  msgs 0
+ns per iteration: %{all: 16172.23, other: 13.94, base: 4.6545, own: 16623.47, errs: 2.6575, all_other: 13.981}
+04-50 silent msgs: []
+04-53 100k raise+rescue: tail loop 8397 us, inside `for` (deep stack) 4836456 us
+g 100k raise+rescue, no pattern                                 5898 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       41960 us  setup 742 us  msgs 100000
+g 100k raise+rescue, no pattern                                 9586 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       43429 us  setup 575 us  msgs 100000
+04-53 100k raise+rescue: tail loop 7646 us, inside `for` (deep stack) 4883222 us
+
+== 2026-09-27 09:25:07.316580Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                5137 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1607389 us  setup 649 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           30319 us  setup 798 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5782 us  setup 1106 us  msgs 0
+e matched functions: 24479
+e matched functions: 24479
+e matched functions: 24479
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1630126 us  setup 6136 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     28272 us  setup 6350 us  msgs 0
+ns per iteration: %{all: 16301.26, other: 15.1595, base: 2.5685, own: 16073.89, errs: 2.891, all_other: 14.136}
+04-50 silent msgs: []
+g 100k raise+rescue, no pattern                                 6345 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       43408 us  setup 312 us  msgs 100000
+
+== 2026-09-27 09:26:55.724105Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                6130 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1704520 us  setup 1022 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           27903 us  setup 523 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5407 us  setup 1122 us  msgs 0
+e matched functions: 24486
+e matched functions: 24486
+e matched functions: 24486
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1709371 us  setup 6827 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     26815 us  setup 5632 us  msgs 0
+ns per iteration: %{all: 17093.71, other: 13.9515, base: 3.065, own: 17045.2, errs: 2.7035, all_other: 13.4075}
+04-50 silent msgs: []
+04-53 100k raise+rescue: tail loop 7041 us, inside `for` (deep stack) 4941016 us
+g 100k raise+rescue, no pattern                                 6341 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       41779 us  setup 900 us  msgs 100000
+
+== 2026-09-27 09:27:45.701226Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                7739 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1734878 us  setup 606 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           27935 us  setup 809 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5160 us  setup 1046 us  msgs 0
+e matched functions: 24486
+e matched functions: 24486
+e matched functions: 24486
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1653239 us  setup 6564 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     27062 us  setup 6218 us  msgs 0
+ns per iteration: %{all: 16532.39, other: 13.9675, base: 3.8695, own: 17348.78, errs: 2.58, all_other: 13.531}
+04-53 100k raise+rescue: tail loop 6985 us, inside `for` (deep stack) 4785278 us
+04-50 silent msgs: []
+
+== 2026-09-27 09:28:35.064249Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                5101 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1653861 us  setup 557 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           29251 us  setup 520 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          6391 us  setup 1222 us  msgs 0
+e matched functions: 24479
+e matched functions: 24479
+e matched functions: 24479
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1610887 us  setup 6455 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     28443 us  setup 6566 us  msgs 0
+ns per iteration: %{all: 16108.87, other: 14.6255, base: 2.5505, own: 16538.61, errs: 3.1955, all_other: 14.2215}
+04-53 100k raise+rescue: tail loop 9945 us, inside `for` (deep stack) 4751710 us
+04-50 silent msgs: []
+g 100k raise+rescue, no pattern                                 5783 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       43229 us  setup 805 us  msgs 100000
+04-50 silent msgs: []
+04-53 100k raise+rescue: tail loop 15512 us, inside `for` (deep stack) 4748484 us
+g 100k raise+rescue, no pattern                                 7485 us  setup 1 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       42065 us  setup 670 us  msgs 100000
+
+== 2026-09-27 09:32:35.079744Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                5127 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1598271 us  setup 684 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           27873 us  setup 760 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5614 us  setup 1439 us  msgs 0
+e matched functions: 25877
+e matched functions: 25877
+e matched functions: 25877
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1632299 us  setup 7394 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     28494 us  setup 7348 us  msgs 0
+ns per iteration: %{all: 16322.99, other: 13.9365, base: 2.5635, own: 15982.71, errs: 2.807, all_other: 14.247}
+g 100k raise+rescue, no pattern                                 8409 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       42329 us  setup 757 us  msgs 100000
+04-50 silent msgs: []
+04-53 100k raise+rescue: tail loop 8137 us, inside `for` (deep stack) 4971189 us
+
+== 2026-09-27 09:33:41.097074Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                5167 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1626591 us  setup 834 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           28115 us  setup 766 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5137 us  setup 1381 us  msgs 0
+e matched functions: 26209
+e matched functions: 26209
+e matched functions: 26209
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1646509 us  setup 8268 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     27058 us  setup 7372 us  msgs 0
+ns per iteration: %{all: 16465.09, other: 14.0575, base: 2.5835, own: 16265.91, errs: 2.5685, all_other: 13.529}
+g 100k raise+rescue, no pattern                                 6684 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       41627 us  setup 525 us  msgs 100000
+
+== 2026-09-27 09:34:27.152590Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                5166 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1658575 us  setup 831 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           28559 us  setup 551 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          5144 us  setup 1129 us  msgs 0
+e matched functions: 26218
+e matched functions: 26218
+e matched functions: 26218
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1648108 us  setup 8286 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     28421 us  setup 6359 us  msgs 0
+ns per iteration: %{all: 16481.08, other: 14.2795, base: 2.583, own: 16585.75, errs: 2.572, all_other: 14.2105}
+04-50 silent msgs: []
+04-53 100k raise+rescue: tail loop 10024 us, inside `for` (deep stack) 4832468 us
+g 100k raise+rescue, no pattern                                10327 us  setup 0 us  msgs 0
+h 100k raise+rescue, erlang:error traced                       42119 us  setup 498 us  msgs 100000
+04-53 100k raise+rescue: tail loop 8909 us, inside `for` (deep stack) 4830178 us
+04-50 silent msgs: []
+
+== 2026-09-27 09:49:24.646342Z aarch64-apple-darwin24.6.0 OTP 28 schedulers 11
+a baseline, no pattern (2M iter)                                7466 us  setup 0 us  msgs 0
+b {Silent,_,_} exception_trace, process traced (100k iter)   1632469 us  setup 619 us  msgs 400002
+c {Silent,_,_} exception_trace, NOT traced (2M iter)           28913 us  setup 595 us  msgs 0
+d erlang:error/exit/throw call trace, traced (2M iter)          6303 us  setup 1378 us  msgs 0
+e matched functions: 26218
+e matched functions: 26218
+e matched functions: 26218
+e {_,_,_} exception_trace (all loaded), traced (100k iter)   1619568 us  setup 7344 us  msgs 400022
+f {_,_,_} exception_trace (all loaded), NOT traced (2M iter)     28498 us  setup 6932 us  msgs 0
+ns per iteration: %{all: 16195.68, other: 14.4565, base: 3.733, own: 16324.69, errs: 3.1515, all_other: 14.249}

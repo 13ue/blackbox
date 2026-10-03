@@ -1,0 +1,124 @@
+04-64 recursive handler calls=1000 capture got 1000 events
+04-68 10k plain crashes: spawn loop 14891 us, capture handler received 1719
+04-65 10k Logger.error from 100 procs: 14503 us, capture handler received 10000
+04-66 std_h flood: 55783 us, written 500/10000, notices ["2026-09-27T11:21:26.847905+02:00 notice: Handler flood_file flushed 1979 log events", "2026-09-27T11:21:26.880194+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:21:26.880319+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:21:26.880484+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:21:26.880571+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:21:26.880601+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:21:26.880668+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 1364, capture received 1420
+04-67 std_h burst: 45007 us, written 500/2000, notices []
+04-60 raise stderr="" stdout=""
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-64 recursive handler calls=1000 capture got 1000 events
+04-67 std_h burst: 24520 us, written 500/2000, notices ["2026-09-27T11:22:06.961733+02:00 notice: Handler burst_file switched from async to drop mode", "2026-09-27T11:22:06.964040+02:00 notice: Handler burst_file switched from drop to sync mode"]
+04-68 10k plain crashes: spawn loop 13891 us, crash events received 1533, other events [notice: "{~c\"~w flushed ~w log events\", [:logger_proxy, 5000]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 2040, capture received 2096
+04-65 10k Logger.error from 100 procs: 11446 us, capture handler received 10000
+04-66 std_h flood: 60124 us, written 500/10000, notices ["2026-09-27T11:22:17.542444+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:22:17.542676+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:22:17.542781+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:22:17.542905+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:22:17.542964+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:22:17.543019+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-64 recursive handler calls=1000 capture got 1000 events
+04-65 10k Logger.error from 100 procs: 11636 us, capture handler received 10000
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4951, capture received 5002
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-66 std_h flood: 58857 us, written 500/10000, notices []
+04-67 std_h burst: 33842 us, written 500/2000, notices []
+04-68 10k plain crashes: spawn loop 19105 us, crash events received 1665, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-65 10k Logger.error from 100 procs: 21648 us, capture handler received 10000
+04-68 10k plain crashes: spawn loop 19643 us, crash events received 4799, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :async, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-67 std_h burst: 31103 us, written 500/2000, notices []
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 3400, capture received 3455
+04-64 recursive handler calls=1000 capture got 1000 events
+04-66 std_h flood: 54408 us, written 500/10000, notices []
+04-67 std_h burst: 43368 us, written 500/2000, notices []
+04-66 std_h flood: 59536 us, written 500/10000, notices ["2026-09-27T11:23:07.407965+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.411807+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.431809+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.432017+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.434393+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.434554+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.434651+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.434706+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.441533+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.441650+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.449975+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.450128+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.450182+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.450264+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.450357+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.451290+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:23:07.451396+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:23:07.451478+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4950, capture received 5002
+04-68 10k plain crashes: spawn loop 14284 us, crash events received 1612, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-64 recursive handler calls=1000 capture got 1000 events
+04-65 10k Logger.error from 100 procs: 19596 us, capture handler received 10000
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4953, capture received 5002
+04-67 std_h burst: 34321 us, written 500/2000, notices []
+04-68 10k plain crashes: spawn loop 15285 us, crash events received 1705, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-66 std_h flood: 59172 us, written 500/10000, notices []
+04-64 recursive handler calls=1000 capture got 1000 events
+04-65 10k Logger.error from 100 procs: 23419 us, capture handler received 10000
+04-65 10k Logger.error from 100 procs: 12544 us, capture handler received 10000
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-64 recursive handler calls=1000 capture got 1000 events
+04-67 std_h burst: 22464 us, written 500/2000, notices []
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4950, capture received 5002
+04-66 std_h flood: 60194 us, written 500/10000, notices ["2026-09-27T11:24:59.927514+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:24:59.937136+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:24:59.969571+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:24:59.969841+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:24:59.969959+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:24:59.970046+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-68 10k plain crashes: spawn loop 13969 us, crash events received 2039, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4950, capture received 5002
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-68 10k plain crashes: spawn loop 12431 us, crash events received 1569, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-64 recursive handler calls=1000 capture got 1000 events
+04-66 std_h flood: 59490 us, written 500/10000, notices []
+04-65 10k Logger.error from 100 procs: 14051 us, capture handler received 10000
+04-67 std_h burst: 35078 us, written 500/2000, notices []
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-65 10k Logger.error from 100 procs: 12698 us, capture handler received 10000
+04-66 std_h flood: 61940 us, written 500/10000, notices ["2026-09-27T11:27:28.409560+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:27:28.409619+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4949, capture received 5002
+04-68 10k plain crashes: spawn loop 23200 us, crash events received 1697, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-67 std_h burst: 41241 us, written 500/2000, notices []
+04-64 recursive handler calls=1000 capture got 1000 events
+04-67 std_h burst: 36516 us, written 500/2000, notices []
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-65 10k Logger.error from 100 procs: 21317 us, capture handler received 10000
+04-64 recursive handler calls=1000 capture got 1000 events
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4951, capture received 5002
+04-66 std_h flood: 64665 us, written 500/10000, notices ["2026-09-27T11:28:33.038609+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.042676+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.071487+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.071679+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.071755+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.071884+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.071924+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.071943+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.078459+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.078609+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.078673+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.078813+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.078869+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.079041+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.079095+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.079159+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.088377+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.088524+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.088622+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.088663+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.090352+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.090458+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:28:33.090738+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:28:33.090835+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-68 10k plain crashes: spawn loop 22833 us, crash events received 1530, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :async, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-64 recursive handler calls=1000 capture got 1000 events
+04-65 10k Logger.error from 100 procs: 12090 us, capture handler received 10000
+04-68 10k plain crashes: spawn loop 12864 us, crash events received 3842, other events [notice: "{~c\"~w flushed ~w log events\", [:logger_proxy, 5000]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :async, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 2682, capture received 2739
+04-67 std_h burst: 29616 us, written 500/2000, notices []
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-66 std_h flood: 68044 us, written 500/10000, notices ["2026-09-27T11:32:58.244574+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:32:58.244736+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:32:58.273604+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:32:58.274003+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:32:58.274141+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:32:58.274211+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-66 std_h flood: 57443 us, written 500/10000, notices ["2026-09-27T11:33:18.078338+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:33:18.078385+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:33:18.109435+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:33:18.109516+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:33:18.109574+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:33:18.109604+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:33:18.118723+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:33:18.118984+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:33:18.119084+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:33:18.119277+02:00 notice: Handler flood_file switched from drop to sync mode", "2026-09-27T11:33:18.119306+02:00 notice: Handler flood_file switched from sync to drop mode", "2026-09-27T11:33:18.119338+02:00 notice: Handler flood_file switched from drop to sync mode"]
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 4950, capture received 5002
+04-64 recursive handler calls=1000 capture got 1000 events
+04-65 10k Logger.error from 100 procs: 12275 us, capture handler received 10000
+04-67 std_h burst: 30378 us, written 500/2000, notices []
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-68 10k plain crashes: spawn loop 15377 us, crash events received 1540, other events [notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :sync, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-66 std_h flood: 52540 us, written 500/10000, notices []
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-68 10k plain crashes: spawn loop 13185 us, crash events received 3765, other events [notice: "{~c\"~w flushed ~w log events\", [:logger_proxy, 5000]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :async, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-67 std_h burst: 22436 us, written 500/2000, notices []
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 3905, capture received 3960
+04-64 recursive handler calls=1000 capture got 1000 events
+04-65 10k Logger.error from 100 procs: 31490 us, capture handler received 10000
+04-67 std_h burst: 21438 us, written 500/2000, notices []
+04-65 10k Logger.error from 100 procs: 20918 us, capture handler received 10000
+04-68 10k plain crashes: spawn loop 17296 us, crash events received 3704, other events [notice: "{~c\"~w flushed ~w log events\", [:logger_proxy, 5000]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :async, :drop]}", notice: "{~c\"~w switched from ~w to ~w mode\", [:logger_proxy, :drop, :sync]}"]
+04-66 std_h flood: 53973 us, written 500/10000, notices []
+04-64 recursive handler calls=1000 capture got 1000 events
+04-60 raise stderr="" stdout=""
+04-60 exit stderr="" stdout=""
+04-60 throw stderr="" stdout=""
+04-69 5k plain crashes, 1 ms handler: logger_proxy qlen after 100 ms 3354, capture received 3408

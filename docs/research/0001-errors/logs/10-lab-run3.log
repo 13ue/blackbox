@@ -1,0 +1,30 @@
+Running ExUnit with seed: 748032, max_cases: 22
+Result: 14/15 passed
+  1) test 10-2: a high-cardinality Logger.error flood (a letters-only id per message) splits into one issue per message and overruns the buffer (Review.Test)
+     test/review/review_test.exs:45
+     Assertion with > failed, both sides are exactly equal
+     code: assert dropped > 0
+     left: 0
+     stacktrace:
+       test/review/review_test.exs:59: (test)
+
+Logger - error: {removed_failing_filter,review_bad}
+..10-15 sent=20000 issues=1 occurrences=63 sum(count)=20000
+.10-1 counts=[1] captured_delta_after=0
+Running ExUnit with seed: 309805, max_cases: 22
+Result: 15 passed
+Running ExUnit with seed: 827822, max_cases: 22
+Result: 14/15 passed
+  1) test 10-2: a high-cardinality Logger.error flood (a letters-only id per message) splits into one issue per message and overruns the buffer (Review.Test)
+     test/review/review_test.exs:45
+     Assertion with > failed, both sides are exactly equal
+     code: assert dropped > 0
+     left: 0
+     stacktrace:
+       test/review/review_test.exs:59: (test)
+
+.
+Finished in 12.0 seconds (0.00s async, 12.0s sync)
+
+Running ExUnit with seed: 90807, max_cases: 22
+Result: 15 passed

@@ -1,0 +1,187 @@
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-30 db down: sent=30000 writer_failures=0 pending_issues=2 buffer_mem_max=153928 queue_max=4 vm +1311 KiB
+08-30 probe idle p50/p99=2/17 µs, db down + flood p50/p99/max=2/33/93 µs; stored after recovery=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=0
+08-27 sent=50000 in 5000 ms (9998/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=157600 B queue_max=2 vm_total_before=74162049 vm_total_max=75199585 (+1013 KiB)
+08-27 probe idle p50/p99/max=2/38/90 µs flood p50/p99/max=2/30/119 µs
+--- run after the retry_at fix Sun Sep 27 11:12:53 CEST 2026
+08-29 spawn crashes sent=30000 in 3001 ms captured=30000 db_count=30000
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=233512 queue_max=16 vm +1640 KiB
+08-30 probe idle p50/p99=6/42 µs, db down + flood p50/p99/max=8/60/298 µs; stored after recovery=30000
+08-28 task crashes sent=30000 in 3001 ms captured=30000 db_count=30000 dropped_total=0
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=209744 B queue_max=5 vm_total_before=74819980 vm_total_max=77053020 (+2180 KiB)
+08-27 probe idle p50/p99/max=8/42/71 µs flood p50/p99/max=8/44/105 µs
+--- cost + ramp Sun Sep 27 11:13:41 CEST 2026
+08-33 µs/call: Logger.error with handler=14.75 without=0.82 | Logger.debug crumb=1.06 without handler=0.72 | Spike.crumb=0.32 | from_log(12 frames, 20 crumbs)=1407.6
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2242 B
+08-32 target=20000/s achieved=19993/s sent=40000 stored=40000 dropped=0 queue_max=19 buffer_mem_max=494984
+08-32 target=50000/s achieved=49981/s sent=100000 stored=100000 dropped=0 queue_max=7 buffer_mem_max=607168
+08-32 target=100000/s achieved=99945/s sent=200000 stored=200000 dropped=0 queue_max=492 buffer_mem_max=1235680
+08-32 target=200000/s achieved=199902/s sent=400000 stored=400000 dropped=0 queue_max=67 buffer_mem_max=1076768
+--- after moving formatting to the buffer + cached skip set Sun Sep 27 11:15:05 CEST 2026
+08-33 µs/call: Logger.error with handler=24.34 without=2.18 | Logger.debug crumb=1.67 without handler=1.67 | Spike.crumb=0.26 | from_log(12 frames, 20 crumbs)=64.47 | finish in buffer=366.08
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19980/s sent=40000 stored=40000 dropped=0 queue_max=319 buffer_mem_max=1660704
+08-32 target=50000/s achieved=49994/s sent=100000 stored=100000 dropped=0 queue_max=325 buffer_mem_max=1717064
+08-32 target=100000/s achieved=99988/s sent=200000 stored=200000 dropped=0 queue_max=414 buffer_mem_max=2205248
+08-32 target=200000/s achieved=199798/s sent=400000 stored=400000 dropped=0 queue_max=795 buffer_mem_max=3690848
+=== full run 1 11:16:33
+08-33 µs/call: Logger.error with handler=16.31 without=0.73 | Logger.debug crumb=1.07 without handler=0.73 | Spike.crumb=0.17 | from_log(12 frames, 20 crumbs)=40.18 | finish in buffer=287.05
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19997/s sent=40000 stored=40000 dropped=0 queue_max=7 buffer_mem_max=388840
+08-32 target=50000/s achieved=49980/s sent=100000 stored=100000 dropped=0 queue_max=11 buffer_mem_max=1325680
+08-32 target=100000/s achieved=99920/s sent=200000 stored=200000 dropped=0 queue_max=420 buffer_mem_max=1213000
+08-32 target=200000/s achieved=199833/s sent=400000 stored=400000 dropped=0 queue_max=422 buffer_mem_max=3206272
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=3001232 queue_max=6 vm +1080 KiB
+08-30 probe idle p50/p99=1/8 µs, db down + flood p50/p99/max=3/46/2049 µs; stored after recovery=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-29 spawn crashes sent=30000 in 3001 ms captured=30000 db_count=30000
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=3016272 B queue_max=13 vm_total_before=80595170 vm_total_max=81686722 (+1065 KiB)
+08-27 probe idle p50/p99/max=1/13/25 µs flood p50/p99/max=6/98/441 µs
+=== full run 2 11:17:30
+08-33 µs/call: Logger.error with handler=12.69 without=0.63 | Logger.debug crumb=0.93 without handler=0.63 | Spike.crumb=0.16 | from_log(12 frames, 20 crumbs)=33.18 | finish in buffer=217.76
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19998/s sent=40000 stored=40000 dropped=0 queue_max=46 buffer_mem_max=391640
+08-32 target=50000/s achieved=49974/s sent=100000 stored=100000 dropped=0 queue_max=7 buffer_mem_max=854696
+08-32 target=100000/s achieved=99963/s sent=200000 stored=200000 dropped=0 queue_max=628 buffer_mem_max=3586016
+08-32 target=200000/s achieved=199951/s sent=400000 stored=400000 dropped=0 queue_max=385 buffer_mem_max=3242760
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=2994240 queue_max=6 vm +1185 KiB
+08-30 probe idle p50/p99=1/6 µs, db down + flood p50/p99/max=1/34/348 µs; stored after recovery=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-27 sent=50000 in 5001 ms (9998/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=2991792 B queue_max=73 vm_total_before=77795137 vm_total_max=81255489 (+3379 KiB)
+08-27 probe idle p50/p99/max=11/37/83 µs flood p50/p99/max=8/88/538 µs
+08-29 spawn crashes sent=30000 in 3001 ms captured=30000 db_count=30000
+=== full run 3 11:18:27
+08-33 µs/call: Logger.error with handler=13.95 without=0.65 | Logger.debug crumb=0.94 without handler=0.61 | Spike.crumb=0.17 | from_log(12 frames, 20 crumbs)=36.5 | finish in buffer=222.33
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19997/s sent=40000 stored=40000 dropped=0 queue_max=12 buffer_mem_max=1176408
+08-32 target=50000/s achieved=49970/s sent=100000 stored=100000 dropped=0 queue_max=11 buffer_mem_max=1409136
+08-32 target=100000/s achieved=99972/s sent=200000 stored=200000 dropped=0 queue_max=46 buffer_mem_max=1221680
+08-32 target=200000/s achieved=199896/s sent=400000 stored=400000 dropped=0 queue_max=17 buffer_mem_max=1159368
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=1229168 B queue_max=14 vm_total_before=78158705 vm_total_max=79748777 (+1552 KiB)
+08-27 probe idle p50/p99/max=1/5/7 µs flood p50/p99/max=1/30/271 µs
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=1148736 queue_max=4 vm +2191 KiB
+08-30 probe idle p50/p99=12/28 µs, db down + flood p50/p99/max=7/85/448 µs; stored after recovery=30000
+=== final run 1 11:20:53
+08-32 target=20000/s achieved=19990/s sent=40000 stored=40000 dropped=0 queue_max=31 buffer_mem_max=384040
+08-32 target=50000/s achieved=49973/s sent=100000 stored=100000 dropped=0 queue_max=205 buffer_mem_max=903896
+08-32 target=100000/s achieved=99951/s sent=200000 stored=200000 dropped=0 queue_max=392 buffer_mem_max=3564728
+08-32 target=200000/s achieved=199921/s sent=400000 stored=400000 dropped=0 queue_max=52 buffer_mem_max=3081448
+08-33 µs/call: Logger.error with handler=12.84 without=0.72 | Logger.debug crumb=1.15 without handler=0.62 | Spike.crumb=0.22 | from_log(12 frames, 20 crumbs)=33.9 | finish in buffer=199.69
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=9214416 B queue_max=12 vm_total_before=89362637 vm_total_max=80940541 (+-8224 KiB)
+08-27 probe idle p50/p99/max=7/36/73 µs flood p50/p99/max=7/83/1148 µs
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=527424 queue_max=14 vm +1410 KiB
+08-30 probe idle p50/p99=10/36 µs, db down + flood p50/p99/max=8/76/389 µs; stored after recovery=30000
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+=== final run 2 11:21:51
+08-33 µs/call: Logger.error with handler=12.62 without=0.63 | Logger.debug crumb=0.96 without handler=0.62 | Spike.crumb=0.21 | from_log(12 frames, 20 crumbs)=34.39 | finish in buffer=241.37
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19991/s sent=40000 stored=40000 dropped=0 queue_max=24 buffer_mem_max=258584
+08-32 target=50000/s achieved=49969/s sent=100000 stored=100000 dropped=0 queue_max=8 buffer_mem_max=1265856
+08-32 target=100000/s achieved=99986/s sent=200000 stored=200000 dropped=0 queue_max=13 buffer_mem_max=1688672
+08-32 target=200000/s achieved=199932/s sent=400000 stored=400000 dropped=0 queue_max=1526 buffer_mem_max=3724056
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=1153560 queue_max=1 vm +1995 KiB
+08-30 probe idle p50/p99=1/29 µs, db down + flood p50/p99/max=5/72/160 µs; stored after recovery=30000
+08-28 task crashes sent=30000 in 3001 ms captured=30000 db_count=30000 dropped_total=500
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=1148256 B queue_max=14 vm_total_before=76956350 vm_total_max=78922126 (+1919 KiB)
+08-27 probe idle p50/p99/max=3/33/42 µs flood p50/p99/max=7/97/1217 µs
+=== final run 3 11:22:49
+08-32 target=20000/s achieved=19993/s sent=40000 stored=40000 dropped=0 queue_max=6 buffer_mem_max=6900344
+08-32 target=50000/s achieved=49976/s sent=100000 stored=100000 dropped=0 queue_max=318 buffer_mem_max=641568
+08-32 target=100000/s achieved=99955/s sent=200000 stored=200000 dropped=0 queue_max=237 buffer_mem_max=1979648
+08-32 target=200000/s achieved=199968/s sent=400000 stored=400000 dropped=0 queue_max=858 buffer_mem_max=1693968
+08-33 µs/call: Logger.error with handler=12.67 without=0.62 | Logger.debug crumb=0.94 without handler=0.62 | Spike.crumb=0.2 | from_log(12 frames, 20 crumbs)=34.62 | finish in buffer=206.29
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=1152104 B queue_max=5 vm_total_before=77642749 vm_total_max=79233373 (+1553 KiB)
+08-27 probe idle p50/p99/max=8/36/291 µs flood p50/p99/max=6/72/1279 µs
+08-28 task crashes sent=30000 in 3001 ms captured=30000 db_count=30000 dropped_total=500
+08-30 db down: sent=30000 writer_failures=6 pending_issues=2 buffer_mem_max=1158936 queue_max=4 vm +1954 KiB
+08-30 probe idle p50/p99=2/19 µs, db down + flood p50/p99/max=1/43/119 µs; stored after recovery=30000
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+=== flood file rerun after 08-27 bound change 11:24:03
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=210968 B queue_max=8 vm_total_before=69889471 vm_total_max=74245238 (+4253 KiB)
+08-27 probe idle p50/p99/max=9/37/59 µs flood p50/p99/max=8/88/859 µs
+08-29 spawn crashes sent=30000 in 3001 ms captured=30000 db_count=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=0
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=301864 queue_max=15 vm +1205 KiB
+08-30 probe idle p50/p99=2/13 µs, db down + flood p50/p99/max=2/18/101 µs; stored after recovery=30000
+=== final run 5 11:24:33
+08-33 µs/call: Logger.error with handler=12.11 without=0.61 | Logger.debug crumb=0.93 without handler=0.6 | Spike.crumb=0.2 | from_log(12 frames, 20 crumbs)=34.26 | finish in buffer=223.89
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19996/s sent=40000 stored=40000 dropped=0 queue_max=130 buffer_mem_max=2199816
+08-32 target=50000/s achieved=49982/s sent=100000 stored=100000 dropped=0 queue_max=11 buffer_mem_max=1963104
+08-32 target=100000/s achieved=99984/s sent=200000 stored=200000 dropped=0 queue_max=460 buffer_mem_max=2582160
+08-32 target=200000/s achieved=199896/s sent=400000 stored=400000 dropped=0 queue_max=26 buffer_mem_max=1979200
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=1875264 queue_max=2 vm +1852 KiB
+08-30 probe idle p50/p99=1/6 µs, db down + flood p50/p99/max=1/35/163 µs; stored after recovery=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=1859280 B queue_max=5 vm_total_before=79257214 vm_total_max=80506478 (+1219 KiB)
+08-27 probe idle p50/p99/max=7/27/64 µs flood p50/p99/max=6/75/336 µs
+08-32 target=20000/s achieved=19994/s sent=40000 stored=40000 dropped=0 queue_max=2 buffer_mem_max=6807344
+08-32 target=50000/s achieved=49991/s sent=100000 stored=100000 dropped=0 queue_max=18 buffer_mem_max=768624
+08-32 target=100000/s achieved=99956/s sent=200000 stored=200000 dropped=0 queue_max=16 buffer_mem_max=3233072
+08-32 target=200000/s achieved=199983/s sent=400000 stored=400000 dropped=0 queue_max=14 buffer_mem_max=3061216
+08-33 µs/call: Logger.error with handler=13.16 without=0.65 | Logger.debug crumb=0.94 without handler=0.63 | Spike.crumb=0.22 | from_log(12 frames, 20 crumbs)=42.94 | finish in buffer=629.54
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-27 sent=50000 in 5000 ms (9999/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=3011376 B queue_max=3 vm_total_before=77234673 vm_total_max=79034937 (+1758 KiB)
+08-27 probe idle p50/p99/max=2/17/27 µs flood p50/p99/max=5/54/279 µs
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=3007296 queue_max=7 vm +1931 KiB
+08-30 probe idle p50/p99=5/47 µs, db down + flood p50/p99/max=2/29/166 µs; stored after recovery=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-33 µs/call: Logger.error with handler=12.24 without=0.61 | Logger.debug crumb=0.91 without handler=0.6 | Spike.crumb=0.2 | from_log(12 frames, 20 crumbs)=35.67 | finish in buffer=214.49
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19989/s sent=40000 stored=40000 dropped=0 queue_max=1 buffer_mem_max=627568
+08-32 target=50000/s achieved=49980/s sent=100000 stored=100000 dropped=0 queue_max=419 buffer_mem_max=1024552
+08-32 target=100000/s achieved=99988/s sent=200000 stored=200000 dropped=0 queue_max=556 buffer_mem_max=3562056
+08-32 target=200000/s achieved=199938/s sent=400000 stored=400000 dropped=0 queue_max=1950 buffer_mem_max=4289344
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=3007704 queue_max=6 vm +1086 KiB
+08-30 probe idle p50/p99=1/19 µs, db down + flood p50/p99/max=2/25/480 µs; stored after recovery=30000
+08-27 sent=50000 in 5000 ms (9998/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=3008928 B queue_max=18 vm_total_before=80619462 vm_total_max=82676158 (+2008 KiB)
+08-27 probe idle p50/p99/max=3/30/45 µs flood p50/p99/max=3/42/202 µs
+08-33 µs/call: Logger.error with handler=14.88 without=0.63 | Logger.debug crumb=0.94 without handler=0.63 | Spike.crumb=0.21 | from_log(12 frames, 20 crumbs)=40.13 | finish in buffer=247.52
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19990/s sent=40000 stored=40000 dropped=0 queue_max=35 buffer_mem_max=505312
+08-32 target=50000/s achieved=49988/s sent=100000 stored=100000 dropped=0 queue_max=177 buffer_mem_max=621168
+08-32 target=100000/s achieved=99975/s sent=200000 stored=200000 dropped=0 queue_max=24 buffer_mem_max=474912
+08-32 target=200000/s achieved=199979/s sent=400000 stored=400000 dropped=0 queue_max=1606 buffer_mem_max=2308872
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-28 task crashes sent=30000 in 3000 ms captured=30000 db_count=30000 dropped_total=500
+08-27 sent=50000 in 5000 ms (9998/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=1861320 B queue_max=7 vm_total_before=80384774 vm_total_max=82140398 (+1714 KiB)
+08-27 probe idle p50/p99/max=2/27/83 µs flood p50/p99/max=2/37/108 µs
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=1860168 queue_max=6 vm +1777 KiB
+08-30 probe idle p50/p99=2/17 µs, db down + flood p50/p99/max=3/45/189 µs; stored after recovery=30000
+08-33 µs/call: Logger.error with handler=12.58 without=0.62 | Logger.debug crumb=0.92 without handler=0.62 | Spike.crumb=0.21 | from_log(12 frames, 20 crumbs)=34.96 | finish in buffer=215.42
+08-33 bytes: ring of 20..40 crumbs in pdict=3224 B, one sample term_to_binary=2139 B
+08-32 target=20000/s achieved=19995/s sent=40000 stored=40000 dropped=0 queue_max=5 buffer_mem_max=470184
+08-32 target=50000/s achieved=49979/s sent=100000 stored=100000 dropped=0 queue_max=172 buffer_mem_max=881896
+08-32 target=100000/s achieved=99950/s sent=200000 stored=200000 dropped=0 queue_max=362 buffer_mem_max=1166448
+08-32 target=200000/s achieved=199957/s sent=400000 stored=400000 dropped=0 queue_max=11 buffer_mem_max=1217856
+08-28 task crashes sent=30000 in 3001 ms captured=30000 db_count=30000 dropped_total=500
+08-29 spawn crashes sent=30000 in 3000 ms captured=30000 db_count=30000
+08-27 sent=50000 in 5000 ms (9998/s) dropped=0 db_count=50000 issues=1
+08-27 buffer_mem_max=1156680 B queue_max=4 vm_total_before=78427318 vm_total_max=80621398 (+2142 KiB)
+08-27 probe idle p50/p99/max=4/32/50 µs flood p50/p99/max=3/32/109 µs
+08-30 db down: sent=30000 writer_failures=5 pending_issues=2 buffer_mem_max=1158952 queue_max=2 vm +1403 KiB
+08-30 probe idle p50/p99=5/58 µs, db down + flood p50/p99/max=4/67/539 µs; stored after recovery=30000

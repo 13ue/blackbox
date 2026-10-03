@@ -1,0 +1,29 @@
+Running ExUnit with seed: 447546, max_cases: 1
+
+..
+
+  1) test 04-52: cost of a traced raise+rescue: 100k swallowed exceptions with erlang:error call trace on vs off (BeamLab.TraceCostTest)
+     test/e_trace_cost_test.exs:90
+     Assertion with < failed
+     code:  assert on.us < 2 * off.us
+     left:  41080
+     right: 11674
+     stacktrace:
+       test/e_trace_cost_test.exs:97: (test)
+
+
+
+  2) test 04-51: costs of trace sessions on 100k tiny calls (Silent.loop/1) (BeamLab.TraceCostTest)
+     test/e_trace_cost_test.exs:59
+     Assertion with < failed
+     code:  assert other.us < 2 * base.us
+     left:  2110
+     right: 1068
+     stacktrace:
+       test/e_trace_cost_test.exs:82: (test)
+
+
+Finished in 16.4 seconds (0.00s async, 16.4s sync)
+
+Result: 2/4 passed
+Failed: 2 tests
