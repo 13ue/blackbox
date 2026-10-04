@@ -236,3 +236,10 @@ it changes globally, what it cannot see, measured costs), CHANGELOG 0.1.0
 real size, measured: ~7 KB for 50 short lines, ~36 KB at most (the ADR's
 15 KB counted the heap only). **Not published**: 1charta takes the git
 dependency first; hex waits for an explicit go.
+
+## Next: storage by time (ADR 0001 amended 2026-10-04)
+
+Decided, not built: samples by time per fingerprint (first 3, then one a
+minute), retention of the first 10 and the latest 90 per issue, and hourly
+counts in `blackbox_counts` (sections 6 and 7 of the ADR). v1's migration is
+unpublished, so the table goes into version 1.

@@ -5,7 +5,10 @@ Status: Accepted
 This is 1charta's ADR 0031, carried over as this repo's first record on
 2026-10-03. Section 9 is 1charta's wiring; the rest is Blackbox.
 
-Date: 2026-09-27, revised after review the same day, accepted 2026-10-03
+Date: 2026-09-27, revised after review the same day, accepted 2026-10-03,
+amended 2026-10-04: sections 6 and 7 sample and keep occurrences by time and
+add hourly counts (decided, not built yet); "What the build changed" records
+where v1, as built, differs from the draft.
 
 ## Context
 
@@ -236,6 +239,37 @@ telemetry-handler-failure integrations, the scrubber defaults.
   spike's tests red; the DB-down test reran 30 000 of 30 000; report 01 reran
   27 of 27.
 
+### What the build changed (plan 0001, 2026-10-03)
+
+v1 was built as plan 0001 (`docs/plans/0001-v1-build.md`, with every
+measurement). Where it differs from the sections below, the build is right:
+
+- **On Elixir 1.18 the translator turns every OTP report into text** before
+  any handler: `last_message`, `state` and `client_info` are gone there (the
+  labs ran on 1.20). So the primary filter of 2.2 takes every labeled report
+  at `:error` (and `{:application_controller, :exit}` at any level) raw, not
+  only what the translator stops, and marks the event so the handler skips
+  its translated copy.
+- **The dedupe key of section 3 is `{kind, reason}`**, not `{fingerprint,
+  reason hash}`: Phoenix, Bandit and the log carry the same exception term
+  but not always the same stack. A supervisor's `child_terminated` is merged
+  through an ETS set of pids that reported their own crash (pruned after 5 s).
+- **Scrubbing (section 5) covers two leaks the draft did not list**, found by
+  the secrets test: the `:sys` log keeps raw call and cast messages even when
+  `format_status/1` redacts `message` (now reduced to tags in the lib), and a
+  callee's `function_clause` nests a frame with the call's arguments in the
+  caller's exit reason (nested frames keep arity only). Text scrubbing runs a
+  `:binary.match` pre-check on key names first: a log crumb costs 0.4 µs, 0.7
+  µs with one host pattern, against 2.2 µs for the regex alone.
+- **Crash cost in the failing process**: ~900 reductions, 10-20 µs with 12
+  frames and 20 crumbs (the spike's 33-40 µs formatted there).
+- **Deferred beyond the draft**: the `$ancestors` join (a GenServer's ancestor
+  is its supervisor, which keeps no crumbs), debug crumbs per module, OTel
+  trace ids, field merging across sightings (the first sighting wins), restart
+  counts on the child's issue.
+- **Refs** are `<fingerprint prefix>-<5 random>`, so a ref whose sample was
+  only counted still finds its issue.
+
 ### What 1charta has today (report 07)
 
 - **No error history.** Logs go to stdout only; the container is recreated on
@@ -377,7 +411,9 @@ binaries are copied and capped at 200 bytes when added, because a 100-byte
 slice kept a 4 MB binary alive (10-10, R-16). Ceiling: about 15 KB per
 process that ever logged, cleared per request; a test asserts the ring's
 `:erts_debug.flat_size` bound (the spike's ring passed every test untrimmed,
-M7).
+M7). As built and measured: ~7 KB for 50 short lines, at most ~36 KB (100
+crumbs of 200 bytes; the 15 KB counted only the heap, not the capped
+binaries off it).
 
 **Default crumb sources**, all in the process that does the work:
 
@@ -490,8 +526,13 @@ fixes:
 - **One aggregating buffer**: `fingerprint -> count, first, last, samples`.
   It keeps the first and the latest sample and one in between, not the first
   three (R-20). Formatting, `inspect` and scrubbing happen here, only for kept
-  samples. A flood costs one upsert and at most three occurrence rows per
-  fingerprint per 100 ms (10-15). A high-cardinality flood is a test (10-2).
+  samples. A high-cardinality flood is a test (10-2).
+- **Samples by time, not by tick** (amended 2026-10-04): per fingerprint, the
+  first 3 samples this node sees are kept, then at most one a minute; the
+  count stays exact. As built, a flood wrote up to three rows per fingerprint
+  per 100 ms (10-15): measured, 10k/s of one error wrote ~30 rows/s and the
+  pruner deleted as many, so after 3 s all 100 kept rows came from the same
+  seconds and were near-identical. Now it writes one row a minute.
 - **One writer at a time**, on **its own one-connection pool**: a dynamic
   repo of the host's Repo (`repo.start_link(name: nil, pool_size: 1)`, then
   `put_dynamic_repo/1` in the writer), so the tracker never queues with a
@@ -525,9 +566,21 @@ fixes:
   above, `payload jsonb`, at). Upsert by fingerprint.
 - Migrations are versioned functions in the lib; `mix blackbox.gen.migration`
   writes the host's migration file (ErrorTracker's and Oban's pattern).
-- Retention: the last 100 occurrences per issue and 30 days, never the issue
-  row; the pruner runs on the writer's pool and keeps up with a hot
-  fingerprint's ~30 rows/s.
+- Retention (amended 2026-10-04): per issue the **first 10 and the latest
+  90 occurrences**, and 30 days for the latest, never the issue row; the
+  pruner runs on the writer's pool. Keeping only the latest 100 lost the
+  first sighting (the build that introduced the bug, its timeline) after 100
+  more, or within seconds during a flood.
+- **Hourly counts** (amended 2026-10-04): `blackbox_counts` (issue_id, hour,
+  count), upserted with each batch, 90 days. The issue page shows the trend
+  ("did the fix work"), and it is the baseline section 11's escalating state
+  needs. The issue row keeps the exact total.
+- One `jsonb` payload per occurrence stays: measured, a crash with 50 crumbs
+  is 7.6 KB of JSON and 1.3 KB on disk after TOAST compression, ~130 KB per
+  issue at 100 kept. Stacks and crumbs are not normalised into tables of
+  their own (little saved after compression, harder reads), and `jsonb` stays
+  over `json`/text because the page ranks occurrences by their crumbs and
+  locals.
 - `grouping_version` is stored; a later version regroups only new
   occurrences, and the page shows both.
 
@@ -624,7 +677,8 @@ Each has its lab evidence ready; none is needed for 1charta today:
   large_heap, long_message_queue; 06-32, 06-39) into a node ring.
 - **Crash-dump import** on boot (the header only; `ERL_CRASH_DUMP` is set
   already).
-- **Escalating** against an hourly baseline, and an `on_issue` callback.
+- **Escalating** against an hourly baseline (`blackbox_counts`, section 7),
+  and an `on_issue` callback.
 - **Cowboy, LiveView, channels and Oban** attachments, with lab 05's 65 cases
   as fixtures; Cowboy's cross-process dedupe must pair sightings, not
   suppress equal failures of different requests (R-6).
@@ -688,10 +742,10 @@ not exact counts, for anything through `:logger_proxy` (04 rec. 10).
 - Each failure comes with its trail, its cause across processes (Tasks and
   calls; not casts yet), and the process's last message and state, scrubbed,
   without the app code changing.
-- The price is measured and bounded: about 5 µs per request at p50, tens of
-  µs per crash in the failing process (re-measured in step 1 at depth 32 and
-  a 50-crumb ring), up to ~15 KB per process that logs, one extra database
-  connection, two tables.
+- The price is measured and bounded: about 5 µs per request at p50, ~900
+  reductions (10-20 µs) per crash in the failing process, 0.4-0.7 µs per log
+  line below `:error`, ~7 KB per process that logs (at most ~36 KB), one extra
+  database connection, three tables.
 - The lib changes one global setting, `backtrace_depth`, and adds a primary
   filter that sees every log event (a domain match, then return). Both are
   switches. After a restart of Elixir's Logger app, SASL capture is blind for
